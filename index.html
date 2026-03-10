@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-body{font-family:'Inter',sans-serif;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;scroll-behavior:smooth;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
 .gradient-hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%)}
 .card-hover{transition:all .3s ease}
 .card-hover:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.15)}
@@ -39,9 +40,9 @@ details[open] summary .chevron{transform:rotate(180deg)}
 .danger-box{background:linear-gradient(135deg,#fef2f2,#fecaca);border-left:4px solid #ef4444;padding:16px;border-radius:0 8px 8px 0;margin:12px 0}
 .legal-ref{font-size:.7rem;color:#6b7280;font-style:italic;display:block;margin-top:4px}
 .section-title{font-size:1.1rem;font-weight:700;color:#1e3a5f;display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
-.country-section{margin-bottom:2rem}
-.subsection{margin-bottom:1.5rem}
-.detail-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.country-section{margin-bottom:2rem;max-width:100%}
+.subsection{margin-bottom:1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.detail-table{width:100%;min-width:500px;border-collapse:collapse;font-size:.85rem}
 .detail-table th{background:#1e3a5f;color:white;padding:10px 12px;text-align:left;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px}
 .detail-table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.5}
 .detail-table tr:nth-child(even){background:#f8fafc}
@@ -50,6 +51,156 @@ details[open] summary .chevron{transform:rotate(180deg)}
 .stat-card{background:white;border-radius:8px;padding:16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.1)}
 .stat-value{font-size:1.5rem;font-weight:800;color:#2563eb}
 .stat-label{font-size:.75rem;color:#6b7280;margin-top:4px}
+
+/* ===== RESPONSIVE — MOBILE (max-width: 768px) ===== */
+@media(max-width:768px){
+  /* Prevent horizontal overflow */
+  html,body{overflow-x:hidden;width:100%}
+
+  /* Navigation */
+  .sticky-nav{padding:8px 12px}
+  .sticky-nav span.text-lg{font-size:.9rem}
+  .sticky-nav .text-blue-400{display:none}
+
+  /* Country navigation pills */
+  #country-nav .max-w-7xl{padding:8px 12px}
+  #country-nav a{font-size:.7rem;padding:6px 8px;min-height:36px;display:inline-flex;align-items:center}
+
+  /* Hero section */
+  #accueil{padding:40px 16px}
+  #accueil h1{font-size:1.75rem !important;line-height:1.2}
+  #accueil .text-xl{font-size:1rem}
+  #accueil .inline-block{font-size:.75rem;padding:4px 12px}
+  #accueil .flex-wrap a{padding:10px 16px;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center}
+
+  /* Sections — general padding */
+  section.max-w-7xl,.max-w-7xl{padding-left:12px !important;padding-right:12px !important}
+  .bg-white.rounded-xl.shadow-sm.p-8{padding:16px}
+  .bg-white.rounded-b-xl.shadow-sm.p-6{padding:12px}
+
+  /* Methodology grid */
+  .grid.md\:grid-cols-2{grid-template-columns:1fr !important}
+
+  /* Stat cards row */
+  .grid.grid-cols-2.md\:grid-cols-5{grid-template-columns:repeat(2,1fr) !important}
+  .stat-value{font-size:1.2rem}
+  .stat-label{font-size:.7rem}
+  .stat-card{padding:10px}
+
+  /* Country headers */
+  .country-header{padding:16px;border-radius:8px;flex-wrap:wrap;gap:8px}
+  .country-header h2{font-size:1.3rem}
+  .country-header .text-4xl{font-size:2rem}
+  .country-header .flex.items-center.gap-3:last-child{margin-top:4px}
+
+  /* Section titles */
+  .section-title{font-size:.95rem}
+
+  /* Detail tables — horizontal scroll wrapper */
+  .subsection{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .detail-table{min-width:520px;font-size:.8rem}
+  .detail-table th{padding:8px;font-size:.7rem}
+  .detail-table td{padding:8px;font-size:.8rem;line-height:1.4}
+  .detail-table th[width="22%"]{min-width:100px}
+
+  /* Legal references */
+  .legal-ref{font-size:.65rem}
+
+  /* Info/alert/key-point/danger boxes */
+  .key-point,.alert-box,.info-box,.danger-box{padding:12px;margin:8px 0}
+  .key-point p,.alert-box p,.info-box p,.danger-box p{font-size:.8rem}
+
+  /* Comparison table section */
+  .comparison-table{font-size:.65rem}
+  .comparison-table th,.comparison-table td{padding:4px 6px}
+  .comparison-table th.min-w-\[140px\]{min-width:110px}
+  .comparison-table th.min-w-\[100px\]{min-width:80px}
+
+  /* Download section */
+  .grid.md\:grid-cols-2.gap-6{grid-template-columns:1fr !important}
+  .download-btn{min-height:44px;font-size:.85rem;padding:8px 12px}
+
+  /* Footer */
+  footer .max-w-7xl{flex-direction:column;text-align:center;gap:16px}
+  footer p{font-size:.8rem}
+
+  /* Badge */
+  .badge{font-size:.65rem;padding:2px 6px}
+
+  /* Ensure body text is readable */
+  body{font-size:14px}
+  p{font-size:.875rem}
+
+  /* Country flag sizing */
+  .country-flag{font-size:2rem}
+
+  /* Ensure touch-friendly targets */
+  a,button{min-height:36px}
+  #accueil a,#telechargements button,.download-btn{min-height:44px}
+}
+
+/* ===== RESPONSIVE — SMALL MOBILE (max-width: 480px) ===== */
+@media(max-width:480px){
+  /* Hero */
+  #accueil{padding:24px 12px}
+  #accueil h1{font-size:1.4rem !important}
+  #accueil .text-xl{font-size:.9rem}
+  #accueil .flex-wrap{flex-direction:column;align-items:stretch}
+  #accueil .flex-wrap a{width:100%;justify-content:center;text-align:center}
+
+  /* Country navigation — scroll horizontally */
+  #country-nav .max-w-7xl{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;justify-content:flex-start;padding-bottom:8px;gap:4px}
+  #country-nav a{flex-shrink:0;white-space:nowrap;font-size:.65rem;padding:5px 6px}
+
+  /* Stat cards — single column */
+  .grid.grid-cols-2.md\:grid-cols-5{grid-template-columns:repeat(2,1fr) !important}
+  .stat-value{font-size:1rem}
+
+  /* Country headers */
+  .country-header{padding:12px}
+  .country-header h2{font-size:1.1rem}
+  .country-header .text-4xl{font-size:1.6rem}
+  .country-header .badge{display:none}
+
+  /* Tables — even more compact */
+  .detail-table{min-width:480px;font-size:.75rem}
+  .detail-table th,.detail-table td{padding:6px}
+
+  /* Download buttons — single column */
+  .grid.grid-cols-2.gap-3{grid-template-columns:1fr !important}
+
+  /* Sections padding */
+  .bg-white.rounded-xl.shadow-sm.p-8{padding:12px}
+  .bg-white.rounded-b-xl.shadow-sm.p-6{padding:8px}
+
+  /* Methodology domain grid */
+  .grid.grid-cols-2.gap-2{grid-template-columns:1fr !important}
+
+  /* Footer */
+  footer{padding:16px 12px}
+
+  /* Section title */
+  .section-title{font-size:.85rem;gap:4px}
+
+  /* Navigation brand */
+  .sticky-nav{padding:6px 10px}
+  .sticky-nav span.text-lg,.sticky-nav .font-bold.text-lg{font-size:.8rem}
+}
+
+/* ===== RESPONSIVE — TABLET RANGE FIXES ===== */
+@media(min-width:481px) and (max-width:768px){
+  .detail-table{min-width:560px}
+  .stat-value{font-size:1.3rem}
+  #accueil h1{font-size:2rem !important}
+}
+
+/* ===== PRINT-SAFE — prevent table header issues ===== */
+@media print{
+  .sticky-nav,#country-nav{position:relative !important}
+  .comparison-table th{position:relative !important}
+  details{display:block !important}
+  details[open] summary ~ *{display:block !important}
+}
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
