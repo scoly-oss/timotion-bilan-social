@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TiMOTION – Bilan & Perspective Sociale Européenne</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+body{font-family:'Inter',sans-serif;scroll-behavior:smooth}
+.gradient-hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%)}
+.card-hover{transition:all .3s ease}
+.card-hover:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.15)}
+.country-flag{font-size:2.5rem}
+.tab-active{border-bottom:3px solid #2563eb;color:#2563eb;font-weight:600}
+.section-card{border-left:4px solid #2563eb}
+.table-stripe tr:nth-child(even){background:#f8fafc}
+.nav-link{transition:all .2s}
+.nav-link:hover{color:#60a5fa}
+.nav-link.active{color:#60a5fa;font-weight:600}
+.badge{display:inline-block;padding:2px 10px;border-radius:9999px;font-size:.75rem;font-weight:600}
+.badge-green{background:#dcfce7;color:#166534}
+.badge-blue{background:#dbeafe;color:#1e40af}
+.badge-orange{background:#ffedd5;color:#9a3412}
+.badge-red{background:#fee2e2;color:#991b1b}
+.download-btn{transition:all .2s ease}
+.download-btn:hover{transform:scale(1.05)}
+.sticky-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(15,23,42,.92)}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] summary .chevron{transform:rotate(180deg)}
+.chevron{transition:transform .2s}
+.comparison-table th{position:sticky;top:0;z-index:10}
+#country-nav a.active{background:#2563eb;color:white}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- NAVIGATION -->
+<nav class="sticky-nav px-6 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i class="fas fa-globe-europe text-white text-sm"></i></div>
+<span class="text-white font-bold text-lg">TiMOTION <span class="text-blue-400 font-light">| Bilan Social Européen</span></span>
+</div>
+<div class="hidden md:flex gap-6 text-sm text-gray-300">
+<a href="#accueil" class="nav-link">Accueil</a>
+<a href="#pays" class="nav-link">Pays</a>
+<a href="#comparatif" class="nav-link">Comparatif</a>
+<a href="#downloads" class="nav-link">Téléchargements</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="accueil" class="gradient-hero text-white py-20 px-6">
+<div class="max-w-5xl mx-auto text-center">
+<div class="mb-4"><span class="badge badge-blue text-xs uppercase tracking-wider">Confidentiel – Dairia Avocats × Exiliance</span></div>
+<h1 class="text-4xl md:text-5xl font-extrabold mb-4">Bilan & Perspective Sociale<br><span class="text-blue-400">Européenne</span></h1>
+<p class="text-xl text-gray-300 mb-2">Groupe TiMOTION — Analyse comparative de la législation sociale</p>
+<p class="text-gray-400 mb-8">10 pays · Droit du travail · Sécurité sociale · Retraite · Santé & Prévoyance</p>
+<div class="flex flex-wrap justify-center gap-3 text-3xl mb-10">
+<span title="France">🇫🇷</span><span title="Allemagne">🇩🇪</span><span title="Pologne">🇵🇱</span><span title="Pays-Bas">🇳🇱</span><span title="Belgique">🇧🇪</span><span title="Royaume-Uni">🇬🇧</span><span title="Danemark">🇩🇰</span><span title="Italie">🇮🇹</span><span title="Espagne">🇪🇸</span><span title="Rép. Tchèque">🇨🇿</span>
+</div>
+<a href="#pays" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition"><i class="fas fa-arrow-down mr-2"></i>Consulter les analyses</a>
+</div>
+</section>
+
+<!-- MÉTHODOLOGIE -->
+<section class="max-w-5xl mx-auto px-6 py-12">
+<h2 class="text-2xl font-bold mb-6"><i class="fas fa-info-circle text-blue-600 mr-2"></i>Périmètre de l'analyse</h2>
+<div class="grid md:grid-cols-4 gap-4">
+<div class="bg-white rounded-xl p-5 shadow-sm border card-hover">
+<div class="text-blue-600 text-2xl mb-2"><i class="fas fa-file-contract"></i></div>
+<h3 class="font-semibold mb-1">Droit du travail</h3>
+<p class="text-sm text-gray-500">Contrats, durée du travail, congés, licenciement, représentation du personnel</p>
+</div>
+<div class="bg-white rounded-xl p-5 shadow-sm border card-hover">
+<div class="text-green-600 text-2xl mb-2"><i class="fas fa-shield-alt"></i></div>
+<h3 class="font-semibold mb-1">Sécurité sociale</h3>
+<p class="text-sm text-gray-500">Cotisations patronales et salariales, branches couvertes, plafonds</p>
+</div>
+<div class="bg-white rounded-xl p-5 shadow-sm border card-hover">
+<div class="text-purple-600 text-2xl mb-2"><i class="fas fa-piggy-bank"></i></div>
+<h3 class="font-semibold mb-1">Retraite</h3>
+<p class="text-sm text-gray-500">Régime obligatoire, complémentaire, âge légal, taux de cotisation</p>
+</div>
+<div class="bg-white rounded-xl p-5 shadow-sm border card-hover">
+<div class="text-red-600 text-2xl mb-2"><i class="fas fa-heartbeat"></i></div>
+<h3 class="font-semibold mb-1">Santé & Prévoyance</h3>
+<p class="text-sm text-gray-500">Couverture maladie, mutuelle obligatoire, prévoyance décès/invalidité</p>
+</div>
+</div>
+</section>
+
+<!-- NAV PAYS -->
+<section id="pays" class="max-w-6xl mx-auto px-6 pt-8">
+<h2 class="text-2xl font-bold mb-6"><i class="fas fa-map-marked-alt text-blue-600 mr-2"></i>Analyse par pays</h2>
+<div id="country-nav" class="flex flex-wrap gap-2 mb-8">
+<a href="#france" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇫🇷 France</a>
+<a href="#allemagne" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇩🇪 Allemagne</a>
+<a href="#pologne" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇵🇱 Pologne</a>
+<a href="#paysbas" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇳🇱 Pays-Bas</a>
+<a href="#belgique" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇧🇪 Belgique</a>
+<a href="#uk" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇬🇧 Royaume-Uni</a>
+<a href="#danemark" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇩🇰 Danemark</a>
+<a href="#italie" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇮🇹 Italie</a>
+<a href="#espagne" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇪🇸 Espagne</a>
+<a href="#tchequie" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 hover:bg-blue-600 hover:text-white transition">🇨🇿 Rép. Tchèque</a>
+</div>
+</section>
+
+<!-- ==================== FRANCE ==================== -->
+<section id="france" class="max-w-6xl mx-auto px-6 py-8">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<span class="country-flag">🇫🇷</span>
+<div><h2 class="text-3xl font-bold">France</h2><p class="text-gray-500">Base de comparaison</p></div>
+</div>
+<button onclick="downloadCountry('france')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+
+<div class="space-y-4">
+<!-- Contrat de travail -->
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>CDI (principe), CDD (motifs limités), intérim, apprentissage</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>CDI : 2 mois (ouvriers/employés) à 4 mois (cadres), renouvelable 1 fois. CDD : 1 jour/semaine (max 2 semaines si CDD ≤ 6 mois)</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>CDI peut être verbal (écrit recommandé). CDD obligatoirement écrit.</td></tr>
+<tr><td class="py-2 font-medium">Clause de non-concurrence</td><td>Licite si limitée (durée, zone, activité) + contrepartie financière obligatoire</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<!-- Durée du travail -->
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée légale</td><td>35 heures/semaine</td></tr>
+<tr><td class="py-2 font-medium">Durée max.</td><td>48h/semaine (abs.) — 44h en moyenne sur 12 semaines</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Majoration : +25% (8 premières), +50% (au-delà). Contingent annuel : 220h (défaut)</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h consécutives/jour — 35h consécutives/semaine (incluant le dimanche en principe)</td></tr>
+<tr><td class="py-2 font-medium">Travail de nuit</td><td>21h–6h. Majoration conventionnelle + repos compensateur obligatoire</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<!-- Congés -->
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>25 jours ouvrés/an (2,5 j/mois travaillé)</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>11 jours fériés légaux (1er mai seul obligatoirement chômé et payé)</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>16 semaines (6 avant + 10 après) — 100% du salaire (plafond SS)</td></tr>
+<tr><td class="py-2 font-medium">Congé paternité</td><td>25 jours calendaires + 3 jours naissance</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>IJSS dès J4 (carence 3j) : 50% du salaire brut plafonné. Complément employeur selon ancienneté (loi de mensualisation)</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<!-- Rupture du contrat -->
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Licenciement</td><td>Cause réelle et sérieuse exigée. Procédure : convocation, entretien préalable, notification motivée</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>1 mois (&lt;2 ans ancienneté), 2 mois (≥2 ans). Cadres : souvent 3 mois (convention)</td></tr>
+<tr><td class="py-2 font-medium">Indemnité légale</td><td>1/4 de mois par année (≤10 ans) + 1/3 de mois par année (>10 ans)</td></tr>
+<tr><td class="py-2 font-medium">Rupture conventionnelle</td><td>Accord mutuel homologué par la DREETS. Indemnité ≥ indemnité légale</td></tr>
+<tr><td class="py-2 font-medium">Licenciement économique</td><td>Procédure renforcée : PSE obligatoire à partir de 10 licenciements sur 30 jours dans les entreprises ≥ 50 salariés</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<!-- Sécurité sociale -->
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Cotisations patronales totales</td><td>≈ 40-45% du salaire brut (maladie, vieillesse, famille, AT/MP, chômage, retraite complémentaire)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales totales</td><td>≈ 20-23% du salaire brut</td></tr>
+<tr><td class="py-2 font-medium">Plafond SS (2026)</td><td>3 925 €/mois (estimation)</td></tr>
+<tr><td class="py-2 font-medium">Branches couvertes</td><td>Maladie, Maternité, Invalidité, Décès, AT/MP, Vieillesse, Famille, Chômage</td></tr>
+<tr><td class="py-2 font-medium">Réductions</td><td>Réduction générale (ex-Fillon) sur les bas salaires (jusqu'à 1,6 SMIC)</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<!-- Retraite -->
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>64 ans (réforme 2023, montée progressive)</td></tr>
+<tr><td class="py-2 font-medium">Régime de base</td><td>Cotisation : 17,75% (plafonnée + déplafonnée). Répartition</td></tr>
+<tr><td class="py-2 font-medium">Retraite complémentaire</td><td>AGIRC-ARRCO obligatoire. Tranche 1 : 7,87% (dont 4,72% employeur). Tranche 2 : 21,59% (dont 12,95% employeur)</td></tr>
+<tr><td class="py-2 font-medium">Taux plein</td><td>50% du salaire annuel moyen (25 meilleures années) + points AGIRC-ARRCO</td></tr>
+<tr><td class="py-2 font-medium">Retraite supplémentaire</td><td>Facultative : PER (Plan d'Épargne Retraite), art. 83 — avantages fiscaux</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<!-- Santé & Prévoyance -->
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Couverture maladie</td><td>Assurance maladie universelle (remboursement ~70% soins courants)</td></tr>
+<tr><td class="py-2 font-medium">Complémentaire santé</td><td><span class="badge badge-red">Obligatoire</span> L'employeur doit financer au minimum 50% d'un panier de soins minimum (ANI 2013)</td></tr>
+<tr><td class="py-2 font-medium">Prévoyance décès</td><td>Obligatoire pour les cadres (1,5% T1 à la charge de l'employeur — CCN 1947 / ANI 2017)</td></tr>
+<tr><td class="py-2 font-medium">Portabilité</td><td>Maintien gratuit des garanties santé et prévoyance pendant max 12 mois après fin de contrat</td></tr>
+</tbody></table>
+</div>
+</details>
+
+<!-- Représentation du personnel -->
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4">
+<table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">CSE</td><td>Obligatoire dès 11 salariés. Fusion CE/DP/CHSCT depuis 2018</td></tr>
+<tr><td class="py-2 font-medium">Délégués syndicaux</td><td>Désignés par syndicats représentatifs dans les entreprises ≥ 50 salariés</td></tr>
+<tr><td class="py-2 font-medium">NAO</td><td>Négociation annuelle obligatoire (salaires, temps de travail, égalité H/F) dans les entreprises avec DS</td></tr>
+</tbody></table>
+</div>
+</details>
+</div>
+</section>
+
+<!-- ==================== ALLEMAGNE ==================== -->
+<section id="allemagne" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<span class="country-flag">🇩🇪</span>
+<div><h2 class="text-3xl font-bold">Allemagne</h2><p class="text-gray-500">Deutschland</p></div>
+</div>
+<button onclick="downloadCountry('allemagne')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>Contrat à durée indéterminée (unbefristeter Arbeitsvertrag) par défaut. CDD (befristeter) limité à 2 ans sans motif (max 3 renouvellements)</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>Maximum 6 mois. Préavis réduit de 2 semaines pendant l'essai</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>Pas d'obligation d'écrit pour le CDI, mais la loi NachwG (2022) impose une confirmation écrite des conditions essentielles dans le mois</td></tr>
+<tr><td class="py-2 font-medium">Clause de non-concurrence</td><td>Valide si écrite, durée max 2 ans, compensation ≥ 50% de la dernière rémunération (Karenzentschädigung)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée légale</td><td>Pas de durée légale fixe. Maximum 8h/jour (extensible à 10h si compensation sur 6 mois). En pratique : 37,5 à 40h/sem. selon conventions</td></tr>
+<tr><td class="py-2 font-medium">Durée max.</td><td>48h/semaine (en moyenne sur 6 mois)</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Pas de majoration légale. Dépend des conventions collectives (Tarifvertrag). Souvent +25% à +50%</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h consécutives/jour — Repos dominical en principe</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>Minimum légal : 20 jours ouvrés (base 5j/sem). En pratique 25-30 jours (conventions collectives)</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>9 à 13 selon le Land (Bundesland). Pas de loi fédérale uniforme</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>14 semaines (6 avant + 8 après). 100% du salaire net (Mutterschaftsgeld : part sécu + complément employeur)</td></tr>
+<tr><td class="py-2 font-medium">Congé parental</td><td>Elterngeld : jusqu'à 14 mois pour les 2 parents combinés. 65-67% du salaire net (plafond 1 800 €/mois)</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>Maintien du salaire à 100% par l'employeur pendant 6 semaines (Entgeltfortzahlung), puis Krankengeld par la caisse : 70% du brut (max 90% du net) jusqu'à 78 semaines</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Protection contre le licenciement</td><td>KSchG applicable dès 10 salariés + 6 mois d'ancienneté. Motif requis : personnel, comportemental ou économique</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>Légal : de 4 semaines (base) à 7 mois (20 ans d'ancienneté). Croissance progressive</td></tr>
+<tr><td class="py-2 font-medium">Indemnité de licenciement</td><td>Pas d'obligation légale d'indemnité ! En pratique : ~0,5 mois de salaire par année d'ancienneté (usage judiciaire / Abfindung)</td></tr>
+<tr><td class="py-2 font-medium">Betriebsrat (comité d'entreprise)</td><td>Doit être consulté avant tout licenciement — son opposition ne bloque pas mais renforce la contestation du salarié</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Système</td><td>Modèle bismarckien — cotisations paritaires employeur/salarié (50/50) sur 5 branches</td></tr>
+<tr><td class="py-2 font-medium">Cotisations patronales</td><td>≈ 20-21% du brut (maladie 7,3% + retraite 9,3% + chômage 1,3% + dépendance 1,7% + AT variable)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>≈ 20-21% du brut (mêmes taux, sauf AT 100% employeur et dépendance +0,6% pour les sans enfant)</td></tr>
+<tr><td class="py-2 font-medium">Plafond cotisations (2025/26)</td><td>Retraite/chômage : ~7 550 €/mois (Ouest). Maladie/dépendance : ~5 175 €/mois</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>67 ans (montée progressive depuis 2012, achevée en 2031)</td></tr>
+<tr><td class="py-2 font-medium">Régime obligatoire</td><td>Gesetzliche Rentenversicherung : 18,6% du brut (paritaire). Répartition</td></tr>
+<tr><td class="py-2 font-medium">Retraite d'entreprise</td><td>Betriebliche Altersversorgung (bAV) — 5 véhicules possibles. Droit à la conversion salariale (Entgeltumwandlung) depuis 2002. L'employeur doit ajouter 15% si économie de cotisations</td></tr>
+<tr><td class="py-2 font-medium">Retraite privée</td><td>Riester-Rente (subventionnée) et Rürup-Rente (déductible)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Assurance maladie</td><td><span class="badge badge-red">Obligatoire</span> GKV (caisse publique) ou PKV (privée, si salaire > plafond opt-out ~69 300 €/an). Taux : 14,6% + complément variable (~1,7%)</td></tr>
+<tr><td class="py-2 font-medium">Complémentaire santé employeur</td><td><span class="badge badge-green">Facultative</span> Pas d'obligation de mutuelle d'entreprise. L'assurance légale couvre l'essentiel</td></tr>
+<tr><td class="py-2 font-medium">Assurance dépendance</td><td>Pflegeversicherung obligatoire : 3,4% (paritaire). +0,6% pour les salariés sans enfant</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Betriebsrat</td><td>Comité d'entreprise possible dès 5 salariés (à l'initiative des salariés). Droits de codécision étendus (conditions de travail, licenciements, temps de travail)</td></tr>
+<tr><td class="py-2 font-medium">Codétermination</td><td>≥ 500 salariés : 1/3 des sièges du conseil de surveillance aux salariés. ≥ 2 000 : parité (Mitbestimmungsgesetz)</td></tr>
+<tr><td class="py-2 font-medium">Syndicats</td><td>Négociation de branche forte (Tarifvertrag). Droit de grève constitutionnel mais encadré</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== POLOGNE ==================== -->
+<section id="pologne" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇵🇱</span><div><h2 class="text-3xl font-bold">Pologne</h2><p class="text-gray-500">Polska</p></div></div>
+<button onclick="downloadCountry('pologne')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>CDI (umowa na czas nieokreślony), CDD (max 33 mois ou 3 contrats), période d'essai (umowa na okres próbny)</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>Maximum 3 mois</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>Écrit obligatoire. À défaut, l'employeur doit confirmer les conditions par écrit avant le début du travail</td></tr>
+<tr><td class="py-2 font-medium">Clause de non-concurrence</td><td>Possible pendant et après le contrat. Post-contractuelle : compensation obligatoire d'au moins 25% du salaire</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée légale</td><td>8h/jour — 40h/semaine (en moyenne sur la période de référence)</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>+50% jours ouvrables, +100% nuit/dimanche/jours fériés. Max 150h/an (sauf convention)</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h/jour — 35h consécutives/semaine</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>20 jours (&lt;10 ans ancienneté totale) ou 26 jours (≥10 ans, études incluses)</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>13 jours fériés légaux</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>20 semaines (1er enfant) à 37 semaines (quintuplés+). 100% du salaire (ZUS)</td></tr>
+<tr><td class="py-2 font-medium">Congé parental</td><td>41 semaines (1 enfant). Indemnisé à 70% (ou 81,5% si combiné avec maternité)</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>Employeur : 33 jours/an à 80% (14 jours si >50 ans). Puis ZUS : 80% pendant max 182 jours</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Licenciement CDI</td><td>Motif obligatoire + consultation syndicale. CDD : pas de motif nécessaire si préavis respecté</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>2 semaines (&lt;6 mois), 1 mois (6 mois–3 ans), 3 mois (≥3 ans)</td></tr>
+<tr><td class="py-2 font-medium">Indemnité</td><td>Obligatoire si licenciement collectif (≥20 salariés) : 1 à 3 mois de salaire selon ancienneté. Plafond : 15× salaire minimum</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Cotisations patronales</td><td>≈ 19-22% (retraite 9,76%, invalidité 6,5%, AT 0,67-3,33%, fonds travail 2,45%, FGŚP 0,1%)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>≈ 13,7% (retraite 9,76%, invalidité 1,5%, maladie 2,45%)</td></tr>
+<tr><td class="py-2 font-medium">Plafond</td><td>30× salaire mensuel moyen projeté pour retraite/invalidité (~250 000 PLN/an)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>60 ans (femmes) / 65 ans (hommes)</td></tr>
+<tr><td class="py-2 font-medium">Régime obligatoire</td><td>ZUS (1er pilier) : cotisation 19,52% (paritaire). Système par comptes notionnels</td></tr>
+<tr><td class="py-2 font-medium">2ème pilier (OFE)</td><td>Fonds de pension ouverts — facultatif depuis 2014. Part redirigeable vers le sous-compte ZUS</td></tr>
+<tr><td class="py-2 font-medium">3ème pilier</td><td>PPK (Plans de capital des employés) : <span class="badge badge-red">Quasi-obligatoire</span> depuis 2019. Employeur min 1,5% + salarié min 2% + subvention État</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Assurance maladie</td><td>NFZ (système public universel) — cotisation 9% (salariale). Soins gratuits mais délais longs</td></tr>
+<tr><td class="py-2 font-medium">Complémentaire santé</td><td><span class="badge badge-green">Facultative</span> Souvent proposée par l'employeur comme avantage (packages Medicover, Luxmed, etc.)</td></tr>
+<tr><td class="py-2 font-medium">Prévoyance</td><td>Pas d'obligation légale. Assurances groupe vie/invalidité proposées en avantage</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Syndicats</td><td>Liberté syndicale. Organisations d'entreprise possibles dès 10 membres</td></tr>
+<tr><td class="py-2 font-medium">Conseil d'entreprise</td><td>Obligatoire dès 50 salariés (rada pracowników). Rôle consultatif/informatif</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== PAYS-BAS ==================== -->
+<section id="paysbas" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇳🇱</span><div><h2 class="text-3xl font-bold">Pays-Bas</h2><p class="text-gray-500">Nederland</p></div></div>
+<button onclick="downloadCountry('paysbas')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>CDI et CDD. Max 3 CDD sur 36 mois (chaîne), au-delà = CDI automatique</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>CDD ≤6 mois : interdite. CDD >6 mois : max 1 mois. CDI : max 2 mois</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>Écrit recommandé. L'employeur doit fournir les informations essentielles par écrit dans la semaine</td></tr>
+<tr><td class="py-2 font-medium">Clause de non-concurrence</td><td>CDI : écrite. CDD : seulement si intérêts commerciaux impérieux justifiés par écrit</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée standard</td><td>Pas de durée légale unique. Conventions : généralement 36-40h/sem. Max légal : 12h/jour, 60h/sem. Moyenne max : 48h sur 16 semaines</td></tr>
+<tr><td class="py-2 font-medium">Temps partiel</td><td>Très répandu (~50% des salariés). Droit de réduire son temps de travail (Wet aanpassing arbeidsduur)</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Pas de majoration légale. Dépend de la convention collective (CAO)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>Minimum légal : 4× la semaine de travail (20 jours pour 5j/sem). Souvent 25 jours (CAO) + 8% vakantiegeld (prime de vacances obligatoire)</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>~8 jours fériés nationaux. Pas d'obligation légale de chômage (dépend du CAO)</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>16 semaines (4-6 avant + 10-12 après). 100% du salaire (plafonné par UWV)</td></tr>
+<tr><td class="py-2 font-medium">Congé paternité</td><td>1 semaine à 100% + 5 semaines supplémentaires à 70% (UWV)</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td><span class="badge badge-orange">Très protecteur</span> Employeur maintient min 70% du salaire pendant 2 ans (104 semaines !). 1ère année souvent 100% (CAO)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Voies de licenciement</td><td>2 voies : autorisation UWV (motif économique/incapacité longue) ou dissolution judiciaire (kantonrechter). Pas de licenciement unilatéral simple</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>1 mois (&lt;5 ans) à 4 mois (≥15 ans). Salarié : toujours 1 mois</td></tr>
+<tr><td class="py-2 font-medium">Indemnité de transition</td><td><span class="badge badge-red">Obligatoire</span> Transitievergoeding : 1/3 de mois par année d'ancienneté (dès le 1er jour). Plafond ~94 000 € ou 1 an de salaire</td></tr>
+<tr><td class="py-2 font-medium">Vaststellingsovereenkomst</td><td>Rupture conventionnelle : accord mutuel fréquent. Pas d'homologation administrative nécessaire</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Cotisations patronales</td><td>≈ 18-25% (variable selon secteur) : assurance invalidité (WIA), chômage (AWf), maladie (ZW), soins de santé (Zvw 6,57%)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>≈ 27,65% (volksverzekeringen : AOW 17,9%, ANW 0,1%, WLZ 9,65%). Retenues sur impôt sur le revenu</td></tr>
+<tr><td class="py-2 font-medium">Particularité</td><td>Cotisations salariales intégrées au barème fiscal (loonheffing). Pas de « bulletin » séparé sécu comme en France</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>67 ans (depuis 2024, indexé sur l'espérance de vie)</td></tr>
+<tr><td class="py-2 font-medium">1er pilier (AOW)</td><td>Pension d'État universelle (résidence). Flat-rate : ~1 400 €/mois (personne seule). Financée par impôt (17,9%)</td></tr>
+<tr><td class="py-2 font-medium">2ème pilier</td><td><span class="badge badge-orange">Quasi-obligatoire</span> Retraite professionnelle (pensioenregeling) via fonds de pension sectoriels ou d'entreprise. ~90% des salariés couverts. Réforme WTP (2023-2028) : passage à la cotisation définie</td></tr>
+<tr><td class="py-2 font-medium">Cotisation pension professionnelle</td><td>Variable : typiquement 20-30% du salaire pensionable (souvent 2/3 employeur, 1/3 salarié)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Assurance maladie</td><td><span class="badge badge-red">Obligatoire</span> Chaque résident doit souscrire une assurance de base (basisverzekering) auprès d'un assureur privé. Franchise annuelle : 385 €. Employeur verse la contribution Zvw (6,57%)</td></tr>
+<tr><td class="py-2 font-medium">Complémentaire</td><td><span class="badge badge-green">Facultative</span> Complémentaire privée (aanvullende verzekering) largement répandue mais non obligatoire pour l'employeur</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Ondernemingsraad (OR)</td><td>Obligatoire dès 50 salariés. Droit de conseil et d'approbation sur certaines décisions (conditions de travail, temps de travail, rémunération)</td></tr>
+<tr><td class="py-2 font-medium">10-50 salariés</td><td>Représentation du personnel (personeelsvertegenwoordiging) si initiative des salariés</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== BELGIQUE ==================== -->
+<section id="belgique" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇧🇪</span><div><h2 class="text-3xl font-bold">Belgique</h2><p class="text-gray-500">België / Belgique</p></div></div>
+<button onclick="downloadCountry('belgique')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>CDI (défaut), CDD, travail intérimaire, remplacement. Statut unique ouvrier/employé depuis 2014</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>Supprimée depuis 2014 (sauf intérim et étudiants). Préavis réduit les premiers mois</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>CDI peut être verbal. CDD et temps partiel : écrit obligatoire</td></tr>
+<tr><td class="py-2 font-medium">Clause de non-concurrence</td><td>Salaire annuel brut >39 353 €. Durée max 12 mois. Indemnité forfaitaire = moitié du salaire brut correspondant à la durée</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée légale</td><td>38 heures/semaine (peut varier selon les secteurs via CCT)</td></tr>
+<tr><td class="py-2 font-medium">Durée max.</td><td>11h/jour — 50h/semaine (en moyenne max 38h sur la période de référence)</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Majoration : +50% en semaine, +100% dimanche/jours fériés. Repos compensatoire obligatoire</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h/jour — 35h consécutives/semaine (dimanche inclus en principe)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>20 jours ouvrés/an (régime 5j). Pécule de vacances : simple (salaire normal) + double (~92% du salaire mensuel brut)</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>10 jours fériés légaux chômés et payés</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>15 semaines (1 semaine obligatoire avant + 14 après). 82% les 30 premiers jours, puis 75%</td></tr>
+<tr><td class="py-2 font-medium">Congé paternité</td><td>20 jours. 3 premiers à 100% (employeur), puis 82% (mutuelle)</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>Salaire garanti : 30 jours à 100% (employeur). Puis indemnités mutuelle : 60% du salaire plafonné</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Licenciement</td><td>Pas d'autorisation préalable. Motif requis (CCT n°109) : licenciement manifestement déraisonnable = indemnité 3-17 semaines</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>Formule statutaire unique (depuis 2014) : croissance progressive, ex. ~13 semaines pour 5 ans, ~30 semaines pour 15 ans</td></tr>
+<tr><td class="py-2 font-medium">Indemnité de rupture</td><td>En cas de non-respect du préavis : indemnité compensatoire = rémunération correspondant au préavis</td></tr>
+<tr><td class="py-2 font-medium">Outplacement</td><td>Obligatoire si préavis ≥ 30 semaines : offre de reclassement de 60h (valeur : 1/12 du salaire annuel, min 1 800 €)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Cotisations patronales</td><td>≈ 25-27% du brut (base ~25% + cotisations spéciales variables). Réduction structurelle pour bas/moyens salaires</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>13,07% du brut (cotisation unique ONSS)</td></tr>
+<tr><td class="py-2 font-medium">Particularité</td><td><span class="badge badge-orange">Charges très élevées</span> Le « coin fiscal » belge est parmi les plus élevés de l'UE</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>65 ans (66 ans en 2025, 67 ans prévu en 2030)</td></tr>
+<tr><td class="py-2 font-medium">1er pilier</td><td>Pension légale. Taux isolé : max ~1 700 €/mois net. Ménage : ~2 100 €. Calcul sur 45 années de carrière</td></tr>
+<tr><td class="py-2 font-medium">2ème pilier</td><td>Pension complémentaire d'entreprise (assurance groupe / fonds de pension). Très répandu. Cotisation employeur + parfois salarié. Avantages fiscaux importants</td></tr>
+<tr><td class="py-2 font-medium">3ème pilier</td><td>Épargne-pension individuelle : avantage fiscal de 30% (max ~1 020 € en 2025) ou 25% (max ~1 310 €)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Assurance maladie</td><td><span class="badge badge-red">Obligatoire</span> Affiliation à une mutualité (mutuelle belge). Remboursement ~75% des soins. Ticket modérateur à charge du patient</td></tr>
+<tr><td class="py-2 font-medium">Hospitalisation</td><td><span class="badge badge-green">Facultative</span> mais très courante : assurance hospitalisation d'entreprise (DKV, AG, etc.). Avantage social courant</td></tr>
+<tr><td class="py-2 font-medium">Incapacité de travail</td><td>Indemnités mutuelle après salaire garanti : 60% du brut plafonné (1 an), puis invalidité si >1 an</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Conseil d'entreprise</td><td>Obligatoire dès 100 salariés (information économique, financière, sociale)</td></tr>
+<tr><td class="py-2 font-medium">CPPT</td><td>Comité prévention et protection au travail : obligatoire dès 50 salariés</td></tr>
+<tr><td class="py-2 font-medium">Délégation syndicale</td><td>Mise en place selon les CCT sectorielles. Interlocuteur privilégié de l'employeur</td></tr>
+<tr><td class="py-2 font-medium">Concertation sociale</td><td>Système très structuré : CNT, commissions paritaires sectorielles, CCT à tous niveaux</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== ROYAUME-UNI ==================== -->
+<section id="uk" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇬🇧</span><div><h2 class="text-3xl font-bold">Royaume-Uni</h2><p class="text-gray-500">United Kingdom</p></div></div>
+<button onclick="downloadCountry('uk')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>Permanent (CDI), fixed-term (CDD), zero-hours contracts. Grande flexibilité contractuelle</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>Pas de cadre légal. Usuelle : 3-6 mois (contractuelle). Pendant la probation : droits intacts sauf unfair dismissal (2 ans d'ancienneté requis)</td></tr>
+<tr><td class="py-2 font-medium">Written statement</td><td>Obligatoire dès le 1er jour (depuis 2020) : conditions principales par écrit</td></tr>
+<tr><td class="py-2 font-medium">Restrictive covenants</td><td>Non-compete clauses : valides si raisonnables (durée, portée géographique). Pas d'obligation de compensation financière</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée max.</td><td>48h/semaine en moyenne (Working Time Regulations). Opt-out individuel possible (très courant au UK)</td></tr>
+<tr><td class="py-2 font-medium">Durée standard</td><td>Pas de durée légale. Pratique : 37,5-40h/semaine</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Pas de majoration légale. Entièrement contractuel/conventionnel</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h consécutives/jour — 24h/semaine (ou 48h/quinzaine)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>28 jours (5,6 semaines) incluant les 8 bank holidays. Minimum légal parmi les plus bas d'Europe occidentale</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>8 bank holidays (Angleterre/Pays de Galles). Pas d'obligation légale de chômage</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>52 semaines dont 39 indemnisées. SMP : 90% salaire (6 sem.) puis £184,03/sem. (33 sem.)</td></tr>
+<tr><td class="py-2 font-medium">Congé paternité</td><td>2 semaines. SPP : £184,03/semaine (ou 90% si inférieur)</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>SSP (Statutory Sick Pay) : £116,75/semaine pendant max 28 semaines. À partir du 4ème jour. <span class="badge badge-orange">Très faible</span></td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Unfair dismissal</td><td>Protection après 2 ans d'ancienneté seulement. Fair reasons : capability, conduct, redundancy, statutory illegality, SOSR</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>Statutaire : 1 semaine/année d'ancienneté (max 12 semaines). Contractuel souvent plus long (1-3 mois pour cadres)</td></tr>
+<tr><td class="py-2 font-medium">Statutory redundancy pay</td><td>0,5 semaine/année (&lt;22 ans), 1 semaine/année (22-40 ans), 1,5 semaine/année (≥41 ans). Plafond hebdo : £700. Max 20 ans</td></tr>
+<tr><td class="py-2 font-medium">Settlement agreement</td><td>Transaction fréquente. Exonération fiscale jusqu'à £30 000 sur indemnités de rupture</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Système</td><td>National Insurance Contributions (NIC). Modèle beveridgien : couverture universelle, prestations forfaitaires</td></tr>
+<tr><td class="py-2 font-medium">Cotisations patronales</td><td>15% au-dessus de £175/semaine (depuis avril 2025). Taux unique</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>8% entre £242 et £967/semaine + 2% au-dessus</td></tr>
+<tr><td class="py-2 font-medium">Particularité</td><td><span class="badge badge-green">Charges basses</span> vs continent. Mais prestations plus limitées (SSP, pension de base faible)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>66 ans (passera à 67 en 2028, puis 68 prévu)</td></tr>
+<tr><td class="py-2 font-medium">State Pension</td><td>New State Pension : max £221,20/semaine (~£11 500/an). Forfaitaire, basée sur 35 années de NIC</td></tr>
+<tr><td class="py-2 font-medium">Workplace pension</td><td><span class="badge badge-red">Obligatoire</span> Auto-enrolment : minimum 8% (dont 3% employeur + 5% salarié). Opt-out possible mais ré-inscription automatique tous les 3 ans</td></tr>
+<tr><td class="py-2 font-medium">Régime courant</td><td>Defined contribution (DC) quasi-universel. Defined benefit (DB) en déclin</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">NHS</td><td>National Health Service : soins gratuits pour tous les résidents. Financé par l'impôt, pas par des cotisations dédiées</td></tr>
+<tr><td class="py-2 font-medium">Assurance santé privée (PMI)</td><td><span class="badge badge-green">Facultative</span> Private Medical Insurance souvent offerte comme benefit. Accès plus rapide + choix du médecin. Avantage en nature imposable (BIK)</td></tr>
+<tr><td class="py-2 font-medium">Group life / income protection</td><td>Courant en entreprise : death-in-service (2-4× salaire), income protection (long-term sick). Pas d'obligation légale</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Syndicats</td><td>Trade Unions reconnus sur demande. Pas de représentation obligatoire</td></tr>
+<tr><td class="py-2 font-medium">Consultation</td><td>Obligatoire seulement en cas de licenciement collectif (≥20 employés sur 90 jours) ou transfert d'entreprise (TUPE)</td></tr>
+<tr><td class="py-2 font-medium">ICE Regulations</td><td>Information et consultation possibles dès 50 salariés (sur demande de 10% des employés)</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== DANEMARK ==================== -->
+<section id="danemark" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇩🇰</span><div><h2 class="text-3xl font-bold">Danemark</h2><p class="text-gray-500">Danmark</p></div></div>
+<button onclick="downloadCountry('danemark')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Particularité</td><td><span class="badge badge-blue">Flexicurité</span> Modèle danois : grande flexibilité d'embauche/licenciement + indemnisation chômage généreuse + politiques actives d'emploi</td></tr>
+<tr><td class="py-2 font-medium">Types de contrat</td><td>CDI prédominant. CDD possible mais limité. Peu de législation étatique : le droit du travail est largement régi par les conventions collectives</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>3 mois maximum (Funktionærloven pour les « white collar »). Préavis d'1 mois pendant l'essai</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>Ansættelsesbevis (déclaration d'emploi) obligatoire si durée >1 mois et >8h/semaine</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée standard</td><td>37 heures/semaine (fixée par conventions collectives, pas par la loi). Max EU : 48h en moyenne</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Régies par les conventions. Majorations courantes : +50% (1ère heure) à +100%</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h/jour — 1 jour de repos/semaine (dimanche en principe)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>25 jours/an (Ferieloven). Acquis en temps réel (simultanément). Possibilité de 6ème semaine via convention</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>~10-11 jours (variable). Grand jour de prière (Store Bededag) supprimé en 2024</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>4 semaines avant + 14 semaines après = 18 semaines mère. Puis 32 semaines de congé parental partageable. Indemnisé par barselsdagpenge</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>Employeur paie les 30 premiers jours. Puis dagpenge (commune) : max ~4 650 DKK/sem (~625 €). Durée max : 22 semaines sur 9 mois</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Licenciement</td><td><span class="badge badge-green">Flexible</span> Pas d'autorisation préalable. Motif « raisonnable » requis pour Funktionærer. Ouvriers : selon convention collective</td></tr>
+<tr><td class="py-2 font-medium">Préavis (Funktionærer)</td><td>1 mois (&lt;6 mois) → 6 mois (≥9 ans). Progressif. Salarié : toujours 1 mois</td></tr>
+<tr><td class="py-2 font-medium">Indemnité</td><td>Funktionærer ≥12 ans : 1 mois de salaire. ≥17 ans : 3 mois. Pas d'indemnité légale pour les ouvriers (convention)</td></tr>
+<tr><td class="py-2 font-medium">Chômage</td><td>Système d'A-kasse (caisses d'assurance chômage volontaires). Indemnisation généreuse : 90% du salaire (plafonné ~2 500 €/mois) pendant 2 ans</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Système</td><td>Modèle universel financé principalement par l'impôt (parmi les taux d'imposition les plus élevés au monde)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations employeur</td><td><span class="badge badge-green">Très faibles</span> ATP (pension supplémentaire) : ~2 300 DKK/an (~310 €). Contributions au fonds de marché du travail (AUB, barsel, etc.)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salarié</td><td>AM-bidrag (contribution marché du travail) : 8% du brut. ATP salarié : ~1 150 DKK/an</td></tr>
+<tr><td class="py-2 font-medium">Impôt sur le revenu</td><td>~37-52% (taux marginal). C'est l'impôt, et non les cotisations, qui finance la protection sociale</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>67 ans (depuis 2022). Sera indexé sur l'espérance de vie (68 ans prévu ~2030)</td></tr>
+<tr><td class="py-2 font-medium">Folkepension</td><td>Pension publique universelle (résidence). Max ~6 500 DKK/mois (~870 €). Sous condition de ressources partiellement</td></tr>
+<tr><td class="py-2 font-medium">ATP</td><td>Pension complémentaire obligatoire forfaitaire. Montant modeste (~2 500 DKK/mois à taux plein)</td></tr>
+<tr><td class="py-2 font-medium">Pensions professionnelles</td><td><span class="badge badge-orange">Quasi-obligatoire</span> Très répandues via conventions collectives. Cotisation totale : 12-18% du salaire (souvent 2/3 employeur, 1/3 salarié). Capitalisation</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Système de santé</td><td>Soins gratuits pour tous les résidents (financé par l'impôt). Médecin généraliste = gate keeper</td></tr>
+<tr><td class="py-2 font-medium">Assurance privée</td><td><span class="badge badge-green">Facultative</span> Sundhedsforsikring (assurance santé privée) offerte par ~30% des employeurs. Accès plus rapide aux spécialistes</td></tr>
+<tr><td class="py-2 font-medium">Prévoyance</td><td>Souvent incluse dans les pensions professionnelles (assurance décès, invalidité intégrées)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Tillidsrepræsentant</td><td>Shop steward élu par les salariés syndiqués. Protection contre le licenciement. Rôle central dans les relations de travail</td></tr>
+<tr><td class="py-2 font-medium">Samarbejdsudvalg</td><td>Comité de coopération obligatoire dès 35 salariés (convention DA/LO). Information + consultation</td></tr>
+<tr><td class="py-2 font-medium">Taux de syndicalisation</td><td>~67% (parmi les plus élevés au monde). Lié au système d'A-kasse</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== ITALIE ==================== -->
+<section id="italie" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇮🇹</span><div><h2 class="text-3xl font-bold">Italie</h2><p class="text-gray-500">Italia</p></div></div>
+<button onclick="downloadCountry('italie')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>Contratto a tempo indeterminato (CDI, default), determinato (CDD : max 24 mois, motifs requis après 12 mois), apprendistato (apprentissage)</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>Fixée par la CCNL applicable. Typiquement : 15 jours à 6 mois selon la catégorie</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>Écrit recommandé. Communication obligatoire à l'INPS/Centro per l'impiego avant le début</td></tr>
+<tr><td class="py-2 font-medium">Catégories</td><td>Dirigenti (cadres dirigeants), Quadri (cadres), Impiegati (employés), Operai (ouvriers) — classificati dans la CCNL</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée légale</td><td>40h/semaine (D.Lgs. 66/2003). Conventions : souvent 38-40h</td></tr>
+<tr><td class="py-2 font-medium">Durée max.</td><td>48h/semaine en moyenne sur 4 mois (extensible à 6-12 mois par CCNL)</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Max 250h/an. Majorations CCNL : typiquement +15% à +30% (semaine), +30-50% (nuit/dimanche)</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h consécutives/jour — 24h consécutives/semaine (en principe dimanche)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>Minimum légal : 4 semaines/an (20 jours). CCNL souvent plus (ex. CCNL Metalmeccanici : 20-22j + ROL/ex-festività = ~28-32 jours total)</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>12 jours fériés nationaux + fête patronale locale</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>5 mois obligatoires (2 avant + 3 après ou 1+4). 80% du salaire (INPS). Souvent complété à 100% par la CCNL</td></tr>
+<tr><td class="py-2 font-medium">Congé paternité</td><td>10 jours obligatoires à 100% (INPS)</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>INPS : 50% (j4-j20), 66,67% (j21-j180). Souvent complété par employeur selon CCNL. Periodo di comporto : protection contre le licenciement pendant la maladie (durée = CCNL)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Licenciement</td><td>Giusta causa (faute grave : effet immédiat) ou giustificato motivo (objectif/subjectif avec préavis). Jobs Act (2015) : indemnité croissante pour les embauchés post-7/3/2015</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>Fixé par la CCNL selon ancienneté et catégorie. Ex. Metalmeccanici : 2 à 12 mois</td></tr>
+<tr><td class="py-2 font-medium">Indemnité Jobs Act</td><td>2 mois/année d'ancienneté (min 6, max 36 mois) — en cas de licenciement injustifié</td></tr>
+<tr><td class="py-2 font-medium">TFR (Trattamento di Fine Rapporto)</td><td><span class="badge badge-red">Obligatoire</span> Indemnité de fin de rapport : ~1 mois de salaire par année. Versé à la fin de tout contrat (démission, licenciement, retraite). Provision annuelle = salaire/13,5</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Cotisations patronales</td><td><span class="badge badge-red">Très élevées</span> ≈ 30-32% (IVS retraite ~23,8%, maladie 2,2%, maternité 0,5%, chômage NASpI ~1,6%, CUAF, INAIL variable)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>≈ 9-10% (essentiellement IVS retraite 9,19%)</td></tr>
+<tr><td class="py-2 font-medium">13ème et 14ème mois</td><td>13ème mois (tredicesima) obligatoire. 14ème (quattordicesima) selon CCNL</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>67 ans (avec min 20 ans de cotisations). Ou retraite anticipée à ~42 ans et 10 mois de cotisations (H) / 41 ans et 10 mois (F)</td></tr>
+<tr><td class="py-2 font-medium">Régime obligatoire</td><td>INPS : système contributif (post-1996). Cotisation : 33% (dont ~24% employeur). Un des taux les plus élevés d'Europe</td></tr>
+<tr><td class="py-2 font-medium">TFR comme retraite</td><td>Le TFR peut être affecté à un fonds de pension complémentaire (fondi pensione). Choix du salarié. Avantage fiscal</td></tr>
+<tr><td class="py-2 font-medium">Retraite complémentaire</td><td>Fondi pensione negoziali (sectoriels) ou aperti. Développement encouragé par avantages fiscaux (déductibilité max 5 164 €/an)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">SSN (Servizio Sanitario Nazionale)</td><td>Soins publics universels gratuits (ou ticket modérateur modeste). Financé par impôt régional (IRAP + addizionale)</td></tr>
+<tr><td class="py-2 font-medium">Fonds santé intégratifs</td><td>Répandus via CCNL (ex. Metasalute pour la métallurgie, FASI pour les dirigeants). L'employeur cotise selon la CCNL</td></tr>
+<tr><td class="py-2 font-medium">Prévoyance</td><td>CCNL imposent souvent des fonds de prévoyance complémentaire (décès, invalidité). Ex. Previmetal, Cometa</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">RSU / RSA</td><td>Rappresentanza Sindacale Unitaria (élue) ou Aziendale (désignée par syndicats). Droit constitutionnel à l'activité syndicale (Statuto dei Lavoratori, art. 19)</td></tr>
+<tr><td class="py-2 font-medium">Seuil</td><td>≥15 salariés : protection renforcée (art. 18 Statuto / Jobs Act). Droit syndical complet</td></tr>
+<tr><td class="py-2 font-medium">CCNL</td><td>Conventions collectives nationales de branche : rôle central. Fixent salaires minima, congés, primes, classifications</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== ESPAGNE ==================== -->
+<section id="espagne" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇪🇸</span><div><h2 class="text-3xl font-bold">Espagne</h2><p class="text-gray-500">España</p></div></div>
+<button onclick="downloadCountry('espagne')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>Contrato indefinido (CDI, par défaut depuis réforme 2022), temporal (CDD très restreint : production, substitution), formación/prácticas</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>6 mois (techniciens qualifiés), 2 mois (autres). PME &lt;25 : max 3 mois pour non-qualifiés</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>Peut être verbal (CDI temps plein) mais écrit recommandé. CDD : écrit obligatoire</td></tr>
+<tr><td class="py-2 font-medium">Réforme 2022</td><td>Forte restriction des CDD. Le contrato fijo-discontinuo remplace de nombreux usages du CDD</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée légale</td><td>40h/semaine en moyenne annuelle. Projet de réduction à 37,5h en discussion (2025-2026)</td></tr>
+<tr><td class="py-2 font-medium">Durée max.</td><td>9h/jour (sauf convention). Obligation d'enregistrement horaire (depuis 2019)</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Max 80h/an. Majorées selon convention (souvent +25-75%) ou compensées en repos</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>12h entre journées — 1,5 jour/semaine (dimanche + samedi après-midi ou lundi matin)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>30 jours calendaires/an (≈22 jours ouvrés). Non substituables par compensation financière sauf fin de contrat</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>14 jours fériés (national + communauté autonome + local)</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>16 semaines à 100% du salaire (base réguladora). Intransférable, 6 semaines obligatoires après accouchement</td></tr>
+<tr><td class="py-2 font-medium">Congé paternité</td><td>16 semaines à 100% (égalité avec la mère depuis 2021). Intransférable</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie (IT)</td><td>J1-J3 : 0%. J4-J15 : 60% à charge employeur. J16-J20 : 60% (Seguridad Social). J21+ : 75%. Complément conventionnel fréquent</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Despido disciplinario</td><td>Faute grave : pas d'indemnité si justifié. Si improcedente : indemnité ou réintégration</td></tr>
+<tr><td class="py-2 font-medium">Despido objetivo</td><td>Motif économique/organisation : 20 jours/année (max 12 mois). Préavis 15 jours</td></tr>
+<tr><td class="py-2 font-medium">Despido improcedente</td><td>33 jours/année d'ancienneté (max 24 mois) pour les contrats post-12/02/2012</td></tr>
+<tr><td class="py-2 font-medium">ERE/ERTE</td><td>Licenciement collectif (ERE) : négociation 30 jours avec représentants. ERTE : suspension temporaire (utilisé massivement pendant Covid)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Cotisations patronales</td><td>≈ 30-31% (contingencias comunes ~23,6%, chômage 5,5-6,7%, FOGASA 0,2%, formation 0,6%, AT/EP variable)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>≈ 6,35% (contingencias comunes 4,7%, chômage 1,55%, formation 0,1%)</td></tr>
+<tr><td class="py-2 font-medium">Base maximale</td><td>~4 720 €/mois (2025). Progressivement déplafonnée (MEI : mécanisme d'équité intergénérationnel +0,7%)</td></tr>
+<tr><td class="py-2 font-medium">Pagas extras</td><td>14 paies/an obligatoires (2 paies extraordinaires). Le salaire est souvent exprimé en 14 mensualités</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>66 ans et 6 mois (2025), progressif vers 67 ans en 2027 (sauf ≥38,5 ans de cotisation → 65 ans)</td></tr>
+<tr><td class="py-2 font-medium">Régime obligatoire</td><td>Répartition (INSS). Cotisation : ~28,3% (contingencias comunes). Calcul sur les 25 dernières années</td></tr>
+<tr><td class="py-2 font-medium">Taux de remplacement</td><td>Parmi les plus élevés d'Europe : ~80% du salaire pour une carrière complète</td></tr>
+<tr><td class="py-2 font-medium">Retraite complémentaire</td><td><span class="badge badge-green">Facultative</span> Plans de pension d'entreprise ou individuels. Peu développés (taux de remplacement du régime de base élevé). Avantage fiscal limité</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Sistema Nacional de Salud</td><td>Couverture universelle, soins gratuits. Géré par les communautés autonomes. Financé par l'impôt</td></tr>
+<tr><td class="py-2 font-medium">Assurance privée</td><td><span class="badge badge-green">Facultative</span> Seguro médico privado offert par certains employeurs (Sanitas, Adeslas, etc.). Avantage fiscal exonéré jusqu'à 500 €/an/personne</td></tr>
+<tr><td class="py-2 font-medium">Prévoyance</td><td>Pas d'obligation légale de prévoyance complémentaire employeur. Convenios colectivos peuvent l'imposer</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Delegados de personal</td><td>10-49 salariés : 1 à 3 délégués du personnel</td></tr>
+<tr><td class="py-2 font-medium">Comité de empresa</td><td>≥50 salariés : comité d'entreprise élu. Droits d'information, consultation, négociation</td></tr>
+<tr><td class="py-2 font-medium">Secciones sindicales</td><td>Sections syndicales d'entreprise. Delegados sindicales dans les entreprises ≥250 salariés avec représentativité</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== REPUBLIQUE TCHEQUE ==================== -->
+<section id="tchequie" class="max-w-6xl mx-auto px-6 py-8 border-t">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4"><span class="country-flag">🇨🇿</span><div><h2 class="text-3xl font-bold">République Tchèque</h2><p class="text-gray-500">Česká republika</p></div></div>
+<button onclick="downloadCountry('tchequie')" class="download-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"><i class="fas fa-download mr-1"></i>Télécharger</button>
+</div>
+<div class="space-y-4">
+<details open class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-file-contract text-blue-600 mr-2"></i>Contrat de travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Types de contrat</td><td>Pracovní smlouva (contrat de travail : CDI ou CDD). DPP (accord de travail ≤300h/an) et DPČ (accord d'activité ≤20h/sem) : contrats simplifiés très utilisés</td></tr>
+<tr><td class="py-2 font-medium">Période d'essai</td><td>3 mois maximum (6 mois pour les cadres dirigeants). Ne peut excéder la moitié de la durée du CDD</td></tr>
+<tr><td class="py-2 font-medium">CDD</td><td>Max 3 ans, renouvelable 2 fois (max 9 ans total). Pas d'obligation de motif</td></tr>
+<tr><td class="py-2 font-medium">Forme</td><td>Écrit obligatoire (pracovní smlouva). Doit contenir : type de travail, lieu, date de début</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-clock text-blue-600 mr-2"></i>Durée du travail</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Durée légale</td><td>40h/semaine. Réduit à 37,5h (postes continus/2 équipes) ou 36,25h (souterrain/3 équipes)</td></tr>
+<tr><td class="py-2 font-medium">Heures supplémentaires</td><td>Max 8h/semaine sur 26 semaines. Max annuel : 150h (accord salarié : jusqu'à 416h). Majoration : +25% minimum</td></tr>
+<tr><td class="py-2 font-medium">Repos</td><td>11h consécutives/jour — 35h consécutives/semaine</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>Congés</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Congés payés</td><td>Minimum légal : 4 semaines (20 jours). Souvent 5 semaines en pratique (standard dans beaucoup d'entreprises)</td></tr>
+<tr><td class="py-2 font-medium">Jours fériés</td><td>13 jours fériés</td></tr>
+<tr><td class="py-2 font-medium">Congé maternité</td><td>28 semaines (37 pour naissances multiples). 70% du salaire journalier plafonné (OSSZ)</td></tr>
+<tr><td class="py-2 font-medium">Congé parental</td><td>Jusqu'aux 3 ans de l'enfant (voire 4 ans). Allocation parentale : 350 000 CZK au total (~14 000 €), répartissable</td></tr>
+<tr><td class="py-2 font-medium">Congé maladie</td><td>J1-J3 : employeur paie les jours ouvrés (réforme 2025 : suppression du délai de carence). Puis maladie OSSZ : 60% de la base réduite</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-handshake-slash text-blue-600 mr-2"></i>Rupture du contrat</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Licenciement</td><td>Motifs limitativement énumérés par le Code du travail (§ 52). Pas de licenciement « at will ». Écrit obligatoire</td></tr>
+<tr><td class="py-2 font-medium">Préavis</td><td>Minimum 2 mois (salarié et employeur). Court à partir du 1er du mois suivant la notification</td></tr>
+<tr><td class="py-2 font-medium">Indemnité (odstupné)</td><td><span class="badge badge-red">Obligatoire</span> en cas de licenciement économique/organisationnel : 1 mois (&lt;1 an), 2 mois (1-2 ans), 3 mois (≥2 ans). Suppression de poste pour raison de santé : 12× salaire moyen</td></tr>
+<tr><td class="py-2 font-medium">Accord mutuel</td><td>Dohoda o rozvázání : accord écrit obligatoire. Motif doit être précisé si le salarié le demande</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-shield-alt text-green-600 mr-2"></i>Sécurité sociale & Cotisations</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Cotisations patronales</td><td>24,8% (maladie 2,1%, retraite 21,5%, chômage 1,2%)</td></tr>
+<tr><td class="py-2 font-medium">Cotisations salariales</td><td>6,5% (maladie 0,6%, retraite 6,5%, chômage 0%) — depuis réforme consolidation 2024</td></tr>
+<tr><td class="py-2 font-medium">Assurance santé</td><td>Cotisation supplémentaire : 13,5% (9% employeur + 4,5% salarié) auprès des caisses d'assurance maladie</td></tr>
+<tr><td class="py-2 font-medium">Total employeur</td><td>≈ 33,8% (cotisations sociales + santé). Modéré par rapport à l'Ouest européen</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-piggy-bank text-purple-600 mr-2"></i>Retraite</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Âge légal</td><td>Progressif selon année de naissance : ~63-65 ans. Différencié H/F historiquement (convergence en cours)</td></tr>
+<tr><td class="py-2 font-medium">Régime obligatoire</td><td>ČSSZ (1er pilier) : répartition. Cotisation : 28% (21,5% employeur + 6,5% salarié). Calcul basé sur points personnels</td></tr>
+<tr><td class="py-2 font-medium">2ème pilier</td><td>Supprimé en 2016 (brève existence 2013-2015)</td></tr>
+<tr><td class="py-2 font-medium">3ème pilier</td><td>Épargne-retraite complémentaire (penzijní připojištění / doplňkové penzijní spoření). Contribution État + avantage fiscal. Cotisation employeur fréquente comme avantage social (exonérée jusqu'à 50 000 CZK/an)</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-heartbeat text-red-600 mr-2"></i>Santé & Prévoyance</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Assurance maladie</td><td><span class="badge badge-red">Obligatoire</span> Choix entre plusieurs caisses (VZP majoritaire). Cotisation : 13,5% (9% employeur + 4,5% salarié). Soins largement gratuits</td></tr>
+<tr><td class="py-2 font-medium">Complémentaire santé</td><td><span class="badge badge-green">Facultative</span> Système public couvre l'essentiel. Peu de complémentaires santé privées nécessaires</td></tr>
+<tr><td class="py-2 font-medium">Avantages employeur</td><td>Contribution retraite complémentaire, assurance vie, tickets repas (stravenky), sport/culture — exonérés sous plafonds</td></tr>
+</tbody></table></div>
+</details>
+<details class="bg-white rounded-xl shadow-sm border overflow-hidden">
+<summary class="px-6 py-4 flex items-center justify-between bg-gray-50 font-semibold"><span><i class="fas fa-users text-indigo-600 mr-2"></i>Représentation du personnel</span><i class="fas fa-chevron-down chevron text-gray-400"></i></summary>
+<div class="px-6 py-4"><table class="w-full text-sm table-stripe"><tbody>
+<tr><td class="py-2 font-medium w-1/3">Syndicats</td><td>Organisations syndicales libres. L'employeur doit informer/consulter s'il y a un syndicat dans l'entreprise</td></tr>
+<tr><td class="py-2 font-medium">Conseil des salariés</td><td>Possible si ≥3 salariés le demandent et absence de syndicat. Rôle d'information/consultation</td></tr>
+<tr><td class="py-2 font-medium">Codécision</td><td>Limitée. Consultation obligatoire sur licenciements, transferts, santé-sécurité</td></tr>
+</tbody></table></div>
+</details>
+</div>
+</section>
+
+<!-- ==================== TABLEAU COMPARATIF ==================== -->
+<section id="comparatif" class="max-w-7xl mx-auto px-6 py-12 border-t">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-3xl font-bold"><i class="fas fa-table text-blue-600 mr-2"></i>Tableau récapitulatif comparatif</h2>
+<button onclick="downloadComparatif()" class="download-btn bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-file-excel mr-1"></i>Télécharger le comparatif Excel</button>
+</div>
+<div class="overflow-x-auto rounded-xl border shadow-sm">
+<table class="w-full text-xs comparison-table">
+<thead>
+<tr class="bg-slate-800 text-white">
+<th class="py-3 px-3 text-left font-semibold min-w-[140px]">Thème</th>
+<th class="py-3 px-2 text-center">🇫🇷<br>France</th>
+<th class="py-3 px-2 text-center">🇩🇪<br>Allemagne</th>
+<th class="py-3 px-2 text-center">🇵🇱<br>Pologne</th>
+<th class="py-3 px-2 text-center">🇳🇱<br>Pays-Bas</th>
+<th class="py-3 px-2 text-center">🇧🇪<br>Belgique</th>
+<th class="py-3 px-2 text-center">🇬🇧<br>UK</th>
+<th class="py-3 px-2 text-center">🇩🇰<br>Danemark</th>
+<th class="py-3 px-2 text-center">🇮🇹<br>Italie</th>
+<th class="py-3 px-2 text-center">🇪🇸<br>Espagne</th>
+<th class="py-3 px-2 text-center">🇨🇿<br>Rép.Tch.</th>
+</tr>
+</thead>
+<tbody class="bg-white">
+<tr class="border-b bg-blue-50"><td colspan="11" class="py-2 px-3 font-bold text-blue-800">DROIT DU TRAVAIL</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Durée du travail</td><td class="px-2 text-center">35h</td><td class="px-2 text-center">~40h (conv.)</td><td class="px-2 text-center">40h</td><td class="px-2 text-center">36-40h (conv.)</td><td class="px-2 text-center">38h</td><td class="px-2 text-center">~37,5-40h</td><td class="px-2 text-center">37h (conv.)</td><td class="px-2 text-center">40h</td><td class="px-2 text-center">40h</td><td class="px-2 text-center">40h</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Congés payés (jours)</td><td class="px-2 text-center">25</td><td class="px-2 text-center">20-30</td><td class="px-2 text-center">20-26</td><td class="px-2 text-center">20-25</td><td class="px-2 text-center">20</td><td class="px-2 text-center">20 (+8 BH)</td><td class="px-2 text-center">25</td><td class="px-2 text-center">20-22 +ROL</td><td class="px-2 text-center">22 ouvrés</td><td class="px-2 text-center">20-25</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Période d'essai max</td><td class="px-2 text-center">4 mois</td><td class="px-2 text-center">6 mois</td><td class="px-2 text-center">3 mois</td><td class="px-2 text-center">2 mois</td><td class="px-2 text-center">Supprimée</td><td class="px-2 text-center">3-6 mois (usage)</td><td class="px-2 text-center">3 mois</td><td class="px-2 text-center">6 mois (CCNL)</td><td class="px-2 text-center">6 mois</td><td class="px-2 text-center">3-6 mois</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Maladie – maintien empl.</td><td class="px-2 text-center">Selon anc.</td><td class="px-2 text-center">6 sem. 100%</td><td class="px-2 text-center">33j 80%</td><td class="px-2 text-center">2 ans 70%</td><td class="px-2 text-center">30j 100%</td><td class="px-2 text-center">SSP faible</td><td class="px-2 text-center">30j empl.</td><td class="px-2 text-center">CCNL</td><td class="px-2 text-center">15j 60%</td><td class="px-2 text-center">14j empl.</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Indemnité licenciement</td><td class="px-2 text-center">¼ à ⅓ mois/an</td><td class="px-2 text-center">~0,5 mois/an (usage)</td><td class="px-2 text-center">1-3 mois (collectif)</td><td class="px-2 text-center">⅓ mois/an</td><td class="px-2 text-center">Préavis long</td><td class="px-2 text-center">0,5-1,5 sem/an</td><td class="px-2 text-center">1-3 mois</td><td class="px-2 text-center">TFR + Jobs Act</td><td class="px-2 text-center">20-33j/an</td><td class="px-2 text-center">1-3 mois</td></tr>
+
+<tr class="border-b bg-green-50"><td colspan="11" class="py-2 px-3 font-bold text-green-800">COTISATIONS & SÉCURITÉ SOCIALE</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Cotis. patronales totales</td><td class="px-2 text-center">~42%</td><td class="px-2 text-center">~21%</td><td class="px-2 text-center">~20%</td><td class="px-2 text-center">~20%</td><td class="px-2 text-center">~27%</td><td class="px-2 text-center">~15%</td><td class="px-2 text-center">Très faibles</td><td class="px-2 text-center">~31%</td><td class="px-2 text-center">~30%</td><td class="px-2 text-center">~34%</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Cotis. salariales totales</td><td class="px-2 text-center">~22%</td><td class="px-2 text-center">~21%</td><td class="px-2 text-center">~14%</td><td class="px-2 text-center">~28% (impôt)</td><td class="px-2 text-center">13,07%</td><td class="px-2 text-center">~10%</td><td class="px-2 text-center">8% AM</td><td class="px-2 text-center">~10%</td><td class="px-2 text-center">~6,4%</td><td class="px-2 text-center">~11%</td></tr>
+
+<tr class="border-b bg-purple-50"><td colspan="11" class="py-2 px-3 font-bold text-purple-800">RETRAITE</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Âge légal</td><td class="px-2 text-center">64</td><td class="px-2 text-center">67</td><td class="px-2 text-center">60/65</td><td class="px-2 text-center">67</td><td class="px-2 text-center">65→67</td><td class="px-2 text-center">66→67</td><td class="px-2 text-center">67→68</td><td class="px-2 text-center">67</td><td class="px-2 text-center">66,5→67</td><td class="px-2 text-center">63-65</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Retraite complémentaire</td><td class="px-2 text-center">Obligatoire (AGIRC-ARRCO)</td><td class="px-2 text-center">bAV volontaire</td><td class="px-2 text-center">PPK quasi-oblig.</td><td class="px-2 text-center">Quasi-oblig.</td><td class="px-2 text-center">Répandue</td><td class="px-2 text-center">Auto-enrolment oblig.</td><td class="px-2 text-center">Conv. quasi-oblig.</td><td class="px-2 text-center">Fondi volontaires</td><td class="px-2 text-center">Facultative</td><td class="px-2 text-center">3ème pilier volont.</td></tr>
+
+<tr class="border-b bg-red-50"><td colspan="11" class="py-2 px-3 font-bold text-red-800">SANTÉ & PRÉVOYANCE</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Mutuelle employeur</td><td class="px-2 text-center"><span class="badge badge-red">Obligatoire</span></td><td class="px-2 text-center"><span class="badge badge-green">Facultative</span></td><td class="px-2 text-center"><span class="badge badge-green">Facultative</span></td><td class="px-2 text-center"><span class="badge badge-green">Facultative</span></td><td class="px-2 text-center"><span class="badge badge-green">Courante</span></td><td class="px-2 text-center"><span class="badge badge-green">Facultative</span></td><td class="px-2 text-center"><span class="badge badge-green">Facultative</span></td><td class="px-2 text-center"><span class="badge badge-blue">CCNL</span></td><td class="px-2 text-center"><span class="badge badge-green">Facultative</span></td><td class="px-2 text-center"><span class="badge badge-green">Facultative</span></td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-medium">Système de santé</td><td class="px-2 text-center">Sécu + mutuelle</td><td class="px-2 text-center">GKV/PKV</td><td class="px-2 text-center">NFZ public</td><td class="px-2 text-center">Assurance privée oblig.</td><td class="px-2 text-center">Mutualité oblig.</td><td class="px-2 text-center">NHS gratuit</td><td class="px-2 text-center">Public gratuit</td><td class="px-2 text-center">SSN public</td><td class="px-2 text-center">SNS public</td><td class="px-2 text-center">Caisses oblig.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ==================== TÉLÉCHARGEMENTS ==================== -->
+<section id="downloads" class="max-w-5xl mx-auto px-6 py-12 border-t">
+<h2 class="text-3xl font-bold mb-6"><i class="fas fa-download text-blue-600 mr-2"></i>Téléchargements</h2>
+<div class="grid md:grid-cols-2 gap-4">
+<div class="bg-white rounded-xl p-6 shadow-sm border">
+<h3 class="font-bold mb-3"><i class="fas fa-file-excel text-green-600 mr-2"></i>Par pays</h3>
+<div class="space-y-2">
+<button onclick="downloadCountry('france')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇫🇷 France</button>
+<button onclick="downloadCountry('allemagne')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇩🇪 Allemagne</button>
+<button onclick="downloadCountry('pologne')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇵🇱 Pologne</button>
+<button onclick="downloadCountry('paysbas')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇳🇱 Pays-Bas</button>
+<button onclick="downloadCountry('belgique')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇧🇪 Belgique</button>
+<button onclick="downloadCountry('uk')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇬🇧 Royaume-Uni</button>
+<button onclick="downloadCountry('danemark')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇩🇰 Danemark</button>
+<button onclick="downloadCountry('italie')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇮🇹 Italie</button>
+<button onclick="downloadCountry('espagne')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇪🇸 Espagne</button>
+<button onclick="downloadCountry('tchequie')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-50 hover:bg-blue-50 transition text-sm">🇨🇿 République Tchèque</button>
+</div>
+</div>
+<div class="bg-white rounded-xl p-6 shadow-sm border">
+<h3 class="font-bold mb-3"><i class="fas fa-table text-blue-600 mr-2"></i>Tableau comparatif</h3>
+<p class="text-sm text-gray-500 mb-4">Tableau récapitulatif de l'ensemble des pays avec toutes les thématiques analysées.</p>
+<button onclick="downloadComparatif()" class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition"><i class="fas fa-file-excel mr-2"></i>Télécharger le comparatif complet (Excel)</button>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 text-gray-400 py-8 px-6 text-center text-sm">
+<p class="mb-2"><strong class="text-white">Dairia Avocats</strong> × <strong class="text-white">Exiliance</strong> — Document confidentiel</p>
+<p>Analyse réalisée en mars 2026 · Les informations sont fournies à titre indicatif et ne constituent pas un avis juridique</p>
+<p class="mt-2 text-gray-600">Ce document devra être complété par les données spécifiques de chaque entité TiMOTION</p>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// Country data for Excel export
+const countryData={
+france:{name:"France",flag:"🇫🇷",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT DE TRAVAIL","",""],
+["","Types de contrat","CDI (principe), CDD (motifs limités), intérim, apprentissage"],
+["","Période d'essai","CDI : 2 à 4 mois renouvelable 1 fois"],
+["","Clause de non-concurrence","Contrepartie financière obligatoire"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée légale","35 heures/semaine"],
+["","Heures supplémentaires","+25% (8 premières), +50% au-delà"],
+["","Repos","11h/jour — 35h/semaine"],
+["CONGÉS","",""],
+["","Congés payés","25 jours ouvrés/an"],
+["","Jours fériés","11 jours fériés légaux"],
+["","Congé maternité","16 semaines — 100% (plafond SS)"],
+["","Congé paternité","25 jours + 3 jours naissance"],
+["","Congé maladie","IJSS 50% dès J4 + complément employeur"],
+["RUPTURE DU CONTRAT","",""],
+["","Licenciement","Cause réelle et sérieuse exigée"],
+["","Préavis","1 à 2 mois (3 mois cadres convention)"],
+["","Indemnité légale","1/4 mois/an (≤10 ans) + 1/3 mois/an (>10 ans)"],
+["","Rupture conventionnelle","Homologation DREETS"],
+["SÉCURITÉ SOCIALE","",""],
+["","Cotisations patronales","≈ 40-45%"],
+["","Cotisations salariales","≈ 20-23%"],
+["","Plafond SS","~3 925 €/mois"],
+["RETRAITE","",""],
+["","Âge légal","64 ans"],
+["","Régime complémentaire","AGIRC-ARRCO obligatoire"],
+["","Retraite supplémentaire","PER facultatif"],
+["SANTÉ & PRÉVOYANCE","",""],
+["","Complémentaire santé","OBLIGATOIRE — 50% employeur minimum"],
+["","Prévoyance décès cadres","Obligatoire (1,5% T1)"],
+["","Portabilité","12 mois après fin de contrat"],
+["REPRÉSENTATION","",""],
+["","CSE","Obligatoire dès 11 salariés"],
+["","NAO","Obligatoire avec DS"]
+]},
+allemagne:{name:"Allemagne",flag:"🇩🇪",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT DE TRAVAIL","",""],
+["","Types de contrat","CDI (défaut), CDD max 2 ans sans motif"],
+["","Période d'essai","Max 6 mois"],
+["","Clause de non-concurrence","Compensation ≥ 50% du salaire"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée","Pas de durée légale fixe — max 8h/jour (48h/sem moy.)"],
+["","Heures supplémentaires","Pas de majoration légale"],
+["CONGÉS","",""],
+["","Congés payés","20 jours minimum — 25-30 en pratique"],
+["","Congé maladie","6 sem. 100% employeur, puis 70% brut (Krankengeld)"],
+["RUPTURE DU CONTRAT","",""],
+["","Protection","KSchG dès 10 salariés + 6 mois"],
+["","Indemnité","Pas d'obligation — ~0,5 mois/an en pratique"],
+["","Préavis","4 sem. à 7 mois selon ancienneté"],
+["COTISATIONS","",""],
+["","Patronales","≈ 20-21%"],
+["","Salariales","≈ 20-21%"],
+["RETRAITE","",""],
+["","Âge légal","67 ans"],
+["","Obligatoire","18,6% paritaire (répartition)"],
+["","Entreprise (bAV)","Droit à la conversion salariale + 15% employeur"],
+["SANTÉ","",""],
+["","Assurance maladie","GKV obligatoire (14,6% + complément)"],
+["","Mutuelle employeur","FACULTATIVE"],
+["","Dépendance","Pflegeversicherung 3,4%"],
+["REPRÉSENTATION","",""],
+["","Betriebsrat","Possible dès 5 salariés"],
+["","Codétermination","≥500 sal. : 1/3 conseil de surveillance"]
+]},
+pologne:{name:"Pologne",flag:"🇵🇱",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Types","CDI, CDD (max 33 mois/3 contrats), période d'essai"],
+["","Période d'essai","Max 3 mois"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée légale","40h/semaine"],
+["","Heures sup.","+50% semaine, +100% nuit/dimanche"],
+["CONGÉS","",""],
+["","Congés payés","20 ou 26 jours selon ancienneté"],
+["","Maladie","33j 80% employeur puis ZUS 80%"],
+["RUPTURE","",""],
+["","Préavis","2 sem. à 3 mois"],
+["","Indemnité","1-3 mois (licenciement collectif uniquement)"],
+["COTISATIONS","",""],
+["","Patronales","≈ 19-22%"],
+["","Salariales","≈ 13,7%"],
+["RETRAITE","",""],
+["","Âge légal","60 (F) / 65 (H)"],
+["","PPK","Quasi-obligatoire : 1,5% empl. + 2% salarié"],
+["SANTÉ","",""],
+["","Assurance maladie","NFZ public — cotisation 9%"],
+["","Mutuelle employeur","FACULTATIVE"]
+]},
+paysbas:{name:"Pays-Bas",flag:"🇳🇱",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Types","CDI, CDD (max 3 sur 36 mois)"],
+["","Période d'essai","Max 2 mois (CDI)"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée","36-40h (convention). Temps partiel très répandu"],
+["CONGÉS","",""],
+["","Congés payés","20 jours + 8% vakantiegeld"],
+["","Maladie","2 ANS maintien 70% par employeur"],
+["RUPTURE","",""],
+["","Voies","UWV ou kantonrechter. Pas de licenciement unilatéral simple"],
+["","Indemnité transition","OBLIGATOIRE : 1/3 mois/an dès J1"],
+["COTISATIONS","",""],
+["","Patronales","≈ 18-25%"],
+["","Salariales","≈ 27,65% (intégré à l'impôt)"],
+["RETRAITE","",""],
+["","Âge légal","67 ans"],
+["","AOW","Pension d'État universelle"],
+["","Pension professionnelle","Quasi-obligatoire — 20-30% du salaire"],
+["SANTÉ","",""],
+["","Basisverzekering","Assurance privée OBLIGATOIRE pour chaque résident"],
+["","Complémentaire","FACULTATIVE"]
+]},
+belgique:{name:"Belgique",flag:"🇧🇪",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Types","CDI (défaut), CDD. Statut unique depuis 2014"],
+["","Période d'essai","Supprimée depuis 2014"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée légale","38h/semaine"],
+["","Heures sup.","+50% semaine, +100% dimanche/fériés"],
+["CONGÉS","",""],
+["","Congés payés","20 jours + double pécule de vacances"],
+["","Maladie","30j 100% employeur puis 60% mutuelle"],
+["RUPTURE","",""],
+["","Préavis","Formule progressive (ex: ~30 sem. pour 15 ans)"],
+["","Outplacement","Obligatoire si préavis ≥30 semaines"],
+["COTISATIONS","",""],
+["","Patronales","≈ 25-27% (TRÈS ÉLEVÉES)"],
+["","Salariales","13,07%"],
+["RETRAITE","",""],
+["","Âge légal","65 → 67 ans (2030)"],
+["","Pension complémentaire","Très répandue (assurance groupe)"],
+["SANTÉ","",""],
+["","Mutualité","OBLIGATOIRE"],
+["","Hospitalisation","Facultative mais très courante"]
+]},
+uk:{name:"Royaume-Uni",flag:"🇬🇧",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Types","Permanent, fixed-term, zero-hours"],
+["","Période d'essai","Pas de cadre légal (3-6 mois contractuel)"],
+["DURÉE DU TRAVAIL","",""],
+["","Max","48h/sem (opt-out possible)"],
+["","Heures sup.","Pas de majoration légale"],
+["CONGÉS","",""],
+["","Congés payés","28 jours (incluant 8 bank holidays)"],
+["","Maladie","SSP £116,75/sem pendant 28 sem. (TRÈS FAIBLE)"],
+["RUPTURE","",""],
+["","Unfair dismissal","Protection après 2 ans seulement"],
+["","Statutory redundancy","0,5-1,5 sem/an (plafond £700/sem)"],
+["COTISATIONS","",""],
+["","Patronales","~15% (NIC)"],
+["","Salariales","~8-10% (NIC)"],
+["RETRAITE","",""],
+["","Âge légal","66 → 67 ans"],
+["","Auto-enrolment","OBLIGATOIRE : min 3% employeur + 5% salarié"],
+["SANTÉ","",""],
+["","NHS","Gratuit pour tous les résidents"],
+["","PMI employeur","FACULTATIVE"]
+]},
+danemark:{name:"Danemark",flag:"🇩🇰",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Modèle","FLEXICURITÉ — flexibilité + indemnisation généreuse"],
+["","Période d'essai","3 mois (Funktionærer)"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée","37h/sem (convention, pas la loi)"],
+["CONGÉS","",""],
+["","Congés payés","25 jours"],
+["","Maladie","30j employeur puis dagpenge (commune)"],
+["RUPTURE","",""],
+["","Licenciement","Flexible — motif raisonnable"],
+["","Chômage","A-kasse : 90% salaire plafonné, 2 ans"],
+["COTISATIONS","",""],
+["","Patronales","TRÈS FAIBLES (ATP ~310€/an)"],
+["","Salariales","8% AM-bidrag"],
+["","Impôt sur le revenu","37-52% (finance la protection sociale)"],
+["RETRAITE","",""],
+["","Âge légal","67 → 68 ans"],
+["","Folkepension","Universelle (~870€/mois)"],
+["","Pensions professionnelles","Quasi-obligatoire via conventions (12-18%)"],
+["SANTÉ","",""],
+["","Système","Public gratuit (impôt)"],
+["","Assurance privée","FACULTATIVE (~30% des employeurs)"]
+]},
+italie:{name:"Italie",flag:"🇮🇹",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Types","CDI (défaut), CDD max 24 mois, apprentissage"],
+["","CCNL","Rôle central des conventions de branche"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée légale","40h/semaine"],
+["","Heures sup.","Max 250h/an. Majorations CCNL +15-50%"],
+["CONGÉS","",""],
+["","Congés payés","20 jours minimum + ROL/ex-festività"],
+["","13ème/14ème mois","13ème obligatoire, 14ème selon CCNL"],
+["RUPTURE","",""],
+["","TFR","OBLIGATOIRE : ~1 mois/an (versé à toute fin de contrat)"],
+["","Jobs Act","2 mois/an si licenciement injustifié"],
+["COTISATIONS","",""],
+["","Patronales","≈ 30-32% (TRÈS ÉLEVÉES)"],
+["","Salariales","≈ 9-10%"],
+["RETRAITE","",""],
+["","Âge légal","67 ans"],
+["","Cotisation","33% (dont ~24% employeur) — plus élevée d'Europe"],
+["","Fondi pensione","Volontaires, encouragés fiscalement"],
+["SANTÉ","",""],
+["","SSN","Soins publics universels gratuits"],
+["","Fonds intégratifs","Imposés par CCNL dans beaucoup de secteurs"]
+]},
+espagne:{name:"Espagne",flag:"🇪🇸",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Types","CDI par défaut (réforme 2022). CDD très restreint"],
+["","Période d'essai","2-6 mois"],
+["","14 paies","Obligatoire (2 pagas extras)"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée légale","40h/semaine (projet 37,5h)"],
+["","Heures sup.","Max 80h/an"],
+["CONGÉS","",""],
+["","Congés payés","30 jours calendaires (~22 ouvrés)"],
+["","Congé paternité","16 semaines 100% (= maternité)"],
+["","Maladie","J1-J3 : 0%, J4-J15 : 60% empl., puis SS"],
+["RUPTURE","",""],
+["","Objectif","20 jours/an (max 12 mois)"],
+["","Improcedente","33 jours/an (max 24 mois)"],
+["COTISATIONS","",""],
+["","Patronales","≈ 30-31%"],
+["","Salariales","≈ 6,35%"],
+["RETRAITE","",""],
+["","Âge légal","66,5 → 67 ans"],
+["","Taux de remplacement","~80% (parmi les plus élevés d'Europe)"],
+["","Complémentaire","FACULTATIVE (peu développée)"],
+["SANTÉ","",""],
+["","SNS","Couverture universelle gratuite"],
+["","Assurance privée","FACULTATIVE (avantage fiscal 500€/an/pers.)"]
+]},
+tchequie:{name:"République Tchèque",flag:"🇨🇿",data:[
+["Thème","Détail","Valeur"],
+["CONTRAT","",""],
+["","Types","Contrat de travail + DPP/DPČ (contrats simplifiés)"],
+["","CDD","Max 3 ans, renouvelable 2 fois"],
+["","Période d'essai","3 mois (6 mois cadres dirigeants)"],
+["DURÉE DU TRAVAIL","",""],
+["","Durée légale","40h/semaine"],
+["","Heures sup.","Majoration +25% minimum"],
+["CONGÉS","",""],
+["","Congés payés","20 jours (souvent 25 en pratique)"],
+["","Maternité","28 semaines à 70%"],
+["","Parental","Jusqu'à 3-4 ans (allocation 350 000 CZK total)"],
+["RUPTURE","",""],
+["","Motifs","Limitativement énumérés (§52 Code du travail)"],
+["","Préavis","Minimum 2 mois"],
+["","Indemnité","OBLIGATOIRE : 1-3 mois (éco./orga.)"],
+["COTISATIONS","",""],
+["","Patronales","≈ 33,8% (sociales + santé)"],
+["","Salariales","≈ 11%"],
+["RETRAITE","",""],
+["","Âge légal","63-65 ans (progressif)"],
+["","Obligatoire","28% (répartition)"],
+["","3ème pilier","Épargne-retraite avec contribution État + avantage fiscal"],
+["SANTÉ","",""],
+["","Assurance maladie","OBLIGATOIRE (13,5% : 9% empl. + 4,5% sal.)"],
+["","Complémentaire","FACULTATIVE (peu nécessaire)"]
+]}
+};
+
+function downloadCountry(id){
+const c=countryData[id];
+if(!c)return alert("Données non disponibles");
+const ws=XLSX.utils.aoa_to_sheet(c.data);
+ws['!cols']=[{wch:22},{wch:30},{wch:60}];
+const wb=XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb,ws,c.name);
+XLSX.writeFile(wb,`TiMOTION_${c.name.replace(/\s/g,'_')}_Analyse_Sociale.xlsx`);
+}
+
+function downloadComparatif(){
+const headers=["Thème","France","Allemagne","Pologne","Pays-Bas","Belgique","Royaume-Uni","Danemark","Italie","Espagne","Rép. Tchèque"];
+const rows=[
+headers,
+["DROIT DU TRAVAIL","","","","","","","","","",""],
+["Durée du travail","35h","~40h (conv.)","40h","36-40h (conv.)","38h","~37,5-40h","37h (conv.)","40h","40h","40h"],
+["Congés payés (jours ouvrés)","25","20-30","20-26","20-25","20","20 (+8 BH)","25","20-22 +ROL","~22","20-25"],
+["Période d'essai max","4 mois","6 mois","3 mois","2 mois","Supprimée","3-6 mois (usage)","3 mois","6 mois (CCNL)","6 mois","3-6 mois"],
+["Maladie – maintien employeur","Selon ancienneté","6 sem. 100%","33j 80%","2 ANS 70%","30j 100%","SSP faible","30j","Selon CCNL","15j 60%","14j"],
+["Indemnité licenciement","1/4 à 1/3 mois/an","~0,5 mois/an (usage)","1-3 mois (collectif)","1/3 mois/an","Préavis long","0,5-1,5 sem/an","1-3 mois","TFR + Jobs Act","20-33j/an","1-3 mois"],
+["","","","","","","","","","",""],
+["COTISATIONS SOCIALES","","","","","","","","","",""],
+["Cotisations patronales","~42%","~21%","~20%","~20%","~27%","~15%","Très faibles","~31%","~30%","~34%"],
+["Cotisations salariales","~22%","~21%","~14%","~28% (impôt)","13,07%","~10%","8%","~10%","~6,4%","~11%"],
+["","","","","","","","","","",""],
+["RETRAITE","","","","","","","","","",""],
+["Âge légal","64","67","60/65","67","65→67","66→67","67→68","67","66,5→67","63-65"],
+["Retraite complémentaire","Obligatoire (AGIRC-ARRCO)","bAV volontaire","PPK quasi-oblig.","Quasi-obligatoire","Répandue","Auto-enrolment oblig.","Conv. quasi-oblig.","Fondi volontaires","Facultative","3ème pilier volontaire"],
+["","","","","","","","","","",""],
+["SANTÉ & PRÉVOYANCE","","","","","","","","","",""],
+["Mutuelle employeur","OBLIGATOIRE","Facultative","Facultative","Facultative","Courante (hospi)","Facultative (PMI)","Facultative","Selon CCNL","Facultative","Facultative"],
+["Système de santé","Sécu + mutuelle","GKV/PKV","NFZ public","Ass. privée oblig.","Mutualité oblig.","NHS gratuit","Public gratuit","SSN public","SNS public","Caisses oblig."]
+];
+const ws=XLSX.utils.aoa_to_sheet(rows);
+ws['!cols']=[{wch:28},...Array(10).fill({wch:18})];
+const wb=XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb,ws,"Comparatif 10 pays");
+XLSX.writeFile(wb,"TiMOTION_Comparatif_Social_Europeen.xlsx");
+}
+</script>
+
+</body>
+</html>
