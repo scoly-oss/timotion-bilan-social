@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TiMOTION — Retraite & Grilles de salaire — 11 pays européens</title>
+<title>TiMOTION — Retraite, Prévoyance, Santé & Grilles de salaire — 11 pays européens</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
@@ -237,8 +237,8 @@ a:hover { text-decoration: underline; }
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Retraite & Grilles de salaire</h1>
-  <p>Guide complet pour la direction TiMOTION : systèmes de retraite, cotisations et coûts employeur dans 11 pays européens. Données 2025-2026.</p>
+  <h1>Retraite, Prévoyance, Santé & Grilles de salaire</h1>
+  <p>Guide complet pour la direction TiMOTION : systèmes de retraite, prévoyance, couverture santé, cotisations et coûts employeur dans 11 pays européens. Données 2025-2026.</p>
 </section>
 
 <!-- MAIN -->
@@ -248,6 +248,7 @@ a:hover { text-decoration: underline; }
   <div class="tabs" id="mainTabs">
     <div class="tab active" data-tab="retraite">Retraite</div>
     <div class="tab" data-tab="salaire">Grilles de salaire</div>
+    <div class="tab" data-tab="prevoyance">Prévoyance & Santé</div>
     <div class="tab" data-tab="comparatif">Comparatif</div>
     <div class="tab" data-tab="strategie">Stratégie groupe</div>
   </div>
@@ -260,6 +261,9 @@ a:hover { text-decoration: underline; }
 
   <!-- TAB: SALAIRE -->
   <div class="content-area" id="tab-salaire"></div>
+
+  <!-- TAB: PRÉVOYANCE & SANTÉ -->
+  <div class="content-area" id="tab-prevoyance"></div>
 
   <!-- TAB: COMPARATIF -->
   <div class="content-area" id="tab-comparatif"></div>
@@ -517,7 +521,32 @@ Note : le prélèvement à la source (PAS) de l'impôt sur le revenu est collect
           sectorAvg: "Salaire médian ingénieur : 64 000 € brut/an (enquête IESF 2025). Opérateur : 25 000 - 30 000 €. Prime IdF : +15 à 25%.",
           notes: "Secteur en tension : forte demande d'ingénieurs automatisation. Périmètres complémentaires : intéressement + participation (+15 à 25% du net)."
         }
-      }
+      },
+      prevoyance_explainer: `La France impose un socle de prévoyance collective via les conventions collectives. Pour TiMOTION, la CCN Métallurgie (IDCC 3248) fixe un minimum obligatoire de couverture décès-invalidité. Les cadres doivent bénéficier d'une cotisation employeur d'au moins 1,5% de la tranche A (plafond Sécurité sociale). Les non-cadres : minimum 0,6% du salaire brut. Le capital décès est fixé à 200% du salaire annuel pour les cadres et 100% pour les non-cadres. En cas d'invalidité 2e ou 3e catégorie, la rente atteint 75% du brut pour les cadres et 70% pour les non-cadres. La portabilité des garanties est assurée pendant 12 mois après la fin du contrat de travail (loi ANI 2013).`,
+      prevoyance_detail: `• Cotisations minimales (CCN Métallurgie IDCC 3248) :
+  - Cadres : 1,5% TA minimum à charge employeur (décès/invalidité)
+  - Non-cadres : 0,6% du brut minimum
+• Capital décès :
+  - Cadres : 200% du salaire annuel brut
+  - Non-cadres : 100% du salaire annuel brut
+• Invalidité :
+  - 2e et 3e catégorie cadres : 75% du salaire brut
+  - 2e et 3e catégorie non-cadres : 70% du salaire brut
+• Incapacité temporaire : maintien de salaire selon ancienneté (convention collective)
+• Portabilité : 12 mois après fin du contrat de travail
+• Coût moyen marché : 1,5-3% de la masse salariale brute`,
+      sante_explainer: `La complémentaire santé d'entreprise est obligatoire en France depuis l'ANI du 11 janvier 2013, mis en application au 1er janvier 2016. Tout employeur du secteur privé doit proposer une mutuelle collective à ses salariés, avec une prise en charge minimale de 50% de la cotisation par l'employeur. Le contrat doit respecter le cahier des charges du « contrat responsable » et couvrir un panier de soins minimal défini par décret.`,
+      sante_detail: `• Obligation : 100% des salariés du privé couverts (ANI 2013)
+• Financement minimum : 50% employeur
+• Panier de soins minimal obligatoire :
+  - Ticket modérateur intégral sur consultations et actes
+  - Forfait hospitalier sans limitation de durée
+  - Dentaire : 125% de la base de remboursement
+  - Optique : 100 à 150 €/2 ans selon correction
+• Coût moyen : 30 à 80 €/mois par salarié (selon garanties)
+• Portabilité : 12 mois après fin du contrat
+• Avantage fiscal : cotisations employeur exonérées de charges (dans les limites)
+• Contrat responsable obligatoire (sinon perte des avantages sociaux et fiscaux)`
     },
     "DE": {
       name: `Allemagne`,
@@ -790,7 +819,28 @@ Constat : la France a des charges patronales beaucoup plus élevées mais un imp
           sectorAvg: "Salaire moyen tous secteurs : ~51 876 € brut/an. Ingénieurs : médiane à 64 000 €, jusqu'à 80 000 - 100 000 € à Munich/Stuttgart. Opérateurs IG Metall : 34 000 - 40 000 €.",
           notes: "Munich, Stuttgart et Francfort : +15-20%. Secteur automatisation très bien payé. Bonus performance IG Metall ~10% + 13ème mois selon entreprises."
         }
-      }
+      },
+      prevoyance_explainer: `L'Allemagne n'impose pas de prévoyance groupe spécifique au-delà du système public. La protection décès-invalidité repose principalement sur la Sozialversicherung (assurance sociale obligatoire). La cotisation retraite de 18,6% (partagée 50/50) couvre aussi l'invalidité et les droits des survivants. L'employeur est tenu au maintien de salaire (Entgeltfortzahlung) à 100% pendant les 6 premières semaines de maladie. La Berufsgenossenschaft (assurance accidents du travail) est obligatoire et intégralement financée par l'employeur (1 à 5% selon le secteur).`,
+      prevoyance_detail: `• Régime légal (Sozialversicherung) :
+  - Rentenversicherung (pension) : 18,6% partagé 50/50 — couvre invalidité + survivants
+  - Entgeltfortzahlung : 100% du salaire pendant 6 semaines (à charge employeur)
+  - Au-delà de 6 semaines : Krankengeld (70% du brut, max 90% du net, jusqu'à 78 semaines)
+• Assurance accidents du travail (Berufsgenossenschaft) :
+  - Obligatoire, 100% à charge employeur
+  - Taux : 1 à 5% du salaire selon classe de risque
+• Pas d'obligation de prévoyance groupe complémentaire
+• Pratique marché : assurances groupe décès/invalidité (Risikolebensversicherung) courantes dans les grandes entreprises`,
+      sante_explainer: `L'assurance maladie est obligatoire en Allemagne via la GKV (Gesetzliche Krankenversicherung). Le taux de base est de 14,6% partagé 50/50 entre employeur et salarié, auquel s'ajoute un Zusatzbeitrag (contribution supplémentaire) d'environ 2,5% également partagé. L'employeur paie donc environ 8,55% du salaire brut. Au-dessus de la Versicherungspflichtgrenze (73 800 €/an en 2025), le salarié peut opter pour une assurance privée (PKV). Il n'y a aucune obligation de complémentaire santé au-delà du régime légal.`,
+      sante_detail: `• GKV (assurance maladie légale) :
+  - Taux de base : 14,6% (partagé 50/50)
+  - Zusatzbeitrag : ~2,5% (partagé 50/50)
+  - Part employeur totale : ~8,55% du brut
+  - Plafond de cotisation (BBG) : 5 512,50 €/mois (2025)
+• PKV (assurance privée) :
+  - Possible au-dessus de 73 800 €/an (Versicherungspflichtgrenze)
+  - Prime individuelle (non liée au salaire)
+• Aucune obligation de complémentaire santé employeur
+• Zuschuss employeur : obligatoire si salarié en PKV (max 50% de la prime)`
     },
     "IT": {
       name: `Italie`,
@@ -1015,7 +1065,32 @@ Provision 13eme mois : 2 916,67 / 12 = 243,06 euros
           sectorAvg: "Operaio moyen : ~22 200 € brut/an. Coût employeur = brut + 40-45%. Nord (Lombardie, Vénétie, Émilie-Romagne) : +10-15% vs Sud.",
           notes: "13ème mois (Tredicesima) obligatoire. TFR provisionné (6,91%). Avantages flexibles et MetaSalute (complémentaire santé)."
         }
-      }
+      },
+      prevoyance_explainer: `En Italie, la prévoyance repose principalement sur l'INPS (Instituto Nazionale della Previdenza Sociale). La cotisation IVS de 23,81% à charge employeur inclut les risques invalidité et survivants. L'INAIL (assurance accidents du travail) est obligatoire avec un taux de 0,5 à 4% selon le secteur. Le TFR (Trattamento di Fine Rapporto) de 6,91% constitue un filet de sécurité supplémentaire. Les 3 premiers jours de maladie sont à la charge de l'employeur. La CCNL Metalmeccanici impose l'adhésion au Fondo Metasalute.`,
+      prevoyance_detail: `• INPS IVS : 23,81% employeur (inclut invalidité + survivants)
+• INAIL (accidents du travail) :
+  - Obligatoire, taux : 0,5 à 4% selon risque professionnel
+  - 100% à charge employeur
+• TFR (Trattamento di Fine Rapporto) :
+  - 6,91% du salaire brut, provisionné obligatoirement
+  - Versé en fin de contrat ou transférable vers fonds de pension
+• Maladie :
+  - 3 premiers jours : à charge employeur (carenza)
+  - Jours 4-20 : 50% INPS + complément employeur selon CCNL
+  - Jours 21-180 : 66,67% INPS + complément employeur
+• CCNL Metalmeccanici : Fondo Metasalute obligatoire`,
+      sante_explainer: `L'Italie dispose du SSN (Servizio Sanitario Nazionale), un système de santé universel et gratuit financé par l'impôt. Il n'y a pas d'obligation générale de complémentaire santé employeur. Cependant, la CCNL Metalmeccanici (applicable à TiMOTION) impose l'adhésion au Fondo Metasalute, une complémentaire santé sectorielle. La cotisation de base est de 13 €/mois à charge employeur. Des plans supérieurs (MS1 à MS4) sont disponibles avec des cotisations de 16,67 à 75 €/mois.`,
+      sante_detail: `• SSN (Servizio Sanitario Nazionale) : universel, gratuit
+• Fondo Metasalute (CCNL Metalmeccanici) :
+  - Obligatoire pour le secteur métallurgique
+  - Plan de base : 13 €/mois à charge employeur
+  - Plan MS1 : 16,67 €/mois
+  - Plan MS2 : 26,67 €/mois
+  - Plan MS3 : 50 €/mois
+  - Plan MS4 : 75 €/mois
+• Couverture : hospitalisation, spécialistes, dentaire, optique
+• Pas d'obligation générale de complémentaire au-delà du CCNL
+• Fiscalement avantageux : cotisations déductibles jusqu'à 3 615,20 €/an`
     },
     "ES": {
       name: `Espagne`,
@@ -1241,7 +1316,35 @@ Surcout par rapport au brut affiche : (46 399,50 - 35 000) / 35 000 = 32,6%`,
           sectorAvg: "Ingeniero de Calidad moyen : 32 000 €/an. Ingeniero Comercial : 41 500 €/an. Supplément productivité : 1,5% (Madrid). 14 paies/an obligatoires.",
           notes: "14 paies/an (12 mois + 2 payes extra été/Noël). Différences régionales importantes entre Madrid, Catalogne et autres provinces."
         }
-      }
+      },
+      prevoyance_explainer: `En Espagne, la prévoyance repose sur la Seguridad Social. L'employeur cotise à hauteur de 23,6% pour les contingencias comunes (CC) et 1 à 7% pour les accidents du travail/maladies professionnelles (AT/MP). En cas d'incapacité temporaire, l'employeur paie 60% du salaire les jours 4 à 15, puis l'INSS prend le relais (60% jours 16-20, puis 75%). L'invalidité permanente totale donne droit à 55-75% de la base reguladora. La pension de reversibilité est de 52% pour le conjoint survivant.`,
+      prevoyance_detail: `• Cotisations employeur Seguridad Social :
+  - Contingencias comunes (CC) : 23,6%
+  - AT/MP (accidents travail) : 1 à 7% selon secteur
+• Incapacité temporaire (IT) :
+  - Jours 1-3 : aucune prestation (carence)
+  - Jours 4-15 : 60% base reguladora (à charge employeur)
+  - Jours 16-20 : 60% (INSS)
+  - Jour 21+ : 75% (INSS)
+• Invalidité permanente :
+  - Partielle : indemnité forfaitaire (24 mensualités)
+  - Totale : 55% base reguladora (75% si > 55 ans)
+  - Absolue : 100% base reguladora
+  - Gran invalidez : 100% + 50% complément
+• Pension reversibilité : 52% pour le conjoint
+• Pas d'obligation de prévoyance groupe complémentaire`,
+      sante_explainer: `L'Espagne dispose du SNS (Sistema Nacional de Salud), un système de santé universel et gratuit. Il n'existe aucune obligation de complémentaire santé employeur. Cependant, le seguro médico (assurance santé privée) est le benefit le plus apprécié par les salariés espagnols et un outil de fidélisation majeur. Le coût en contrat groupe est de 50 à 80 €/mois par salarié. L'avantage est exonéré d'IRPF (impôt sur le revenu) jusqu'à 500 €/an par assuré.`,
+      sante_detail: `• SNS (Sistema Nacional de Salud) : universel, gratuit
+• Aucune obligation de complémentaire santé employeur
+• Seguro médico privé (pratique marché) :
+  - Benefit le plus valorisé par les salariés
+  - Coût groupe : 50 à 80 €/mois par salarié
+  - Principaux assureurs : Sanitas, Adeslas, Cigna, Mapfre
+• Avantage fiscal :
+  - Exonéré d'IRPF jusqu'à 500 €/an par assuré
+  - Déductible pour l'employeur comme charge salariale
+• Couverture type : médecine générale, spécialistes, hospitalisation, dentaire basique
+• Délais d'attente très réduits vs SNS (argument principal)`
     },
     "UK": {
       name: `Royaume-Uni`,
@@ -1449,7 +1552,34 @@ Le salarié reçoit donc environ £31 239 nets sur £40 000 bruts, soit un taux 
           sectorAvg: "Augmentations de 5-7% en glissement annuel pour postes d'ingénierie en 2025. Plus fortes hausses en automatisation, PLC, APQP/PPAP.",
           notes: "43% des employés déclarent travailler plus que leurs heures payées. Salaires en GBP — conversion indicative : 1 GBP ≈ 1,17 EUR."
         }
-      }
+      },
+      prevoyance_explainer: `Le Royaume-Uni n'impose aucune obligation de prévoyance groupe. La protection minimale repose sur le SSP (Statutory Sick Pay) de £116,75/semaine pendant 28 semaines maximum — un niveau très faible comparé aux standards européens continentaux. Les employeurs mettent volontairement en place des couvertures « Death in Service » (capital décès de 2 à 4 fois le salaire annuel, coût de 0,3 à 1% du salaire) et des « Group Income Protection » (remplacement de 50 à 75% du salaire, coût de 1 à 3% du salaire). Ces couvertures sont considérées comme des benefits standards dans le secteur industriel.`,
+      prevoyance_detail: `• SSP (Statutory Sick Pay) :
+  - £116,75/semaine maximum
+  - Durée : 28 semaines
+  - Pas de maintien de salaire obligatoire au-delà
+• Death in Service (volontaire, très courant) :
+  - Capital décès : 2 à 4× le salaire annuel
+  - Coût employeur : 0,3 à 1% du salaire
+  - Exonéré d'impôt pour les bénéficiaires (via trust)
+• Group Income Protection (volontaire) :
+  - Remplacement : 50 à 75% du salaire
+  - Coût employeur : 1 à 3% du salaire
+  - Généralement après épuisement du SSP
+• Aucune obligation légale au-delà du SSP
+• Benefit in kind : non taxable si « excepted benefit »`,
+      sante_explainer: `Le Royaume-Uni dispose du NHS (National Health Service), un système de santé universel et gratuit financé par l'impôt. Il n'existe aucune obligation d'assurance santé privée (PMI - Private Medical Insurance) pour l'employeur. Le PMI est considéré comme un « benefit in kind » taxable. Les coûts ont explosé : 200 à 1 000 GBP/an par salarié, avec des hausses allant jusqu'à +70% des primes en 2025 en raison de l'inflation médicale et de la surcharge du NHS.`,
+      sante_detail: `• NHS : universel, gratuit (financé par l'impôt)
+• Aucune obligation d'assurance santé privée (PMI)
+• PMI (pratique marché) :
+  - Coût : 200 à 1 000 GBP/an par salarié
+  - Hausse des primes : jusqu'à +70% en 2025
+  - Principaux assureurs : Bupa, AXA PPP, Aviva, Vitality
+• Fiscalité :
+  - Benefit in kind taxable (Class 1A NIC pour l'employeur)
+  - P11D déclaration obligatoire
+• Couverture type : consultations spécialistes, hospitalisation privée, IRM/scans rapides
+• Argument principal : éviter les listes d'attente NHS (18+ semaines pour certaines spécialités)`
     },
     "NL": {
       name: `Pays-Bas`,
@@ -1684,7 +1814,35 @@ Les montants sont tous basés sur les données 2025 que vous avez fournies. Les 
           sectorAvg: "SMIC : 14,06 €/h (2025). Ingénieur manufacturing moyen : ~70 648 €/an (Amsterdam : 83 000 €). Secteur semi-conducteurs/high-tech tire les salaires vers le haut (effet ASML).",
           notes: "Amsterdam +15-20% vs moyenne nationale. Forte demande en Lean Manufacturing, Six Sigma, automatisation. 8% vacances minimum + 13ème mois courant."
         }
-      }
+      },
+      prevoyance_explainer: `Les Pays-Bas imposent l'obligation la plus lourde d'Europe en matière de maintien de salaire maladie : l'employeur doit maintenir 70% minimum du salaire pendant 104 semaines (2 ans !). La cotisation Aof (Arbeidsongeschiktheidsfonds) est de 6,28 à 7,64% à charge employeur. Après ces 2 ans, le salarié relève de la WIA/IVA (invalidité totale : 75% du salaire). Des assurances complémentaires WGA-hiaat (0,5 à 1,5%) sont courantes pour couvrir les gaps.`,
+      prevoyance_detail: `• Maintien de salaire maladie :
+  - 104 semaines (2 ans) obligatoire
+  - 70% minimum du salaire (souvent 100% la 1ère année, 70% la 2e via CCNL)
+  - Obligation de réintégration (Wet Verbetering Poortwachter)
+• Aof (Arbeidsongeschiktheidsfonds) :
+  - 6,28% (petites entreprises) à 7,64% (grandes) — 100% employeur
+• WIA/IVA (après 104 semaines) :
+  - Invalidité totale (IVA) : 75% du salaire
+  - Invalidité partielle (WGA) : 70% × pourcentage d'invalidité
+• Assurances complémentaires :
+  - WGA-hiaat : 0,5 à 1,5% — comble le gap WGA
+  - WIA-excédent : pour salaires au-dessus du plafond SV
+• Verzuimverzekering (assurance absentéisme) : quasi-indispensable pour PME`,
+      sante_explainer: `L'assurance maladie est obligatoire aux Pays-Bas via la ZVW (Zorgverzekeringswet). L'employeur paie une cotisation de 6,51% du salaire brut (plafonné à 75 864 €). Chaque résident doit souscrire une Basisverzekering (assurance de base) d'environ 159 €/mois. L'eigen risico (franchise obligatoire) est de 385 €/an. Il n'y a aucune obligation de complémentaire santé employeur au-delà de la contribution ZVW.`,
+      sante_detail: `• ZVW (cotisation employeur) :
+  - 6,51% du salaire brut
+  - Plafond : 75 864 €/an (2025)
+  - Part employeur max : ~4 940 €/an
+• Basisverzekering (assurance de base obligatoire) :
+  - ~159 €/mois par personne (à charge du salarié)
+  - Couverture : médecin généraliste, hospitalisation, médicaments, soins psychiatriques
+• Eigen risico (franchise) : 385 €/an
+• Aucune obligation de complémentaire employeur au-delà
+• Aanvullende verzekering (complémentaire) :
+  - Volontaire, 10-50 €/mois
+  - Dentaire, physiothérapie, lunettes
+• Système très complet — peu de besoin de surcomplémentaire`
     },
     "PL": {
       name: `Pologne`,
@@ -1880,7 +2038,37 @@ taux_net_sur_cout_total : 57,6%`,
           sectorAvg: "Salaire moyen manufacturing : 8 507 PLN/mois (janv. 2025). Ingénieur production médian : 9 750 PLN/mois. Augmentations secteur automobile : +8% en glissement annuel. 1 EUR ≈ 4,3 PLN.",
           notes: "Écarts régionaux importants : Mazovie (Varsovie) et Silésie les mieux payées. Secteur automobile : +10-20%. Pénurie de techniciens en automatisation et robotique. Forte transformation Industrie 4.0."
         }
-      }
+      },
+      prevoyance_explainer: `En Pologne, le ZUS (Zakład Ubezpieczeń Społecznych) couvre l'ensemble des risques sociaux. L'employeur paie 80% du salaire les 33 premiers jours de maladie (14 jours pour les salariés de plus de 50 ans), puis le ZUS prend le relais. Les cotisations employeur se décomposent en : Emerytalne (pension) 9,76%, Rentowe (invalidité) 6,5%, et Wypadkowe (accidents) 0,67 à 3,33% selon la taille et le secteur. Les assurances groupe vie sont un standard du marché polonais.`,
+      prevoyance_detail: `• Cotisations employeur ZUS :
+  - Emerytalne (pension) : 9,76%
+  - Rentowe (invalidité/survivants) : 6,5%
+  - Wypadkowe (accidents travail) : 0,67 à 3,33%
+  - Fundusz Pracy : 2,45%
+  - FGŚP : 0,1%
+• Maladie :
+  - 33 premiers jours : 80% du salaire (à charge employeur)
+  - 14 jours si salarié > 50 ans
+  - Au-delà : Zasiłek chorobowy (ZUS) : 80% pendant max 182 jours
+• Pension invalidité (Renta z tytułu niezdolności) :
+  - Partielle : 75% de la pension de base calculée
+  - Totale : 100%
+• Assurances groupe vie (Grupowe ubezpieczenie na życie) :
+  - Quasi-standard marché (PZU, Warta, Nationale-Nederlanden)
+  - Coût : 30-80 PLN/mois (7-19 €)`,
+      sante_explainer: `La Pologne dispose du NFZ (Narodowy Fundusz Zdrowia), un système de santé universel financé par une cotisation de 9% (100% à charge du salarié). Le système public est gratuit mais souffre de longs délais d'attente. Il n'y a aucune obligation de complémentaire santé employeur. Cependant, les abonnements médicaux privés (Medicover, LuxMed, Enel-Med) sont devenus quasi-standards dans les entreprises, avec des coûts de 50 à 300 PLN/mois (12 à 70 €).`,
+      sante_detail: `• NFZ (système public) :
+  - Cotisation : 9% (100% à charge du salarié)
+  - Couverture universelle gratuite
+  - Problème majeur : longs délais d'attente
+• Aucune obligation de complémentaire employeur
+• Abonnements médicaux privés (pratique quasi-standard) :
+  - Medicover, LuxMed, Enel-Med (leaders)
+  - Coût : 50 à 300 PLN/mois (12 à 70 €) selon niveau
+  - Package basique : consultations GP + spécialistes
+  - Package étendu : dentaire, hospitalisation, examens
+• Fiscalité : déductible pour l'employeur, avantage en nature pour le salarié
+• 70% des entreprises de plus de 50 salariés proposent un abonnement médical`
     },
     "DK": {
       name: `Danemark`,
@@ -2068,7 +2256,37 @@ note : Le faible ratio net/brut est compensé par des services publics gratuits 
           sectorAvg: "Salaire moyen ingénieur : 68 500 DKK/mois + bonus moyen 104 000 DKK/an. Minimum recommandé MSc débutant : 47 400 DKK/mois. Salaire moyen national : ~48 572 DKK/mois. 1 EUR ≈ 7,46 DKK.",
           notes: "Salaires parmi les plus élevés d'Europe. Flexicurité : facilité de licenciement mais filet social fort. Avantages courants : téléphone, PC, assurance santé, déjeuner, fitness. Coût employeur total : 130-140% du brut."
         }
-      }
+      },
+      prevoyance_explainer: `Au Danemark, l'ATP couvre un capital décès modeste (max 50 000 DKK par survivant). L'assurance accidents du travail est obligatoire et à la charge de l'employeur. La Førtidspension (pension d'invalidité publique) peut atteindre 18 642 DKK/mois pour une invalidité totale. La particularité danoise est que les pensions de branche (arbejdsmarkedspension) incluent généralement des couvertures décès et invalidité intégrées, ce qui offre une protection substantielle sans obligation spécifique supplémentaire.`,
+      prevoyance_detail: `• ATP (Arbejdsmarkedets Tillægspension) :
+  - Capital décès : max 50 000 DKK/survivant (~6 700 €)
+  - Cotisation faible (~3 600 DKK/an, 2/3 employeur)
+• Assurance accidents du travail :
+  - Obligatoire, 100% à charge employeur
+  - Couvre accidents et maladies professionnelles
+• Førtidspension (invalidité publique) :
+  - Max 18 642 DKK/mois (~2 500 €)
+  - Sous conditions de ressources
+• Pension de branche (arbejdsmarkedspension) :
+  - Inclut généralement décès + invalidité
+  - Capital décès type : 300 000-500 000 DKK
+  - Invalidité : 50-80% du salaire selon convention
+  - Cotisation totale : 12-17% (dont ~2/3 employeur)
+• Sygedagpenge (indemnités maladie) :
+  - Employeur paie les 30 premiers jours
+  - Puis commune : max 4 695 DKK/semaine`,
+      sante_explainer: `Le Danemark dispose d'un système de santé universel et gratuit financé par l'impôt. Il n'existe aucune obligation d'assurance santé complémentaire pour l'employeur. Cependant, 90% des entreprises offrent une sundhedsforsikring (assurance santé complémentaire) comme avantage. Le coût est de 1 000 à 3 000 DKK/an (135 à 400 €). Environ 2,7 millions de Danois sont couverts par leur employeur.`,
+      sante_detail: `• Système public : universel, gratuit (financé par l'impôt)
+  - Médecin généraliste, hospitalisation, urgences : gratuits
+  - Spécialistes : gratuits sur référence du GP
+• Aucune obligation de complémentaire employeur
+• Sundhedsforsikring (pratique marché, quasi-universelle) :
+  - 90% des entreprises la proposent
+  - 2,7 millions de Danois couverts par employeur
+  - Coût : 1 000 à 3 000 DKK/an (135 à 400 €)
+  - Couverture : physiothérapie, psychologue, chiropracteur, accès rapide spécialistes
+• Principaux assureurs : PFA, Danica, Tryg
+• Fiscalité : déductible pour l'employeur, non imposable pour le salarié (sous conditions)`
     },
     "BE": {
       name: `Belgique`,
@@ -2309,7 +2527,40 @@ Note importante : ce calcul n'inclut pas les cheques-repas, les eco-cheques, l'a
           sectorAvg: "Salaire moyen national : ~4 832 €/mois (parmi les plus élevés d'UE). Coût salarial employeur parmi les plus élevés d'Europe (cotisations patronales ~25-30%). Indexation automatique selon l'indice-santé.",
           notes: "Système d'indexation automatique unique en Europe. Prime syndicale à partir de novembre 2025. Écarts salariaux Flandre/Wallonie/Bruxelles."
         }
-      }
+      },
+      prevoyance_explainer: `La Belgique impose une assurance accidents du travail obligatoire (loi du 10 avril 1971, taux de 0,5 à 5% selon le secteur). Le salaire garanti est de 30 jours pour les employés et 14 jours pour les ouvriers. Au-delà, la mutuelle prend le relais : 60% la première année, puis 40 à 65% en invalidité. L'assurance groupe (combinant pension complémentaire + décès/invalidité) est très répandue et coûte 1 à 5% du salaire.`,
+      prevoyance_detail: `• Assurance accidents du travail :
+  - Obligatoire (loi du 10 avril 1971)
+  - Taux : 0,5 à 5% selon secteur
+  - 100% à charge employeur
+• Salaire garanti (maladie) :
+  - Employés : 30 jours à 100%
+  - Ouvriers : 14 jours (7j à 100%, 7j à 85,88%)
+• Indemnités mutuelle (après salaire garanti) :
+  - 1ère année : 60% du salaire plafonné
+  - Invalidité (après 1 an) : 40-65% selon situation familiale
+• Assurance groupe (très répandue) :
+  - Combinaison pension + décès + invalidité
+  - Coût : 1 à 5% du salaire
+  - Cotisation ONSS spéciale : 8,86% sur les cotisations employeur
+  - Taxe sur les primes : 4,4%
+• Capital décès type : 1-3× salaire annuel`,
+      sante_explainer: `La Belgique dispose de mutuelles obligatoires qui remboursent environ 75% des frais médicaux. Il n'y a pas d'obligation de complémentaire santé employeur. Cependant, l'assurance hospitalisation est quasi-universelle : 88% des Belges en disposent, principalement via leur employeur. DKV est le leader du marché. Les coûts sont de 15 à 20 €/mois pour une couverture hospitalisation, et de 35 à 50 €/mois pour une couverture complète.`,
+      sante_detail: `• Mutuelles obligatoires :
+  - Remboursement ~75% des frais médicaux
+  - Cotisation mutuelle obligatoire incluse dans les charges sociales
+  - Maximum à facturer (MAF) : plafond annuel de reste à charge
+• Aucune obligation de complémentaire employeur
+• Assurance hospitalisation (quasi-universelle) :
+  - 88% des Belges couverts
+  - DKV, AG Insurance, AXA : leaders
+  - Coût hospitalisation seule : 15 à 20 €/mois
+  - Coût couverture complète : 35 à 50 €/mois
+• Avantages :
+  - Chambre individuelle en hospitalisation
+  - Suppléments d'honoraires couverts
+  - Soins dentaires, optique selon formule
+• Fiscalité : pas de déductibilité spécifique pour les primes santé`
     },
     "CZ": {
       name: `Tchéquie`,
@@ -2508,7 +2759,37 @@ taux_net_sur_cout_total : 59,1%`,
           sectorAvg: "Salaire moyen production : 44 441 CZK/mois. 80% des salariés entre 29 191 et 61 945 CZK/mois. Prague : +15-20% vs régions. 1 EUR ≈ 25,2 CZK.",
           notes: "Forte présence industrie automobile (Škoda, Hyundai, Toyota) qui tire les salaires. Pénurie de main-d'œuvre technique qualifiée. Secteur automatisation en croissance."
         }
-      }
+      },
+      prevoyance_explainer: `En Tchéquie, le CSSZ (Česká správa sociálního zabezpečení) couvre les risques sociaux. L'employeur cotise à hauteur de 24,8% (dont 21,5% pour la pension, incluant invalidité). Les 14 premiers jours de maladie sont à la charge de l'employeur (60% de la base réduite à partir du 4e jour — les 3 premiers jours sont en carence). La pension d'invalidité existe en 3 degrés selon le niveau de handicap.`,
+      prevoyance_detail: `• Cotisations employeur CSSZ :
+  - Total : 24,8% du salaire brut
+  - Dont pension (incluant invalidité) : 21,5%
+  - Dont maladie : 2,1%
+  - Dont emploi : 1,2%
+• Maladie :
+  - Jours 1-3 : carence (aucune prestation)
+  - Jours 4-14 : 60% de la base réduite (à charge employeur)
+  - Jour 15+ : Nemocenské (CSSZ) : 60-72% selon durée
+• Pension d'invalidité (Invalidní důchod) :
+  - 1er degré : réduction < 50%
+  - 2e degré : réduction 50-69%
+  - 3e degré : réduction ≥ 70%
+• Pas d'obligation de prévoyance groupe complémentaire
+• Pratique marché : assurances vie groupe courantes`,
+      sante_explainer: `La Tchéquie dispose du VZP (Všeobecná zdravotní pojišťovna), un système de santé universel très complet. L'employeur cotise 9% et le salarié 4,5% (sans plafond). Le système couvre la quasi-totalité des soins médicaux, ce qui réduit fortement le besoin de complémentaire. Les « benefit cards » (Sodexo, Edenred) sont plus courantes que les assurances santé complémentaires proprement dites.`,
+      sante_detail: `• VZP (système universel) :
+  - Cotisation employeur : 9% du salaire brut (pas de plafond)
+  - Cotisation salarié : 4,5%
+  - Couverture très complète : GP, spécialistes, hospitalisation, médicaments
+• Très peu besoin de complémentaire santé
+• Benefit cards (plus courantes que assurances) :
+  - Sodexo Flexi Pass, Edenred
+  - 500-2 000 CZK/mois (20-80 €)
+  - Utilisables pour : soins non remboursés, optique, dentaire, sport, bien-être
+• Assurances santé privées :
+  - Peu développées (système public suffisant)
+  - Réservées aux expatriés ou dirigeants
+• Fiscalité : benefit cards déductibles jusqu'à 20 000 CZK/an`
     },
     "RU": {
       name: `Russie`,
@@ -2711,7 +2992,39 @@ alerte_sanctions : VÉRIFIER la conformité aux sanctions UE avant toute opérat
           sectorAvg: "Salaire moyen manufacturing : 101 370 RUB/mois (oct. 2025). Ingénieur moyen : 116 357 RUB/mois. Moscou : +50-80% vs moyenne nationale. 1 EUR ≈ 100-105 RUB (très volatile).",
           notes: "Contexte géopolitique : sanctions, difficultés d'import. Forte pénurie de main-d'œuvre (émigration, conscription). Politique de substitution des importations. Croissance salariale nominale ingénieurs : +15,4% en 2025."
         }
-      }
+      },
+      prevoyance_explainer: `En Russie, le tarif unifié de 30% à charge employeur couvre pension, social et santé. Les 3 premiers jours de maladie sont à la charge de l'employeur, puis le SFR (Social Insurance Fund) prend le relais avec un taux de remplacement de 60 à 100% selon l'ancienneté. La pension d'invalidité est modeste (~12 000 à 18 000 RUB/mois). L'assurance accidents du travail est obligatoire avec un taux de 0,2 à 8,5% selon la classe de risque.`,
+      prevoyance_detail: `• Tarif unifié employeur : 30% du salaire
+  - Pension (PFR) : 22% (16% assurance + 6% épargne)
+  - Social (SFR) : 2,9%
+  - Santé (FOMS) : 5,1%
+• Accidents du travail :
+  - 0,2 à 8,5% selon classe de risque (32 classes)
+  - 100% à charge employeur
+• Maladie :
+  - 3 premiers jours : à charge employeur
+  - Au-delà : SFR (60-100% selon ancienneté)
+  - < 5 ans : 60%, 5-8 ans : 80%, > 8 ans : 100%
+• Pension d'invalidité :
+  - Modeste : ~12 000 à 18 000 RUB/mois (120-180 €)
+  - Complément régional possible
+• ⚠️ Sanctions UE : tout service RH nécessite autorisation individuelle`,
+      sante_explainer: `La Russie dispose de l'OMS (Obligatoire Medical Insurance), un système de santé universel financé par le FOMS (5,1% employeur). L'assurance médicale volontaire (DMS - Dobrovol'noye Meditsinskoye Strakhovanie) est le benefit numéro 1 en Russie. 95% des primes DMS sont payées par les employeurs. Le coût est de 30 000 à 50 000 RUB/an (300 à 500 €). L'inflation médicale atteint +12 à 15% en 2025. Seulement 5% de la population est couverte par le DMS.`,
+      sante_detail: `• OMS (assurance maladie obligatoire) :
+  - Cotisation FOMS : 5,1% (inclus dans le tarif unifié de 30%)
+  - Couverture universelle mais qualité variable
+  - Cliniques publiques : gratuites mais sous-équipées
+• DMS (assurance médicale volontaire) :
+  - Benefit n°1 en Russie
+  - 95% des primes payées par les employeurs
+  - Coût : 30 000 à 50 000 RUB/an (300 à 500 €)
+  - Inflation médicale : +12 à 15% en 2025
+  - Seulement 5% de la population couverte
+• Couverture DMS type :
+  - Cliniques privées, consultations spécialistes
+  - Hospitalisation, examens, dentaire selon formule
+• Principaux assureurs : SOGAZ, RESO-Garantia, Ingosstrakh
+• ⚠️ Contexte sanctions : vérifier faisabilité opérationnelle`
     }
 };
 
@@ -3768,6 +4081,106 @@ function initStrategieBudgetChart() {
 }
 
 // =============================================
+// RENDER: Prévoyance & Santé tab
+// =============================================
+function renderPrevoyance() {
+  const c = DATA[currentCountry];
+  if (!c) return;
+
+  let html = '';
+
+  // Explainer prévoyance
+  html += `<div class="explainer-box">
+    <h3>🛡️ Prévoyance (décès-invalidité) en ${c.name}</h3>
+    <div class="explainer-text">${formatText(c.prevoyance_explainer || 'Données non disponibles.')}</div>
+  </div>`;
+
+  // Accordion: Détail prévoyance
+  html += `<div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      <span>${c.flag} Détail prévoyance — décès, invalidité, incapacité</span>
+      <span class="acc-badge acc-badge-orange">Détail technique</span>
+      <span class="acc-icon">▼</span>
+    </button>
+    <div class="accordion-body open"><div class="accordion-inner">
+      <div class="formatted-text">${formatText(c.prevoyance_detail || 'Données non disponibles.')}</div>
+    </div></div>
+  </div>`;
+
+  // Explainer santé
+  html += `<div class="explainer-box" style="margin-top:24px;">
+    <h3>🏥 Complémentaire santé en ${c.name}</h3>
+    <div class="explainer-text">${formatText(c.sante_explainer || 'Données non disponibles.')}</div>
+  </div>`;
+
+  // Accordion: Détail santé
+  html += `<div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      <span>${c.flag} Détail santé — couverture, coûts, obligations</span>
+      <span class="acc-badge acc-badge-green">Détail technique</span>
+      <span class="acc-icon">▼</span>
+    </button>
+    <div class="accordion-body open"><div class="accordion-inner">
+      <div class="formatted-text">${formatText(c.sante_detail || 'Données non disponibles.')}</div>
+    </div></div>
+  </div>`;
+
+  // Chart: comparatif coûts employeur prévoyance/santé
+  html += `<div class="chart-card" style="margin-top:24px;">
+    <h3>Coût employeur prévoyance & santé — comparatif européen</h3>
+    <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:12px;">Estimation du coût total employeur (cotisations légales + complémentaires courantes) en % du salaire brut.</p>
+    <div class="chart-wrap" style="height:420px;"><canvas id="chartPrevSante"></canvas></div>
+  </div>`;
+
+  document.getElementById('tab-prevoyance').innerHTML = html;
+  setTimeout(initPrevSanteChart, 50);
+}
+
+function initPrevSanteChart() {
+  const canvas = document.getElementById('chartPrevSante');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const labels = ['France', 'Allemagne', 'Italie', 'Espagne', 'Royaume-Uni', 'Pays-Bas', 'Pologne', 'Danemark', 'Belgique', 'Tchéquie', 'Russie'];
+  const prevData = [3.0, 2.5, 5.5, 3.0, 1.5, 8.0, 3.5, 2.5, 3.5, 2.1, 1.5];
+  const santeData = [2.5, 8.6, 0.5, 1.0, 0.5, 6.5, 0.3, 0.5, 1.0, 9.0, 5.1];
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Prévoyance (décès/invalidité/incapacité)',
+          data: prevData,
+          backgroundColor: 'rgba(232,132,44,0.75)',
+          borderRadius: 4
+        },
+        {
+          label: 'Santé (assurance maladie + complémentaire)',
+          data: santeData,
+          backgroundColor: 'rgba(59,130,246,0.65)',
+          borderRadius: 4
+        }
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 11 } } },
+        tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ' : ' + ctx.raw + '% du brut'; } } }
+      },
+      scales: {
+        x: { stacked: true, title: { display: true, text: '% du salaire brut' }, ticks: { callback: v => v + '%' } },
+        y: { stacked: true, ticks: { font: { size: 12, weight: 'bold' } } }
+      }
+    }
+  });
+}
+
+// =============================================
 // RENDER: Comparatif tab
 // =============================================
 function renderComparatif() {
@@ -3969,6 +4382,61 @@ function renderStrategie() {
     <div style="margin-top:20px;padding:16px 20px;background:#eafbea;border-radius:12px;border-left:4px solid #16a34a;">
       <strong style="color:#15803d;">Pourquoi Generali GEB en premier choix ?</strong>
       <p style="font-size:0.88rem;margin-top:6px;">Le seuil d'entrée est le plus bas du marché (20 000 €/an, soit ~200 €/salarié/an). Le mode <strong>Multipool</strong> est spécialement conçu pour les ETI : vos résultats sont mutualisés avec d'autres entreprises de taille similaire, ce qui protège TiMOTION de la volatilité d'un petit portefeuille. Generali a des partenaires locaux dans les 11 pays TiMOTION (y compris UK hors UE). Le reporting est consolidé sur une plateforme unique.</p>
+    </div>
+  </div>`;
+
+  // ========== 5bis. PRÉVOYANCE ET SANTÉ — COUVERTURE GROUPE ==========
+  html += `<div class="strategy-section">
+    <h3>3bis. Prévoyance et santé — couverture groupe</h3>
+    <p>Au-delà de la retraite, les couvertures <strong>prévoyance (décès-invalidité)</strong> et <strong>santé (complémentaire maladie)</strong> sont des composantes essentielles de la protection sociale groupe. Voici l'état des obligations par pays et les recommandations Exiliance.</p>
+
+    <div class="stat-grid" style="margin-top:20px;">
+      <div class="stat-box">
+        <div class="stat-value">1 pays</div>
+        <div class="stat-label">Mutuelle obligatoire</div>
+        <div class="stat-detail">France (ANI 2013) — seul pays européen avec obligation de complémentaire santé</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">3 pays</div>
+        <div class="stat-label">Couverture sectorielle obligatoire</div>
+        <div class="stat-detail">IT (Metasalute CCNL), BE (accidents travail), DK (accidents travail)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">7 pays</div>
+        <div class="stat-label">Pas d'obligation au-delà du régime légal</div>
+        <div class="stat-detail">DE, ES, UK, NL, PL, CZ, RU — mais pratiques de marché quasi-standards</div>
+      </div>
+    </div>
+
+    <h4 style="color:var(--primary-dark);margin:24px 0 14px;">Couverture prévoyance & santé recommandée par pays</h4>
+    <p style="font-size:0.88rem;margin-bottom:12px;">Ce qu'Exiliance recommande de mettre en place (ou de maintenir) dans chaque pays TiMOTION :</p>
+    <div style="overflow-x:auto;"><table class="data-table">
+      <thead><tr><th>Pays</th><th>Prévoyance (décès/invalidité)</th><th>Santé (complémentaire)</th><th>Coût estimé employeur</th><th>Obligation ?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>🇫🇷 France</strong></td><td>CCN Métallurgie : 1,5% TA cadres + 0,6% NC. Capital décès 200%.</td><td>Mutuelle obligatoire 50% employeur. Panier ANI.</td><td>3-5% du brut</td><td style="color:#dc2626;font-weight:600;">Oui (légal)</td></tr>
+        <tr><td><strong>🇩🇪 Allemagne</strong></td><td>Berufsgenossenschaft obligatoire. Risikolebensversicherung recommandée.</td><td>GKV 8,55% employeur. Pas de complémentaire obligatoire.</td><td>~10% du brut (légal)</td><td>Partiel</td></tr>
+        <tr><td><strong>🇮🇹 Italie</strong></td><td>INAIL obligatoire 0,5-4%. TFR 6,91%.</td><td>Fondo Metasalute obligatoire (CCNL). 13-75 €/mois.</td><td>~8% du brut (légal)</td><td style="color:#dc2626;font-weight:600;">Oui (CCNL)</td></tr>
+        <tr><td><strong>🇪🇸 Espagne</strong></td><td>Seguridad Social 24-30%. Pas de groupe obligatoire.</td><td>SNS gratuit. Seguro médico recommandé (50-80 €/mois).</td><td>0,5-1% (volontaire)</td><td>Non</td></tr>
+        <tr><td><strong>🇬🇧 Royaume-Uni</strong></td><td>Death in Service + GIP recommandés. SSP minimal.</td><td>NHS gratuit. PMI recommandé (200-1 000 £/an).</td><td>1-3% (volontaire)</td><td>Non</td></tr>
+        <tr><td><strong>🇳🇱 Pays-Bas</strong></td><td>Maintien salaire 2 ans obligatoire. WGA-hiaat recommandé.</td><td>ZVW 6,51% obligatoire. Pas de complémentaire obligatoire.</td><td>~8% du brut (légal)</td><td>Partiel</td></tr>
+        <tr><td><strong>🇵🇱 Pologne</strong></td><td>ZUS couvre les risques. Assurance groupe vie recommandée.</td><td>NFZ 9% salarié. Medicover/LuxMed recommandé (50-300 PLN).</td><td>0,5-1% (volontaire)</td><td>Non</td></tr>
+        <tr><td><strong>🇩🇰 Danemark</strong></td><td>Pension de branche inclut décès/invalidité. Accident travail obligatoire.</td><td>Universel gratuit. Sundhedsforsikring recommandée.</td><td>0,3-0,8% (volontaire)</td><td>Partiel</td></tr>
+        <tr><td><strong>🇧🇪 Belgique</strong></td><td>Accident travail obligatoire. Assurance groupe très répandue.</td><td>Mutuelles 75%. Assurance hospitalisation recommandée.</td><td>1-3% (volontaire)</td><td>Partiel</td></tr>
+        <tr><td><strong>🇨🇿 Tchéquie</strong></td><td>CSSZ 24,8% couvre tout. Pas de groupe complémentaire nécessaire.</td><td>VZP 9% très complet. Benefit cards plus courantes.</td><td>0,3-0,5% (volontaire)</td><td>Non</td></tr>
+        <tr style="background:#fef3f3;"><td><strong>🇷🇺 Russie</strong></td><td>Tarif unifié 30%. Accidents travail 0,2-8,5%.</td><td>OMS universel. DMS recommandé (300-500 €/an).</td><td>0,5-1% (volontaire)</td><td>Non ⚠️</td></tr>
+      </tbody>
+    </table></div>
+
+    <div style="margin-top:20px;padding:16px 20px;background:#eafbea;border-radius:12px;border-left:4px solid #16a34a;">
+      <strong style="color:#15803d;">Intégration dans le pooling GEB</strong>
+      <p style="font-size:0.88rem;margin-top:6px;">Les contrats de prévoyance (décès-invalidité) et les contrats de complémentaire santé sont <strong>poolables</strong> au même titre que les contrats de retraite surcomplémentaire. En les intégrant dans le pool Generali GEB, TiMOTION augmente le volume de primes mutualisées, ce qui :</p>
+      <ul style="margin:8px 0 0 20px;list-style:disc;font-size:0.88rem;">
+        <li>Améliore le pouvoir de négociation (volume total de primes plus important)</li>
+        <li>Stabilise les résultats techniques (plus de diversification des risques)</li>
+        <li>Augmente le dividende potentiel de pooling (base de calcul élargie)</li>
+        <li>Permet un reporting consolidé unique couvrant retraite + prévoyance + santé</li>
+      </ul>
+      <p style="font-size:0.85rem;margin-top:10px;color:#15803d;"><strong>Estimation :</strong> en intégrant les contrats prévoyance/santé, le volume de primes total du pool passe de ~130 000 €/an (retraite seule) à ~200 000 - 250 000 €/an, renforçant significativement la position de TiMOTION dans le Multipool.</p>
     </div>
   </div>`;
 
@@ -4208,6 +4676,7 @@ function renderCurrentTab() {
   switch(currentTab) {
     case 'retraite': renderRetraite(); break;
     case 'salaire': renderSalaire(); break;
+    case 'prevoyance': renderPrevoyance(); break;
     case 'comparatif': renderComparatif(); break;
     case 'strategie': renderStrategie(); break;
   }
@@ -4217,7 +4686,7 @@ function selectCountry(code) {
   currentCountry = code;
   renderNavPills();
   renderCountrySelector();
-  if (currentTab === 'retraite' || currentTab === 'salaire') {
+  if (currentTab === 'retraite' || currentTab === 'salaire' || currentTab === 'prevoyance') {
     renderCurrentTab();
   }
 }
