@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TiMOTION — Retraite & Grilles de salaire — 11 pays europeens</title>
+<title>TiMOTION — Retraite & Grilles de salaire — 11 pays européens</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -156,6 +156,30 @@ a:hover { text-decoration: underline; }
 /* TEXT FORMATTING */
 .formatted-text { white-space: pre-wrap; line-height: 1.75; font-size: 0.92rem; }
 .formatted-text strong, .formatted-text b { font-weight: 700; }
+
+/* ACCORDION */
+.accordion { margin-bottom: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border); overflow: hidden; }
+.accordion-trigger { width: 100%; padding: 18px 24px; background: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-family: inherit; font-size: 0.95rem; font-weight: 700; color: var(--text); transition: all 0.2s; text-align: left; gap: 12px; }
+.accordion-trigger:hover { background: rgba(232,132,44,0.04); }
+.accordion-trigger.open { background: var(--gradient-subtle); }
+.accordion-trigger .acc-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--gradient); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; transition: transform 0.3s; }
+.accordion-trigger.open .acc-icon { transform: rotate(180deg); }
+.accordion-trigger .acc-badge { font-size: 0.7rem; padding: 3px 10px; border-radius: 12px; font-weight: 600; margin-left: auto; }
+.acc-badge-blue { background: rgba(59,130,246,0.1); color: #2563eb; }
+.acc-badge-orange { background: rgba(232,132,44,0.1); color: var(--primary-dark); }
+.acc-badge-green { background: rgba(34,197,94,0.1); color: #15803d; }
+.acc-badge-red { background: rgba(239,68,68,0.1); color: #dc2626; }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+.accordion-body.open { max-height: 10000px; transition: max-height 0.6s ease-in; }
+.accordion-inner { padding: 0 24px 24px; }
+
+/* PILLAR TABS */
+.pillar-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid var(--border); }
+.pillar-tab { padding: 12px 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; color: var(--text-secondary); background: none; border-top: none; border-left: none; border-right: none; }
+.pillar-tab:hover { color: var(--primary); }
+.pillar-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+.pillar-panel { display: none; padding: 20px 0; }
+.pillar-panel.active { display: block; }
 </style>
 </head>
 <body>
@@ -171,7 +195,7 @@ a:hover { text-decoration: underline; }
 <!-- HERO -->
 <section class="hero">
   <h1>Retraite & Grilles de salaire</h1>
-  <p>Guide complet pour la direction TiMOTION : systemes de retraite, cotisations et couts employeur dans 11 pays europeens. Donnees 2025-2026.</p>
+  <p>Guide complet pour la direction TiMOTION : systèmes de retraite, cotisations et coûts employeur dans 11 pays européens. Données 2025-2026.</p>
 </section>
 
 <!-- MAIN -->
@@ -182,7 +206,7 @@ a:hover { text-decoration: underline; }
     <div class="tab active" data-tab="retraite">Retraite</div>
     <div class="tab" data-tab="salaire">Grilles de salaire</div>
     <div class="tab" data-tab="comparatif">Comparatif</div>
-    <div class="tab" data-tab="strategie">Strategie groupe</div>
+    <div class="tab" data-tab="strategie">Stratégie groupe</div>
   </div>
 
   <!-- COUNTRY SELECTOR (for retraite + salaire tabs) -->
@@ -2552,6 +2576,22 @@ function formatText(text) {
   return mdToHtml(text);
 }
 
+function toggleAccordion(el) {
+  const trigger = el;
+  const body = trigger.nextElementSibling;
+  const isOpen = trigger.classList.contains('open');
+  trigger.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+function switchPillar(el, idx) {
+  const container = el.closest('.pillar-container');
+  container.querySelectorAll('.pillar-tab').forEach(t => t.classList.remove('active'));
+  container.querySelectorAll('.pillar-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  container.querySelectorAll('.pillar-panel')[idx].classList.add('active');
+}
+
 // =============================================
 // RENDER: Navigation pills
 // =============================================
@@ -2592,70 +2632,96 @@ function renderRetraite() {
   const c = DATA[currentCountry];
   if (!c) return;
   const p = c.pension;
-  
+
   let html = '';
-  
-  // Explainer
-  html += `<div class="explainer-box">
-    <h3>${c.flag} Comprendre la retraite en ${c.name}</h3>
-    <div class="explainer-text">${formatText(p.explainer)}</div>
-  </div>`;
-  
-  // Stats
+
+  // Stats (always visible)
   if (p.stats && p.stats.length) {
     html += '<div class="stat-grid">';
     p.stats.forEach(s => {
       html += `<div class="stat-box">
         <div class="stat-value">${s.value}</div>
         <div class="stat-label">${s.label}</div>
-        <div class="stat-detail">${s.detail}</div>
+        ${s.detail ? `<div class="stat-detail">${s.detail}</div>` : ''}
       </div>`;
     });
     html += '</div>';
   }
-  
-  // Pillars
-  html += '<div class="card"><h2>Les 3 piliers de la retraite</h2><div class="pillar-grid">';
-  if (p.pillars) {
-    p.pillars.forEach((pil, i) => {
-      html += `<div class="pillar-card">
-        <h4>Pilier ${i+1} — ${pil.name}</h4>
-        <div class="pillar-text">${formatText(pil.desc)}</div>
-      </div>`;
-    });
-  }
-  html += '</div></div>';
-  
-  // Action Plan
+
+  // Accordion: Comprendre le système
+  html += `<div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      <span>${c.flag} Comprendre le système de retraite en ${c.name}</span>
+      <span class="acc-badge acc-badge-blue">Pédagogie</span>
+      <span class="acc-icon">▼</span>
+    </button>
+    <div class="accordion-body open"><div class="accordion-inner">
+      <div class="explainer-text" style="font-size:0.92rem;line-height:1.8;">${formatText(p.explainer)}</div>
+    </div></div>
+  </div>`;
+
+  // Accordion: Les 3 piliers (with sub-tabs)
+  html += `<div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      <span>Les 3 piliers de la retraite</span>
+      <span class="acc-badge acc-badge-orange">Détail technique</span>
+      <span class="acc-icon">▼</span>
+    </button>
+    <div class="accordion-body open"><div class="accordion-inner">
+      <div class="pillar-container">
+        <div class="pillar-tabs">
+          ${p.pillars ? p.pillars.map((pil, i) => `<button class="pillar-tab ${i===0?'active':''}" onclick="switchPillar(this, ${i})">Pilier ${i+1}</button>`).join('') : ''}
+        </div>
+        ${p.pillars ? p.pillars.map((pil, i) => `<div class="pillar-panel ${i===0?'active':''}">
+          <h4 style="color:var(--primary-dark);margin-bottom:12px;font-size:1.05rem;">${pil.name}</h4>
+          <div style="font-size:0.9rem;line-height:1.75;">${formatText(pil.desc)}</div>
+        </div>`).join('') : ''}
+      </div>
+    </div></div>
+  </div>`;
+
+  // Accordion: Plan d'action
   if (p.actionPlan && p.actionPlan.length) {
-    html += '<div class="action-plan"><h3>Plan d\'action employeur</h3>';
-    p.actionPlan.forEach((step, i) => {
-      html += `<div class="action-step">
-        <div class="step-num">${i+1}</div>
-        <div class="step-text">${step}</div>
-      </div>`;
-    });
-    html += '</div>';
+    html += `<div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>Plan d'action employeur</span>
+        <span class="acc-badge acc-badge-green">${p.actionPlan.length} étapes</span>
+        <span class="acc-icon">▼</span>
+      </button>
+      <div class="accordion-body"><div class="accordion-inner">
+        ${p.actionPlan.map((step, i) => `<div class="action-step">
+          <div class="step-num">${i+1}</div>
+          <div class="step-text">${step}</div>
+        </div>`).join('')}
+      </div></div>
+    </div>`;
   }
-  
-  // Risks
+
+  // Accordion: Risks
   if (p.risks && p.risks.length) {
-    html += '<div class="card"><h3>Points de vigilance</h3><div class="risk-grid">';
-    p.risks.forEach(r => {
-      html += `<div class="risk-box">${r}</div>`;
-    });
-    html += '</div></div>';
+    html += `<div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>Points de vigilance</span>
+        <span class="acc-badge acc-badge-red">${p.risks.length} risque${p.risks.length>1?'s':''}</span>
+        <span class="acc-icon">▼</span>
+      </button>
+      <div class="accordion-body"><div class="accordion-inner">
+        <div class="risk-grid">
+          ${p.risks.map(r => `<div class="risk-box">${r}</div>`).join('')}
+        </div>
+      </div></div>
+    </div>`;
   }
-  
-  // Sources
+
+  // Sources (always visible)
   if (p.sources && p.sources.length) {
-    html += '<div class="sources"><h4>Sources</h4>';
+    html += '<div class="sources"><h4>Sources juridiques officielles</h4>';
     p.sources.forEach(s => {
       html += `<a href="${s}" target="_blank">${s}</a>`;
     });
     html += '</div>';
   }
-  
+
   document.getElementById('tab-retraite').innerHTML = html;
 }
 
@@ -2666,45 +2732,64 @@ function renderSalaire() {
   const c = DATA[currentCountry];
   if (!c) return;
   const s = c.salary;
-  
+
   let html = '';
-  
-  // Explainer
-  html += `<div class="explainer-box">
-    <h3>${c.flag} Comprendre les couts salariaux en ${c.name}</h3>
-    <div class="explainer-text">${formatText(s.explainer)}</div>
-  </div>`;
-  
-  // Stats
+
+  // Stats (always visible)
   if (s.stats && s.stats.length) {
     html += '<div class="stat-grid">';
     s.stats.forEach(st => {
       html += `<div class="stat-box">
         <div class="stat-value">${st.value}</div>
         <div class="stat-label">${st.label}</div>
-        <div class="stat-detail">${st.detail}</div>
+        ${st.detail ? `<div class="stat-detail">${st.detail}</div>` : ''}
       </div>`;
     });
     html += '</div>';
   }
-  
-  // Breakdown table
+
+  // Accordion: Comprendre les coûts
+  html += `<div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      <span>${c.flag} Comprendre les coûts salariaux en ${c.name}</span>
+      <span class="acc-badge acc-badge-blue">Pédagogie</span>
+      <span class="acc-icon">▼</span>
+    </button>
+    <div class="accordion-body open"><div class="accordion-inner">
+      <div style="font-size:0.92rem;line-height:1.8;">${formatText(s.explainer)}</div>
+    </div></div>
+  </div>`;
+
+  // Accordion: Breakdown table
   if (s.breakdown && s.breakdown.length) {
-    html += '<div class="card"><h2>Decomposition des cotisations employeur</h2>';
-    html += '<div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Ligne</th><th>Taux</th><th>Montant</th></tr></thead><tbody>';
-    s.breakdown.forEach(row => {
-      html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`;
-    });
-    html += '</tbody></table></div></div>';
-  }
-  
-  // Detailed example
-  if (s.exampleDetailed) {
-    html += `<div class="card"><h2>Exemple detaille</h2>
-      <div class="salary-example">${formatText(s.exampleDetailed)}</div>
+    html += `<div class="accordion">
+      <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+        <span>Décomposition des cotisations</span>
+        <span class="acc-badge acc-badge-orange">${s.breakdown.length} lignes</span>
+        <span class="acc-icon">▼</span>
+      </button>
+      <div class="accordion-body open"><div class="accordion-inner">
+        <div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Ligne</th><th>Taux</th><th>Montant</th></tr></thead><tbody>
+        ${s.breakdown.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join('')}
+        </tbody></table></div>
+      </div></div>
     </div>`;
   }
-  
+
+  // Accordion: Detailed example
+  if (s.exampleDetailed) {
+    html += `<div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>Exemple de fiche de paie détaillée</span>
+        <span class="acc-badge acc-badge-green">Calcul complet</span>
+        <span class="acc-icon">▼</span>
+      </button>
+      <div class="accordion-body"><div class="accordion-inner">
+        <div class="salary-example">${formatText(s.exampleDetailed)}</div>
+      </div></div>
+    </div>`;
+  }
+
   // Sources
   if (s.sources && s.sources.length) {
     html += '<div class="sources"><h4>Sources</h4>';
@@ -2713,7 +2798,7 @@ function renderSalaire() {
     });
     html += '</div>';
   }
-  
+
   document.getElementById('tab-salaire').innerHTML = html;
 }
 
@@ -2726,7 +2811,7 @@ function renderComparatif() {
   // Pension comparison
   html += '<div class="card"><h2>Comparatif retraite — 11 pays</h2>';
   html += '<div style="overflow-x:auto;"><table class="comp-table"><thead><tr>';
-  html += '<th>Pays</th><th>Age legal</th><th>Taux remplacement</th><th>Cotis. retraite</th><th>Type de systeme</th><th>Depenses/PIB</th>';
+  html += '<th>Pays</th><th>Âge légal</th><th>Taux remplacement</th><th>Cotis. retraite</th><th>Type de système</th><th>Dépenses/PIB</th>';
   html += '</tr></thead><tbody>';
   COMPARISON_PENSION.forEach(row => {
     const flag = DATA[row[0]] ? DATA[row[0]].flag : '';
@@ -2738,9 +2823,9 @@ function renderComparatif() {
   html += '</div>';
   
   // Salary comparison
-  html += '<div class="card"><h2>Comparatif cout salarial — 11 pays</h2>';
+  html += '<div class="card"><h2>Comparatif coût salarial — 11 pays</h2>';
   html += '<div style="overflow-x:auto;"><table class="comp-table"><thead><tr>';
-  html += '<th>Pays</th><th>SMIC/Minimum</th><th>Charges patronales</th><th>Charges salariales</th><th>Multiplicateur brut→cout</th><th>Devise</th>';
+  html += '<th>Pays</th><th>SMIC/Minimum</th><th>Charges patronales</th><th>Charges salariales</th><th>Multiplicateur brut→coût</th><th>Devise</th>';
   html += '</tr></thead><tbody>';
   COMPARISON_SALARY.forEach(row => {
     const flag = DATA[row[0]] ? DATA[row[0]].flag : '';
@@ -2753,15 +2838,15 @@ function renderComparatif() {
 }
 
 // =============================================
-// RENDER: Strategie groupe tab
+// RENDER: Stratégie groupe tab
 // =============================================
 function renderStrategie() {
   let html = '';
   
   // Hero card
   html += `<div class="strategy-card">
-    <h2>Strategie retraite groupe — Recommandations Exiliance</h2>
-    <p>Analyse complete des options de retraite surcomplementaire pan-europeenne pour TiMOTION (11 pays, ~100 salaries). Rapport mars 2026.</p>
+    <h2>Stratégie retraite groupe — Recommandations Exiliance</h2>
+    <p>Analyse complète des options de retraite surcomplémentaire pan-européenne pour TiMOTION (11 pays, ~100 salariés). Rapport mars 2026.</p>
   </div>`;
   
   // PEPP section
@@ -2776,40 +2861,40 @@ function renderStrategie() {
       <div class="stat-box" style="background:#fef3f3;border-color:#e74c3c30;">
         <div class="stat-value" style="color:#e74c3c;">Non viable</div>
         <div class="stat-label">Verdict court terme</div>
-        <div class="stat-detail">Reforme en cours, horizon 2028+</div>
+        <div class="stat-detail">Réforme en cours, horizon 2028+</div>
       </div>
       <div class="stat-box">
-        <div class="stat-value">Reglement UE</div>
+        <div class="stat-value">Règlement UE</div>
         <div class="stat-label">2019/1238</div>
         <div class="stat-detail">Applicable depuis mars 2022</div>
       </div>
       <div class="stat-box">
         <div class="stat-value">0 fournisseur</div>
-        <div class="stat-label">dans les pays TiMOTION cles</div>
+        <div class="stat-label">dans les pays TiMOTION clés</div>
         <div class="stat-detail">FR, DE, IT, ES, UK, NL</div>
       </div>
     </div>
-    <p>Le PEPP est un produit d'epargne-retraite individuel volontaire cree par le reglement europeen. <strong>En mars 2026, c'est un echec commercial quasi-total</strong> : seuls 2 fournisseurs sont enregistres (Finax en Slovaquie et LifeGoals a Chypre). Aucun n'est actif dans les pays principaux de TiMOTION.</p>
-    <p>La Commission europeenne a publie en novembre 2025 une proposition de revision majeure (suppression du plafond de frais de 1%, auto-inscription possible, ouverture comme produit d'entreprise). Adoption possible fin 2026, transposition 2027-2028. <strong>Le PEPP ne sera pas une solution operationnelle pour TiMOTION avant 2028-2029.</strong></p>
+    <p>Le PEPP est un produit d'épargne-retraite individuel volontaire créé par le règlement européen. <strong>En mars 2026, c'est un échec commercial quasi-total</strong> : seuls 2 fournisseurs sont enregistrés (Finax en Slovaquie et LifeGoals à Chypre). Aucun n'est actif dans les pays principaux de TiMOTION.</p>
+    <p>La Commission européenne a publié en novembre 2025 une proposition de révision majeure (suppression du plafond de frais de 1%, auto-inscription possible, ouverture comme produit d'entreprise). Adoption possible fin 2026, transposition 2027-2028. <strong>Le PEPP ne sera pas une solution opérationnelle pour TiMOTION avant 2028-2029.</strong></p>
   </div>`;
   
   // Pooling section
   html += `<div class="strategy-section">
-    <h3>2. Pooling multinational — Solution recommandee par Exiliance</h3>
+    <h3>2. Pooling multinational — Solution recommandée par Exiliance</h3>
     <div class="stat-grid">
       <div class="stat-box" style="background:#eafbea;border-color:#27ae6030;">
-        <div class="stat-value" style="color:#27ae60;">Recommande</div>
-        <div class="stat-label">Solution operationnelle</div>
-        <div class="stat-detail">Disponible immediatement</div>
+        <div class="stat-value" style="color:#27ae60;">Recommandé</div>
+        <div class="stat-label">Solution opérationnelle</div>
+        <div class="stat-detail">Disponible immédiatement</div>
       </div>
       <div class="stat-box">
         <div class="stat-value">Generali GEB</div>
-        <div class="stat-label">Reseau recommande</div>
+        <div class="stat-label">Réseau recommandé</div>
         <div class="stat-detail">PME-friendly, 100+ pays</div>
       </div>
       <div class="stat-box">
         <div class="stat-value">10-15%</div>
-        <div class="stat-label">Economies potentielles</div>
+        <div class="stat-label">Économies potentielles</div>
         <div class="stat-detail">Via dividendes de pooling</div>
       </div>
       <div class="stat-box">
@@ -2818,67 +2903,67 @@ function renderStrategie() {
         <div class="stat-detail">International Group Program</div>
       </div>
     </div>
-    <p>Le pooling multinational permet de consolider les contrats d'assurance prevoyance/retraite de toutes les filiales au sein d'un reseau international. <strong>Exiliance recommande le reseau Generali Employee Benefits (GEB)</strong>, particulierement adapte aux PME multinationales comme TiMOTION.</p>
-    <p><strong>Comment ca marche :</strong> Chaque filiale souscrit un contrat local (prevoyance, retraite, sante) aupres d'un assureur membre du reseau. Les resultats techniques de tous ces contrats sont consolides. Si l'ensemble est excedentaire, un <strong>dividende de pooling</strong> (10-15% des primes) est reverse a la maison-mere ou reinvesti.</p>
-    <h4 style="margin-top:16px;color:var(--primary-dark);">Reseaux de pooling adaptes a TiMOTION :</h4>
+    <p>Le pooling multinational permet de consolider les contrats d'assurance prévoyance/retraite de toutes les filiales au sein d'un réseau international. <strong>Exiliance recommande le réseau Generali Employee Benefits (GEB)</strong>, particulièrement adapté aux PME multinationales comme TiMOTION.</p>
+    <p><strong>Comment ça marche :</strong> Chaque filiale souscrit un contrat local (prévoyance, retraite, santé) auprès d'un assureur membre du réseau. Les résultats techniques de tous ces contrats sont consolidés. Si l'ensemble est excédentaire, un <strong>dividende de pooling</strong> (10-15% des primes) est reversé à la maison-mère ou réinvesti.</p>
+    <h4 style="margin-top:16px;color:var(--primary-dark);">Réseaux de pooling adaptés à TiMOTION :</h4>
     <div style="overflow-x:auto;"><table class="data-table" style="margin-top:12px;">
-      <thead><tr><th>Reseau</th><th>Taille cible</th><th>Couverture</th><th>Specificite</th></tr></thead>
+      <thead><tr><th>Réseau</th><th>Taille cible</th><th>Couverture</th><th>Spécificité</th></tr></thead>
       <tbody>
-        <tr><td><strong>Generali GEB</strong></td><td>PME-ETI</td><td>100+ pays</td><td>Le plus adapte aux PME, accompagnement dedie</td></tr>
+        <tr><td><strong>Generali GEB</strong></td><td>PME-ETI</td><td>100+ pays</td><td>Le plus adapté aux PME, accompagnement dédié</td></tr>
         <tr><td><strong>IGP (Zurich)</strong></td><td>Toutes tailles</td><td>80+ pays</td><td>Flexible, pas de taille minimum</td></tr>
-        <tr><td><strong>MAXIS GBN (MetLife)</strong></td><td>Grandes</td><td>90+ pays</td><td>Reporting avance, plutot grands comptes</td></tr>
+        <tr><td><strong>MAXIS GBN (MetLife)</strong></td><td>Grandes</td><td>90+ pays</td><td>Reporting avancé, plutôt grands comptes</td></tr>
       </tbody>
     </table></div>
   </div>`;
   
   // Roadmap
   html += `<div class="strategy-section">
-    <h3>3. Feuille de route d'implementation — 4 phases</h3>
+    <h3>3. Feuille de route d'implémentation — 4 phases</h3>
     <div class="action-plan">
       <div class="action-step">
         <div class="step-num">1</div>
-        <div class="step-text"><strong>Phase 1 — Audit (Mois 1-3)</strong><br>Exiliance realise un audit complet des contrats existants dans les 11 pays : prevoyance, sante, retraite complementaire. Cartographie des obligations locales et des gaps de couverture. Budget : 15 000-25 000 EUR.</div>
+        <div class="step-text"><strong>Phase 1 — Audit (Mois 1-3)</strong><br>Exiliance réalise un audit complet des contrats existants dans les 11 pays : prévoyance, santé, retraite complémentaire. Cartographie des obligations locales et des gaps de couverture. Budget : 15 000-25 000 EUR.</div>
       </div>
       <div class="action-step">
         <div class="step-num">2</div>
-        <div class="step-text"><strong>Phase 2 — Conception (Mois 3-6)</strong><br>Definition de la politique groupe : niveaux de couverture cibles par pays, choix du reseau de pooling (Generali GEB recommande), negociation des conditions. Budget : 10 000-15 000 EUR de conseil + frais reseau.</div>
+        <div class="step-text"><strong>Phase 2 — Conception (Mois 3-6)</strong><br>Définition de la politique groupe : niveaux de couverture cibles par pays, choix du réseau de pooling (Generali GEB recommandé), négociation des conditions. Budget : 10 000-15 000 EUR de conseil + frais réseau.</div>
       </div>
       <div class="action-step">
         <div class="step-num">3</div>
-        <div class="step-text"><strong>Phase 3 — Deploiement prioritaire (Mois 6-12)</strong><br>Mise en place dans les 4 pays principaux (France 70 sal., Allemagne 7, Italie 8, Espagne 5). Souscription des contrats locaux, affiliation au pool. Budget : primes annuelles estimees 80 000-120 000 EUR pour ces 4 pays.</div>
+        <div class="step-text"><strong>Phase 3 — Deploiement prioritaire (Mois 6-12)</strong><br>Mise en place dans les 4 pays principaux (France 70 sal., Allemagne 7, Italie 8, Espagne 5). Souscription des contrats locaux, affiliation au pool. Budget : primes annuelles estimées 80 000-120 000 EUR pour ces 4 pays.</div>
       </div>
       <div class="action-step">
         <div class="step-num">4</div>
-        <div class="step-text"><strong>Phase 4 — Extension (Mois 12-18)</strong><br>Extension aux 7 pays restants (UK, NL, PL, DK, BE, CZ, RU). Attention particuliere au UK (hors UE) et a la Russie (sanctions). Budget additionnel : 30 000-50 000 EUR/an de primes.</div>
+        <div class="step-text"><strong>Phase 4 — Extension (Mois 12-18)</strong><br>Extension aux 7 pays restants (UK, NL, PL, DK, BE, CZ, RU). Attention particulière au UK (hors UE) et à la Russie (sanctions). Budget additionnel : 30 000-50 000 EUR/an de primes.</div>
       </div>
     </div>
   </div>`;
   
   // Budget
   html += `<div class="strategy-section">
-    <h3>4. Estimation budgetaire globale</h3>
+    <h3>4. Estimation budgétaire globale</h3>
     <div style="overflow-x:auto;"><table class="data-table">
-      <thead><tr><th>Poste</th><th>Estimation</th><th>Periodicite</th></tr></thead>
+      <thead><tr><th>Poste</th><th>Estimation</th><th>Périodicité</th></tr></thead>
       <tbody>
         <tr><td>Audit initial (Exiliance)</td><td>15 000 — 25 000 EUR</td><td>One-shot</td></tr>
         <tr><td>Conseil & conception</td><td>10 000 — 15 000 EUR</td><td>One-shot</td></tr>
-        <tr><td>Primes prevoyance/retraite poolees (11 pays)</td><td>110 000 — 170 000 EUR</td><td>Annuel</td></tr>
-        <tr><td>Frais de gestion reseau</td><td>3 000 — 5 000 EUR</td><td>Annuel</td></tr>
-        <tr><td>Dividende de pooling estime (retour)</td><td>-10 000 — -20 000 EUR</td><td>Annuel</td></tr>
-        <tr><td><strong>Cout net annuel estime</strong></td><td><strong>100 000 — 155 000 EUR</strong></td><td><strong>Annuel</strong></td></tr>
+        <tr><td>Primes prévoyance/retraite poolées (11 pays)</td><td>110 000 — 170 000 EUR</td><td>Annuel</td></tr>
+        <tr><td>Frais de gestion réseau</td><td>3 000 — 5 000 EUR</td><td>Annuel</td></tr>
+        <tr><td>Dividende de pooling estimé (retour)</td><td>-10 000 — -20 000 EUR</td><td>Annuel</td></tr>
+        <tr><td><strong>Coût net annuel estimé</strong></td><td><strong>100 000 — 155 000 EUR</strong></td><td><strong>Annuel</strong></td></tr>
       </tbody>
     </table></div>
-    <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:8px;">Estimations basees sur ~100 salaries, couvertures prevoyance + retraite complementaire standard. Le dividende de pooling depend de la sinistralite.</p>
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:8px;">Estimations basées sur ~100 salariés, couvertures prévoyance + retraite complémentaire standard. Le dividende de pooling dépend de la sinistralité.</p>
   </div>`;
   
   // Important notes
   html += `<div class="card">
     <h3>Points importants</h3>
     <div class="risk-grid">
-      <div class="risk-box" style="background:#eafbea;border-color:#27ae60;">Exiliance assure le courtage et le suivi de l'ensemble du dispositif — pas besoin de passer par plusieurs intermediaires.</div>
-      <div class="risk-box">Russie : en raison des sanctions internationales, la Russie pourrait necessiter un traitement separe hors du pool europeen.</div>
+      <div class="risk-box" style="background:#eafbea;border-color:#27ae60;">Exiliance assure le courtage et le suivi de l'ensemble du dispositif — pas besoin de passer par plusieurs intermédiaires.</div>
+      <div class="risk-box">Russie : en raison des sanctions internationales, la Russie pourrait nécessiter un traitement séparé hors du pool européen.</div>
       <div class="risk-box">Royaume-Uni : hors UE, mais les reseaux de pooling (GEB, IGP) couvrent le UK sans difficulte.</div>
-      <div class="risk-box" style="background:#fef9f3;border-color:var(--primary);">Le PEPP est a surveiller pour 2028+ : si la reforme aboutit, il pourrait devenir une option complementaire interessante.</div>
+      <div class="risk-box" style="background:#fef9f3;border-color:var(--primary);">Le PEPP est à surveiller pour 2028+ : si la réforme aboutit, il pourrait devenir une option complémentaire intéressante.</div>
     </div>
   </div>`;
   
