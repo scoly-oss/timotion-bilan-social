@@ -142,6 +142,40 @@ a:hover { text-decoration: underline; }
 /* SALARY EXAMPLE */
 .salary-example { background: #f0f4f8; border-radius: var(--radius-sm); padding: 24px; margin: 20px 0; border: 1px solid var(--border); white-space: pre-wrap; font-size: 0.88rem; line-height: 1.7; }
 
+/* PAYSLIP REDESIGN */
+.payslip { border-radius: var(--radius); overflow: hidden; margin: 20px 0; border: 1px solid var(--border); }
+.payslip-header { padding: 20px 24px; background: var(--gradient); color: white; }
+.payslip-header h4 { font-size: 1rem; font-weight: 700; margin: 0; }
+.payslip-header p { font-size: 0.8rem; opacity: 0.85; margin: 4px 0 0; }
+
+.payslip-section { padding: 20px 24px; border-bottom: 1px solid var(--border); }
+.payslip-section:last-child { border-bottom: none; }
+.payslip-section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.payslip-section-title .icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+.payslip-section-title h5 { font-size: 0.9rem; font-weight: 700; margin: 0; }
+
+.payslip-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.04); font-size: 0.85rem; }
+.payslip-row:last-child { border-bottom: none; }
+.payslip-row .pr-label { flex: 1; color: var(--text-secondary); }
+.payslip-row .pr-rate { width: 80px; text-align: right; color: var(--text-secondary); font-size: 0.8rem; }
+.payslip-row .pr-amount { width: 120px; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.payslip-row.pr-total { padding: 12px 0; margin-top: 4px; border-top: 2px solid var(--border); font-weight: 700; font-size: 0.9rem; }
+.payslip-row.pr-total .pr-label { color: var(--text); }
+.payslip-row .pr-neg { color: #dc2626; }
+.payslip-row .pr-pos { color: #16a34a; }
+
+.payslip-summary { padding: 24px; background: var(--secondary); color: white; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.payslip-summary-item { text-align: center; }
+.payslip-summary-item .ps-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
+.payslip-summary-item .ps-value { font-size: 1.3rem; font-weight: 800; margin-top: 4px; }
+.payslip-summary-item .ps-note { font-size: 0.7rem; opacity: 0.6; margin-top: 2px; }
+
+.payslip-waterfall { padding: 20px 24px; background: var(--bg); }
+.waterfall-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.waterfall-bar .wb-label { width: 160px; font-size: 0.8rem; font-weight: 600; text-align: right; flex-shrink: 0; }
+.waterfall-bar .wb-track { flex: 1; height: 28px; background: rgba(0,0,0,0.04); border-radius: 6px; overflow: hidden; position: relative; }
+.waterfall-bar .wb-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 0.75rem; font-weight: 700; color: white; min-width: 40px; transition: width 0.5s; }
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero h1 { font-size: 1.4rem; }
@@ -422,6 +456,41 @@ Ratio coût total / net avant impôt : 4 775 / 2 766 = 1,73
 → Pour chaque euro net que le salarié touche, l'entreprise paie 1,73 €.
 
 Note : le prélèvement à la source (PAS) de l'impôt sur le revenu est collecté par l'employeur mais c'est un impôt personnel du salarié, pas une charge sociale. Son taux dépend de la situation personnelle (célibataire, marié, enfants, etc.).`,
+        exampleStructured: {
+          title: "Salarié TiMOTION France — 3 500 € brut/mois",
+          gross: 3500,
+          currency: "€",
+          period: "mensuel",
+          employer: [
+            { label: "Assurance maladie-maternité", rate: "7,00%", amount: 245.00 },
+            { label: "Allocations familiales", rate: "3,45%", amount: 120.75 },
+            { label: "Vieillesse plafonnée (CNAV)", rate: "8,55%", amount: 299.25 },
+            { label: "Vieillesse déplafonnée (CNAV)", rate: "2,02%", amount: 70.70 },
+            { label: "AT/MP (industrie)", rate: "~2,00%", amount: 70.00 },
+            { label: "AGIRC-ARRCO T1", rate: "4,72%", amount: 165.20 },
+            { label: "CEG T1", rate: "1,29%", amount: 45.15 },
+            { label: "CET", rate: "0,21%", amount: 7.35 },
+            { label: "Chômage", rate: "4,05%", amount: 141.75 },
+            { label: "AGS", rate: "0,20%", amount: 7.00 },
+            { label: "CSA + FNAL + Formation + divers", rate: "~3,43%", amount: 102.80 }
+          ],
+          employerTotal: 1274.95,
+          employee: [
+            { label: "Vieillesse plafonnée", rate: "6,90%", amount: 241.50 },
+            { label: "Vieillesse déplafonnée", rate: "0,40%", amount: 14.00 },
+            { label: "AGIRC-ARRCO T1", rate: "3,15%", amount: 110.25 },
+            { label: "CEG T1", rate: "0,86%", amount: 30.10 },
+            { label: "CET", rate: "0,14%", amount: 4.90 },
+            { label: "CSG déductible", rate: "6,80%*", amount: 233.84 },
+            { label: "CSG non déductible + CRDS", rate: "2,90%*", amount: 99.72 }
+          ],
+          employeeTotal: 734.31,
+          netBeforeTax: 2765.69,
+          incomeTax: 193.00,
+          netAfterTax: 2573.00,
+          totalCost: 4774.95,
+          multiplier: "1,36×"
+        },
         stats: [{"label": "Âge légal", "value": "64 ans", "detail": "Réforme 2023"}, {"label": "Taux remplacement", "value": "~74%", "detail": "Brut, carrière complète"}, {"label": "Cotis. retraite totale", "value": "~28%", "detail": "Base + AGIRC-ARRCO"}, {"label": "SMIC 2025", "value": "1 802 €", "detail": "Brut mensuel"}],
         sources: ["https://www.service-public.fr/particuliers/vosdroits/N381", "https://www.agirc-arrco.fr/", "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047446370"],
         benchmark: {
@@ -663,6 +732,38 @@ Impôt retenu à la source  | ≈ 193 € (PAS ~5,5 %)  | ≈ 742 € (Steuerkla
 Net versé au salarié      | ≈ 2 573 €             | ≈ 2 416 €
 
 Constat : la France a des charges patronales beaucoup plus élevées mais un impôt sur le revenu plus faible. L'Allemagne a des charges patronales modérées mais un impôt sur le revenu nettement plus élevé pour les célibataires. Le coût total employeur est comparable, mais la répartition est très différente.`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Allemagne — 4 000 € brut/mois",
+          gross: 4000,
+          currency: "€",
+          period: "mensuel",
+          employer: [
+            { label: "Rentenversicherung (retraite)", rate: "9,30%", amount: 372.00 },
+            { label: "Krankenversicherung (maladie)", rate: "7,30%", amount: 292.00 },
+            { label: "Zusatzbeitrag (suppl. maladie)", rate: "0,85%", amount: 34.00 },
+            { label: "Pflegeversicherung (dépendance)", rate: "1,70%", amount: 68.00 },
+            { label: "Arbeitslosenversicherung (chômage)", rate: "1,30%", amount: 52.00 },
+            { label: "Insolvenzgeldumlage", rate: "0,06%", amount: 2.40 },
+            { label: "Umlage U1 (maladie PME)", rate: "~1,00%", amount: 40.00 },
+            { label: "Umlage U2 (maternité)", rate: "~0,20%", amount: 8.00 },
+            { label: "Berufsgenossenschaft (AT)", rate: "~1,20%", amount: 48.00 }
+          ],
+          employerTotal: 916.40,
+          employee: [
+            { label: "Rentenversicherung (retraite)", rate: "9,30%", amount: 372.00 },
+            { label: "Krankenversicherung (maladie)", rate: "7,30%", amount: 292.00 },
+            { label: "Zusatzbeitrag (suppl. maladie)", rate: "0,85%", amount: 34.00 },
+            { label: "Pflegeversicherung (dépendance)", rate: "1,70%", amount: 68.00 },
+            { label: "Kinderlosenzuschlag (sans enfant)", rate: "0,60%", amount: 24.00 },
+            { label: "Arbeitslosenversicherung (chômage)", rate: "1,30%", amount: 52.00 }
+          ],
+          employeeTotal: 842.00,
+          netBeforeTax: 3158.00,
+          incomeTax: 742.00,
+          netAfterTax: 2416.00,
+          totalCost: 4916.40,
+          multiplier: "1,23×"
+        },
         stats: [{"label": "Âge légal", "value": "67 ans", "detail": "Depuis 2029 (né après 1963)"}, {"label": "Taux remplacement", "value": "~48%", "detail": "Brut, 45 ans de cotis."}, {"label": "Cotis. retraite", "value": "18,6%", "detail": "9,3% empl. + 9,3% sal."}, {"label": "Salaire minimum", "value": "12,82 €/h", "detail": "2025"}],
         sources: ["https://www.deutsche-rentenversicherung.de/", "https://www.bundesfinanzministerium.de/"],
         benchmark: {
@@ -860,6 +961,34 @@ Provision 13eme mois : 2 916,67 / 12 = 243,06 euros
 === COUT TOTAL ANNUEL EMPLOYEUR ===
 4 243,85 x 12 = 50 926,20 euros
 (Pour un brut affiche de 35 000 euros — soit un surcout de 45,5%)`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Italie — 2 917 €/mois (35 000 € annuel)",
+          gross: 2917,
+          currency: "€",
+          period: "mensuel",
+          employer: [
+            { label: "IVS retraite", rate: "23,81%", amount: 694.46 },
+            { label: "Maladie", rate: "2,22%", amount: 64.75 },
+            { label: "Maternité", rate: "0,24%", amount: 7.00 },
+            { label: "Chômage (NASpI)", rate: "1,61%", amount: 46.96 },
+            { label: "CUAF (allocations familiales)", rate: "0,68%", amount: 19.83 },
+            { label: "Fonds garantie TFR", rate: "0,20%", amount: 5.83 },
+            { label: "INAIL (accidents)", rate: "~1,50%", amount: 43.75 }
+          ],
+          employerTotal: 882.58,
+          employee: [
+            { label: "IVS retraite salarié", rate: "9,19%", amount: 268.04 },
+            { label: "IRPEF (impôt sur le revenu)", rate: "~20,5%", amount: 599.00 },
+            { label: "Addizionale regionale", rate: "~1,5%", amount: 39.73 },
+            { label: "Addizionale comunale", rate: "~0,8%", amount: 21.19 }
+          ],
+          employeeTotal: 927.96,
+          netBeforeTax: 2648.96,
+          incomeTax: 659.92,
+          netAfterTax: 1989.00,
+          totalCost: 4244.00,
+          multiplier: "1,45×"
+        },
         stats: [{"label": "Âge légal", "value": "67 ans", "detail": "Système contributif"}, {"label": "Taux cotis. IVS", "value": "33%", "detail": "23,81% empl. + 9,19% sal."}, {"label": "SMIC", "value": "Aucun", "detail": "Fixé par CCNL"}, {"label": "TFR", "value": "6,91%", "detail": "Indemnité fin de contrat"}],
         sources: ["https://www.inps.it/", "https://www.covip.it/"],
         benchmark: {
@@ -1059,6 +1188,33 @@ Cout sur 14 mensualites : 3 314,25 x 14 = 46 399,50 euros
 (Rappel : les pagas extraordinarias supportent aussi les cotisations patronales)
 
 Surcout par rapport au brut affiche : (46 399,50 - 35 000) / 35 000 = 32,6%`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Espagne — 2 500 €/mois (35 000 €/an, 14 pagas)",
+          gross: 2500,
+          currency: "€",
+          period: "mensuel (×14)",
+          employer: [
+            { label: "Contingencias comunes", rate: "23,60%", amount: 590.00 },
+            { label: "Chômage CDI (Desempleo)", rate: "5,50%", amount: 137.50 },
+            { label: "FOGASA", rate: "0,20%", amount: 5.00 },
+            { label: "Formation professionnelle", rate: "0,60%", amount: 15.00 },
+            { label: "MEI (équité intergénérationnelle)", rate: "0,67%", amount: 16.75 },
+            { label: "Accidents du travail", rate: "~2,00%", amount: 50.00 }
+          ],
+          employerTotal: 814.25,
+          employee: [
+            { label: "Contingencias comunes", rate: "4,70%", amount: 117.50 },
+            { label: "Chômage CDI", rate: "1,55%", amount: 38.75 },
+            { label: "Formation professionnelle", rate: "0,10%", amount: 2.50 },
+            { label: "MEI", rate: "0,13%", amount: 3.25 }
+          ],
+          employeeTotal: 162.00,
+          netBeforeTax: 2338.00,
+          incomeTax: 350.70,
+          netAfterTax: 1987.30,
+          totalCost: 3314.25,
+          multiplier: "1,33×"
+        },
         stats: [{"label": "Âge légal", "value": "65-67 ans", "detail": "Selon durée cotisation"}, {"label": "Taux cotis.", "value": "28,3%", "detail": "23,6% empl. + 4,7% sal."}, {"label": "SMI 2025", "value": "1 184 €", "detail": "14 paies/an"}, {"label": "Pension max", "value": "3 267 €/mois", "detail": "Plafond 2025"}],
         sources: ["https://www.seg-social.es/", "https://www.boe.es/"],
         benchmark: {
@@ -1245,6 +1401,28 @@ Le salarié reçoit donc environ £31 239 nets sur £40 000 bruts, soit un taux 
 - **Total dans le pot : £2 700,80 par an**
 
 ---`,
+        exampleStructured: {
+          title: "Salarié TiMOTION UK — £40 000 brut/an (£3 333/mois)",
+          gross: 3333,
+          currency: "£",
+          period: "mensuel",
+          employer: [
+            { label: "Employer NI (15% au-delà de £5 000)", rate: "15%", amount: 437.50 },
+            { label: "Pension employeur (3% qualifying)", rate: "3%", amount: 84.40 }
+          ],
+          employerTotal: 521.90,
+          employee: [
+            { label: "Employee NI (8%)", rate: "8%", amount: 182.87 },
+            { label: "Pension salarié (4% net)", rate: "4%", amount: 112.53 },
+            { label: "Income Tax (PAYE)", rate: "20%", amount: 434.72 }
+          ],
+          employeeTotal: 730.12,
+          netBeforeTax: 3037.60,
+          incomeTax: 434.72,
+          netAfterTax: 2603.00,
+          totalCost: 3854.90,
+          multiplier: "1,16×"
+        },
         stats: [{"label": "State Pension", "value": "£230/sem", "detail": "Forfaitaire, 35 ans NI"}, {"label": "Employer NI", "value": "15%", "detail": "Au-delà de £5 000 (2025)"}, {"label": "Auto-enrolment", "value": "3% empl.", "detail": "+ 5% salarié"}, {"label": "NLW", "value": "£12,21/h", "detail": "21 ans et plus"}],
         sources: ["https://www.gov.uk/state-pension", "https://www.thepensionsregulator.gov.uk/"],
         benchmark: {
@@ -1453,6 +1631,33 @@ Voilà le contenu complet pour les deux pays. Quelques points saillants :
 - **Pays-Bas** : coût employeur autour de 130-140 % du brut, système pension très généreux (20-30 % du pensionnable), AOW universelle basée sur la résidence, surcoût flex vs CDI de ~5 points sur l'AWf, et transition WTP 2028 à surveiller de près.
 
 Les montants sont tous basés sur les données 2025 que vous avez fournies. Les calculs côté salarié sont des approximations car les crédits d'impôt (heffingskortingen aux NL, personal allowance au UK) et certains mécanismes d'arrondi rendent le calcul exact dépendant de la situation individuelle.`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Pays-Bas — 50 000 € brut/an (4 167 €/mois)",
+          gross: 4167,
+          currency: "€",
+          period: "mensuel",
+          employer: [
+            { label: "AWf (chômage CDI)", rate: "2,74%", amount: 123.30 },
+            { label: "Aof (incapacité PME)", rate: "6,28%", amount: 282.60 },
+            { label: "ZVW (assurance maladie)", rate: "6,51%", amount: 292.80 },
+            { label: "Whk (risque professionnel)", rate: "~1,22%", amount: 54.90 },
+            { label: "Vakantiegeld (8%)", rate: "8,00%", amount: 333.33 },
+            { label: "Pension employeur (~17%)", rate: "~17%", amount: 451.00 }
+          ],
+          employerTotal: 1537.93,
+          employee: [
+            { label: "Pension salarié (~8%)", rate: "~8%", amount: 225.40 },
+            { label: "Loonheffing T1 (35,82%)", rate: "35,82%", amount: 1147.50 },
+            { label: "Loonheffing T2 (49,50%)", rate: "49,50%", amount: 365.25 },
+            { label: "Heffingskortingen (crédits)", rate: "", amount: -483.33 }
+          ],
+          employeeTotal: 1254.82,
+          netBeforeTax: 3941.60,
+          incomeTax: 1029.42,
+          netAfterTax: 2912.00,
+          totalCost: 5704.93,
+          multiplier: "1,37×"
+        },
         stats: [{"label": "AOW", "value": "1 581 €/mois", "detail": "Célibataire"}, {"label": "Cotis. pension pro", "value": "20-30%", "detail": "Du salaire pensionnable"}, {"label": "Vakantiegeld", "value": "8%", "detail": "Pécule vacances obligatoire"}, {"label": "SMIC", "value": "14,06 €/h", "detail": "→ 14,40 en juil. 2025"}],
         sources: ["https://www.svb.nl/nl/aow", "https://www.dnb.nl/"],
         benchmark: {
@@ -1620,6 +1825,35 @@ net_salarie : ~5 624 PLN (70,3% du brut)
 charges_employeur : ~1 758 PLN (22,0% du brut)
 cout_total_employeur : ~9 758 PLN
 taux_net_sur_cout_total : 57,6%`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Pologne — 8 000 PLN brut/mois",
+          gross: 8000,
+          currency: "PLN",
+          period: "mensuel",
+          employer: [
+            { label: "Retraite (emerytalne)", rate: "9,76%", amount: 780.80 },
+            { label: "Invalidité (rentowe)", rate: "6,50%", amount: 520.00 },
+            { label: "Accidents (wypadkowe)", rate: "1,67%", amount: 133.60 },
+            { label: "Fonds du travail", rate: "2,45%", amount: 196.00 },
+            { label: "FGŚP (garantie salaires)", rate: "0,10%", amount: 8.00 },
+            { label: "PPK employeur", rate: "1,50%", amount: 120.00 }
+          ],
+          employerTotal: 1758.40,
+          employee: [
+            { label: "Retraite (emerytalne)", rate: "9,76%", amount: 780.80 },
+            { label: "Invalidité (rentowe)", rate: "1,50%", amount: 120.00 },
+            { label: "Maladie (chorobowe)", rate: "2,45%", amount: 196.00 },
+            { label: "Santé (zdrowotna, 9%)", rate: "9%", amount: 621.29 },
+            { label: "PIT (impôt 12%)", rate: "12%", amount: 498.38 },
+            { label: "PPK salarié", rate: "2,00%", amount: 160.00 }
+          ],
+          employeeTotal: 2376.47,
+          netBeforeTax: 5902.91,
+          incomeTax: 498.38,
+          netAfterTax: 5624.00,
+          totalCost: 9758.40,
+          multiplier: "1,22×"
+        },
         stats: [{"label": "Âge légal", "value": "60F / 65H", "detail": "Retour 2017"}, {"label": "Cotis. retraite", "value": "19,52%", "detail": "9,76% + 9,76%"}, {"label": "PPK obligatoire", "value": "1,5% empl.", "detail": "+ 2% salarié"}, {"label": "SMIC", "value": "4 666 PLN", "detail": "~1 080 € brut/mois"}],
         sources: ["https://www.zus.pl/", "https://www.mojeppk.pl/"],
         benchmark: {
@@ -1783,6 +2017,31 @@ charges_employeur : ~4 573 DKK (13,1% du brut) — Faibles charges patronales
 cout_total_employeur : ~39 573 DKK
 taux_net_sur_cout_total : 52,7%
 note : Le faible ratio net/brut est compensé par des services publics gratuits (santé, éducation) et des allocations généreuses`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Danemark — 35 000 DKK brut/mois",
+          gross: 35000,
+          currency: "DKK",
+          period: "mensuel",
+          employer: [
+            { label: "ATP (part employeur)", rate: "fixe", amount: 198.00 },
+            { label: "Pension professionnelle (11%)", rate: "11%", amount: 3850.00 },
+            { label: "Feriepenge (1% mensualisé)", rate: "1%", amount: 350.00 },
+            { label: "AUB/DA (formation)", rate: "~0,5%", amount: 175.00 }
+          ],
+          employerTotal: 4573.00,
+          employee: [
+            { label: "AM-bidrag (marché du travail)", rate: "8%", amount: 2800.00 },
+            { label: "ATP (part salarié)", rate: "fixe", amount: 99.00 },
+            { label: "Pension professionnelle (2%)", rate: "2%", amount: 700.00 },
+            { label: "A-skat (impôt sur le revenu)", rate: "~37%", amount: 10547.00 }
+          ],
+          employeeTotal: 14146.00,
+          netBeforeTax: 31401.00,
+          incomeTax: 10547.00,
+          netAfterTax: 20854.00,
+          totalCost: 39573.00,
+          multiplier: "1,13×"
+        },
         stats: [{"label": "Folkepension", "value": "~7 500 DKK", "detail": "Base + supplément"}, {"label": "ATP obligatoire", "value": "284 DKK/mois", "detail": "2/3 empl. + 1/3 sal."}, {"label": "Pension pro", "value": "12-17%", "detail": "Convention collective"}, {"label": "SMIC", "value": "Aucun", "detail": "Négociation collective"}],
         sources: ["https://www.borger.dk/pension-og-efterloen", "https://www.atp.dk/"],
         benchmark: {
@@ -1999,6 +2258,31 @@ Provisions mensuelles :
 (Pour un brut affiche de 48 000 euros — soit un surcout de 38,0%)
 
 Note importante : ce calcul n'inclut pas les cheques-repas, les eco-cheques, l'assurance hospitalisation, les frais de transport (tous tres courants en Belgique et souvent imposes par la commission paritaire). Le cout reel total peut facilement atteindre 70 000+ euros/an.`,
+        exampleStructured: {
+          title: "Employé TiMOTION Belgique — 4 000 € brut/mois",
+          gross: 4000,
+          currency: "€",
+          period: "mensuel",
+          employer: [
+            { label: "ONSS patronal (~25%)", rate: "25,00%", amount: 1000.00 },
+            { label: "Double pécule vacances (92%/12)", rate: "7,67%", amount: 306.67 },
+            { label: "ONSS sur double pécule", rate: "25%", amount: 76.67 },
+            { label: "Assurance groupe patronale", rate: "~3%", amount: 120.00 },
+            { label: "Taxe + ONSS sur assurance groupe", rate: "", amount: 15.91 }
+          ],
+          employerTotal: 1519.25,
+          employee: [
+            { label: "ONSS salarié", rate: "13,07%", amount: 522.80 },
+            { label: "Précompte professionnel", rate: "~30%", amount: 1039.00 },
+            { label: "Cotisation spéciale sécu", rate: "", amount: 60.00 }
+          ],
+          employeeTotal: 1621.80,
+          netBeforeTax: 3477.20,
+          incomeTax: 1039.00,
+          netAfterTax: 2378.20,
+          totalCost: 5519.25,
+          multiplier: "1,38×"
+        },
         stats: [{"label": "Âge légal", "value": "65 → 67 ans", "detail": "67 ans en 2030"}, {"label": "Cotis. patronales", "value": "~25%", "detail": "Après réductions"}, {"label": "SMIC (RMMMG)", "value": "2 070 €", "detail": "Brut mensuel"}, {"label": "Pension max", "value": "~2 500 €", "detail": "Carrière complète 45 ans"}],
         sources: ["https://www.sfpd.fgov.be/", "https://www.fsma.be/"],
         benchmark: {
@@ -2173,6 +2457,31 @@ net_salarie : ~35 600 CZK (79,1% du brut)
 charges_employeur : ~15 210 CZK (33,8% du brut)
 cout_total_employeur : ~60 210 CZK
 taux_net_sur_cout_total : 59,1%`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Tchéquie — 45 000 CZK brut/mois",
+          gross: 45000,
+          currency: "CZK",
+          period: "mensuel",
+          employer: [
+            { label: "Retraite (důchodové)", rate: "21,50%", amount: 9675.00 },
+            { label: "Maladie (nemocenské)", rate: "2,10%", amount: 945.00 },
+            { label: "Emploi (zaměstnanosti)", rate: "1,20%", amount: 540.00 },
+            { label: "Assurance maladie (zdravotní)", rate: "9,00%", amount: 4050.00 }
+          ],
+          employerTotal: 15210.00,
+          employee: [
+            { label: "Retraite salarié", rate: "6,50%", amount: 2925.00 },
+            { label: "Maladie salarié", rate: "0,60%", amount: 270.00 },
+            { label: "Assurance maladie", rate: "4,50%", amount: 2025.00 },
+            { label: "Impôt sur le revenu (15%)", rate: "15%", amount: 4180.00 }
+          ],
+          employeeTotal: 9400.00,
+          netBeforeTax: 39780.00,
+          incomeTax: 4180.00,
+          netAfterTax: 35600.00,
+          totalCost: 60210.00,
+          multiplier: "1,34×"
+        },
         stats: [{"label": "Âge légal", "value": "65 ans", "detail": "Progressif"}, {"label": "Cotis. sociales empl.", "value": "24,8%", "detail": "Retraite: 21,5%"}, {"label": "Pilier 3", "value": "Penzijní spoření", "detail": "Épargne complémentaire"}, {"label": "SMIC", "value": "20 800 CZK", "detail": "~850 €/mois"}],
         sources: ["https://www.cssz.cz/", "https://www.mfcr.cz/"],
         benchmark: {
@@ -2354,6 +2663,28 @@ charges_employeur_pme : ~17 049 RUB (21,3% du brut) — si régime PME applicabl
 cout_total_standard : ~104 160 RUB
 cout_total_pme : ~97 049 RUB
 alerte_sanctions : VÉRIFIER la conformité aux sanctions UE avant toute opération en Russie`,
+        exampleStructured: {
+          title: "Salarié TiMOTION Russie — 80 000 RUB brut/mois",
+          gross: 80000,
+          currency: "RUB",
+          period: "mensuel",
+          employer: [
+            { label: "Pension (PFR)", rate: "22%", amount: 17600.00 },
+            { label: "Assurance maladie (FOMS)", rate: "5,1%", amount: 4080.00 },
+            { label: "Assurance sociale (FSS)", rate: "2,9%", amount: 2320.00 },
+            { label: "Accidents du travail", rate: "0,2%", amount: 160.00 }
+          ],
+          employerTotal: 24160.00,
+          employee: [
+            { label: "NDFL (impôt sur le revenu)", rate: "13%", amount: 10400.00 }
+          ],
+          employeeTotal: 10400.00,
+          netBeforeTax: 80000.00,
+          incomeTax: 10400.00,
+          netAfterTax: 69600.00,
+          totalCost: 104160.00,
+          multiplier: "1,30×"
+        },
         stats: [{"label": "Âge légal", "value": "60F / 65H", "detail": "Réforme 2019"}, {"label": "Cotis. patronales", "value": "30%", "detail": "PFR + FSS + FOMS"}, {"label": "SMIC (MROT)", "value": "22 440 RUB", "detail": "~220 €/mois"}, {"label": "Pension moyenne", "value": "~23 400 RUB", "detail": "~230 €/mois"}],
         sources: ["https://pfr.gov.ru/", "https://mintrud.gov.ru/"],
         benchmark: {
@@ -2985,11 +3316,123 @@ function renderSalaire() {
     </div>`;
   }
 
-  // Accordion: Detailed example
-  if (s.exampleDetailed) {
+  // Accordion: Detailed example (structured payslip or fallback)
+  if (s.exampleStructured) {
+    const e = s.exampleStructured;
+    const maxAmount = e.totalCost;
+    const pctGross = ((e.gross / maxAmount) * 100).toFixed(0);
+    const pctNet = ((e.netAfterTax / maxAmount) * 100).toFixed(0);
+    const fmtAmt = (v) => v.toLocaleString('fr-FR', {minimumFractionDigits:2, maximumFractionDigits:2});
+    const fmtVal = (v) => v.toLocaleString('fr-FR');
+
+    html += `<div class="accordion">
+      <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+        <span>Fiche de paie détaillée</span>
+        <span class="acc-badge acc-badge-green">Simulation complète</span>
+        <span class="acc-icon">▼</span>
+      </button>
+      <div class="accordion-body open"><div class="accordion-inner">
+        <div class="payslip">
+          <div class="payslip-header">
+            <h4>${e.title}</h4>
+            <p>Simulation ${e.period} — données 2025</p>
+          </div>
+
+          <div class="payslip-summary">
+            <div class="payslip-summary-item">
+              <div class="ps-label">Coût total employeur</div>
+              <div class="ps-value" style="color:var(--primary-light);">${fmtVal(e.totalCost)} ${e.currency}</div>
+              <div class="ps-note">${e.multiplier} du brut</div>
+            </div>
+            <div class="payslip-summary-item">
+              <div class="ps-label">Salaire brut</div>
+              <div class="ps-value">${fmtVal(e.gross)} ${e.currency}</div>
+              <div class="ps-note">${e.period}</div>
+            </div>
+            <div class="payslip-summary-item">
+              <div class="ps-label">Net avant impôt</div>
+              <div class="ps-value">${fmtVal(e.netBeforeTax)} ${e.currency}</div>
+            </div>
+            <div class="payslip-summary-item">
+              <div class="ps-label">Net après impôt</div>
+              <div class="ps-value" style="color:#22c55e;">${fmtVal(e.netAfterTax)} ${e.currency}</div>
+            </div>
+          </div>
+
+          <div class="payslip-waterfall">
+            <div class="waterfall-bar">
+              <div class="wb-label">Coût total</div>
+              <div class="wb-track"><div class="wb-fill" style="width:100%;background:var(--secondary);">${fmtVal(e.totalCost)} ${e.currency}</div></div>
+            </div>
+            <div class="waterfall-bar">
+              <div class="wb-label">Brut</div>
+              <div class="wb-track"><div class="wb-fill" style="width:${pctGross}%;background:var(--primary);">${fmtVal(e.gross)} ${e.currency}</div></div>
+            </div>
+            <div class="waterfall-bar">
+              <div class="wb-label">Net perçu</div>
+              <div class="wb-track"><div class="wb-fill" style="width:${pctNet}%;background:#22c55e;">${fmtVal(e.netAfterTax)} ${e.currency}</div></div>
+            </div>
+          </div>
+
+          <div class="payslip-section" style="background:#fef8f3;">
+            <div class="payslip-section-title">
+              <div class="icon" style="background:var(--gradient);color:white;">E</div>
+              <h5>Charges employeur <span style="font-weight:400;color:var(--text-secondary);font-size:0.8rem;">(payées EN PLUS du brut)</span></h5>
+            </div>
+            ${e.employer.map(r => `<div class="payslip-row">
+              <span class="pr-label">${r.label}</span>
+              <span class="pr-rate">${r.rate}</span>
+              <span class="pr-amount pr-neg">+${fmtAmt(r.amount)} ${e.currency}</span>
+            </div>`).join('')}
+            <div class="payslip-row pr-total">
+              <span class="pr-label">Total charges employeur</span>
+              <span class="pr-rate"></span>
+              <span class="pr-amount" style="color:var(--primary);">${fmtAmt(e.employerTotal)} ${e.currency}</span>
+            </div>
+          </div>
+
+          <div class="payslip-section" style="background:#f8f9fb;">
+            <div class="payslip-section-title">
+              <div class="icon" style="background:var(--secondary);color:white;">S</div>
+              <h5>Retenues salarié <span style="font-weight:400;color:var(--text-secondary);font-size:0.8rem;">(déduites du brut)</span></h5>
+            </div>
+            ${e.employee.map(r => `<div class="payslip-row">
+              <span class="pr-label">${r.label}</span>
+              <span class="pr-rate">${r.rate}</span>
+              <span class="pr-amount pr-neg">${r.amount < 0 ? '+' : '−'}${fmtAmt(Math.abs(r.amount))} ${e.currency}</span>
+            </div>`).join('')}
+            <div class="payslip-row pr-total">
+              <span class="pr-label">Total retenues</span>
+              <span class="pr-rate"></span>
+              <span class="pr-amount pr-neg">−${fmtAmt(e.employeeTotal)} ${e.currency}</span>
+            </div>
+          </div>
+
+          ${e.incomeTax ? `<div class="payslip-section">
+            <div class="payslip-row">
+              <span class="pr-label"><strong>Net avant impôt sur le revenu</strong></span>
+              <span class="pr-rate"></span>
+              <span class="pr-amount">${fmtAmt(e.netBeforeTax)} ${e.currency}</span>
+            </div>
+            <div class="payslip-row">
+              <span class="pr-label">Impôt sur le revenu (prélèvement à la source)</span>
+              <span class="pr-rate"></span>
+              <span class="pr-amount pr-neg">−${fmtAmt(e.incomeTax)} ${e.currency}</span>
+            </div>
+            <div class="payslip-row pr-total">
+              <span class="pr-label">NET VERSÉ AU SALARIÉ</span>
+              <span class="pr-rate"></span>
+              <span class="pr-amount" style="color:#16a34a;font-size:1.05rem;">${fmtAmt(e.netAfterTax)} ${e.currency}</span>
+            </div>
+          </div>` : ''}
+        </div>
+      </div></div>
+    </div>`;
+  } else if (s.exampleDetailed) {
+    // Fallback to markdown
     html += `<div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>Exemple de fiche de paie détaillée</span>
+        <span>Fiche de paie détaillée</span>
         <span class="acc-badge acc-badge-green">Calcul complet</span>
         <span class="acc-icon">▼</span>
       </button>
