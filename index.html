@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TiMOTION — Retraite & Grilles de salaire — 11 pays européens</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
 :root {
   --primary: #e8842c;
@@ -214,6 +215,14 @@ a:hover { text-decoration: underline; }
 .pillar-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
 .pillar-panel { display: none; padding: 20px 0; }
 .pillar-panel.active { display: block; }
+
+/* CHART CARDS */
+.chart-card { background: white; border-radius: var(--radius); padding: 28px; margin-bottom: 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+.chart-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--secondary); }
+.chart-card .chart-wrap { position: relative; width: 100%; max-height: 500px; }
+.chart-card .chart-wrap-sm { position: relative; width: 100%; max-width: 320px; margin: 0 auto; }
+.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 20px; }
+@media (max-width: 768px) { .chart-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -3183,6 +3192,14 @@ function renderRetraite() {
     html += '</div>';
   }
 
+  // Pillar breakdown doughnut chart
+  if (CHART_DATA.pillarBreakdown[currentCountry]) {
+    html += `<div class="chart-card" style="max-width:420px;margin-bottom:20px;">
+      <h3>Répartition typique de la pension — ${c.name}</h3>
+      <div class="chart-wrap-sm"><canvas id="chartPillar"></canvas></div>
+    </div>`;
+  }
+
   // Accordion: Comprendre le système
   html += `<div class="accordion">
     <button class="accordion-trigger open" onclick="toggleAccordion(this)">
@@ -3263,6 +3280,7 @@ function renderRetraite() {
   }
 
   document.getElementById('tab-retraite').innerHTML = html;
+  setTimeout(() => initRetraitePillarChart(currentCountry), 50);
 }
 
 // =============================================
@@ -3488,11 +3506,216 @@ function renderSalaire() {
 }
 
 // =============================================
+// CHART.JS DATA & HELPERS
+// =============================================
+const CHART_COLORS = {
+  primary: '#e8842c',
+  primaryLight: '#F5A623',
+  secondary: '#1e2d3d',
+  secondaryLight: '#3E5C8A',
+  accent1: '#2d8a5e',
+  accent2: '#5a6c7d',
+  accent3: '#c06a1e',
+  accent4: '#3d7ab5',
+  employee: '#F5A623',
+  employer: '#e8842c',
+};
+
+const COUNTRY_LABELS = ['FR','DE','UK','NL','IT','ES','PL','DK','BE','CZ','RU'];
+const COUNTRY_NAMES = ['France','Allemagne','Royaume-Uni','Pays-Bas','Italie','Espagne','Pologne','Danemark','Belgique','Tchéquie','Russie'];
+
+const CHART_DATA = {
+  costMultiplier: [1.44, 1.23, 1.16, 1.37, 1.45, 1.33, 1.22, 1.13, 1.38, 1.34, 1.30],
+  retirementAge: {
+    standard: [64, 67, 66, 67, 67, 66.67, 65, 67, 66, 64.2, 65],
+    women:    [64, 67, 66, 67, 67, 66.67, 60, 67, 66, 64.2, 60],
+  },
+  retirementContrib: {
+    employer: [15.27, 9.3, 18, 17, 23.81, 23.6, 17.76, 11, 8.86, 21.5, 22],
+    employee: [10.45, 9.3, 13, 8, 9.19, 4.7, 13.71, 2, 7.5, 6.5, 0],
+  },
+  pillarBreakdown: {
+    FR: [60, 30, 10], DE: [65, 25, 10], UK: [25, 55, 20], NL: [50, 40, 10],
+    IT: [70, 20, 10], ES: [80, 12, 8], PL: [70, 20, 10], DK: [20, 65, 15],
+    BE: [60, 30, 10], CZ: [75, 15, 10], RU: [85, 10, 5],
+  },
+  headcounts: { FR:70, DE:7, IT:8, ES:5, UK:3, NL:2, PL:2, DK:1, BE:1, CZ:1, RU:1 },
+};
+
+const chartInstances = {};
+function destroyChart(id) {
+  if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; }
+}
+
+function initComparatifCharts() {
+  // 1. Cost multiplier horizontal bar
+  destroyChart('chartCost');
+  const ctxCost = document.getElementById('chartCost');
+  if (ctxCost) {
+    chartInstances['chartCost'] = new Chart(ctxCost, {
+      type: 'bar',
+      data: {
+        labels: COUNTRY_NAMES,
+        datasets: [{
+          label: 'Multiplicateur coût total / brut',
+          data: CHART_DATA.costMultiplier,
+          backgroundColor: CHART_DATA.costMultiplier.map(v => v >= 1.40 ? '#e8842c' : v >= 1.30 ? '#F5A623' : '#3E5C8A'),
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ctx.parsed.x + 'x' } },
+        },
+        scales: {
+          x: { min: 1.0, max: 1.6, ticks: { callback: v => v + 'x' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+          y: { grid: { display: false } },
+        }
+      }
+    });
+  }
+
+  // 2. Retirement age grouped bar
+  destroyChart('chartRetAge');
+  const ctxAge = document.getElementById('chartRetAge');
+  if (ctxAge) {
+    chartInstances['chartRetAge'] = new Chart(ctxAge, {
+      type: 'bar',
+      data: {
+        labels: COUNTRY_NAMES,
+        datasets: [
+          { label: 'Hommes', data: CHART_DATA.retirementAge.standard, backgroundColor: '#1e2d3d', borderRadius: 4 },
+          { label: 'Femmes', data: CHART_DATA.retirementAge.women, backgroundColor: '#e8842c', borderRadius: 4 },
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rectRounded', padding: 16, font: { size: 12 } } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + ' ans' } },
+        },
+        scales: {
+          y: { min: 55, max: 70, ticks: { callback: v => v + ' ans' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+          x: { grid: { display: false }, ticks: { maxRotation: 45, minRotation: 30, font: { size: 11 } } },
+        }
+      }
+    });
+  }
+
+  // 3. Stacked retirement contributions
+  destroyChart('chartContrib');
+  const ctxContrib = document.getElementById('chartContrib');
+  if (ctxContrib) {
+    chartInstances['chartContrib'] = new Chart(ctxContrib, {
+      type: 'bar',
+      data: {
+        labels: COUNTRY_NAMES,
+        datasets: [
+          { label: 'Cotisation employeur', data: CHART_DATA.retirementContrib.employer, backgroundColor: '#e8842c', borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 4, bottomRight: 4 } },
+          { label: 'Cotisation salarié', data: CHART_DATA.retirementContrib.employee, backgroundColor: '#F5A623', borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0 } },
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rectRounded', padding: 16, font: { size: 12 } } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '%' } },
+        },
+        scales: {
+          x: { stacked: true, grid: { display: false }, ticks: { maxRotation: 45, minRotation: 30, font: { size: 11 } } },
+          y: { stacked: true, ticks: { callback: v => v + '%' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+        }
+      }
+    });
+  }
+}
+
+function initRetraitePillarChart(countryCode) {
+  destroyChart('chartPillar');
+  const ctx = document.getElementById('chartPillar');
+  if (!ctx) return;
+  const bd = CHART_DATA.pillarBreakdown[countryCode];
+  if (!bd) return;
+  chartInstances['chartPillar'] = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Pilier 1 (Base obligatoire)', 'Pilier 2 (Complémentaire)', 'Pilier 3 (Épargne individuelle)'],
+      datasets: [{
+        data: bd,
+        backgroundColor: ['#1e2d3d', '#e8842c', '#F5A623'],
+        borderWidth: 2,
+        borderColor: '#ffffff',
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      cutout: '55%',
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 }, usePointStyle: true, pointStyle: 'circle' } },
+        tooltip: { callbacks: { label: ctx => ctx.label + ': ~' + ctx.parsed + '%' } },
+      }
+    }
+  });
+}
+
+function initStrategieBudgetChart() {
+  destroyChart('chartBudget');
+  const ctx = document.getElementById('chartBudget');
+  if (!ctx) return;
+  const countries = ['FR','DE','IT','ES','UK','NL','PL','DK','BE','CZ','RU'];
+  const hc = countries.map(c => CHART_DATA.headcounts[c]);
+  const totalHC = hc.reduce((a,b) => a+b, 0);
+  const annualBudget = 130000;
+  const budgetPerCountry = hc.map(h => Math.round(annualBudget * h / totalHC));
+  const names = countries.map(c => DATA[c].flag + ' ' + DATA[c].name);
+  const colors = ['#e8842c','#1e2d3d','#F5A623','#3E5C8A','#c06a1e','#2d8a5e','#5a6c7d','#3d7ab5','#dc2626','#16a34a','#7c3aed'];
+  chartInstances['chartBudget'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: names,
+      datasets: [{
+        label: 'Budget primes annuel estimé (€)',
+        data: budgetPerCountry,
+        backgroundColor: colors,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(ctx.parsed.y) } },
+      },
+      scales: {
+        y: { ticks: { callback: v => (v/1000) + 'k €' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+        x: { grid: { display: false }, ticks: { maxRotation: 45, minRotation: 30, font: { size: 11 } } },
+      }
+    }
+  });
+}
+
+// =============================================
 // RENDER: Comparatif tab
 // =============================================
 function renderComparatif() {
   let html = '';
-  
+
+  // Charts section
+  html += '<div class="chart-card"><h3>Coût total employeur par pays (multiplicateur brut → coût)</h3><div class="chart-wrap" style="height:380px;"><canvas id="chartCost"></canvas></div></div>';
+
+  html += '<div class="chart-grid">';
+  html += '<div class="chart-card"><h3>Âge légal de départ à la retraite</h3><div class="chart-wrap" style="height:350px;"><canvas id="chartRetAge"></canvas></div></div>';
+  html += '<div class="chart-card"><h3>Cotisations retraite — Employeur vs Salarié</h3><div class="chart-wrap" style="height:350px;"><canvas id="chartContrib"></canvas></div></div>';
+  html += '</div>';
+
   // Pension comparison
   html += '<div class="card"><h2>Comparatif retraite — 11 pays</h2>';
   html += '<div style="overflow-x:auto;"><table class="comp-table"><thead><tr>';
@@ -3541,6 +3764,7 @@ function renderComparatif() {
   html += '</div>';
   
   document.getElementById('tab-comparatif').innerHTML = html;
+  setTimeout(initComparatifCharts, 50);
 }
 
 // =============================================
@@ -3809,6 +4033,13 @@ function renderStrategie() {
     <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:10px;">Pour référence : ces montants représentent environ <strong>1,5 à 2,5% de la masse salariale brute européenne totale</strong> de TiMOTION. C'est un investissement modéré qui place TiMOTION au niveau des standards du marché en matière de protection sociale groupe.</p>
   </div>`;
 
+  // Budget breakdown chart
+  html += `<div class="chart-card">
+    <h3>Répartition estimée du budget annuel de primes par pays</h3>
+    <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:12px;">Estimation basée sur un budget total de 130 000 €/an, réparti proportionnellement aux effectifs de chaque pays.</p>
+    <div class="chart-wrap" style="height:380px;"><canvas id="chartBudget"></canvas></div>
+  </div>`;
+
   // ========== 9. RÔLE D'EXILIANCE ==========
   html += `<div class="strategy-section" style="border:2px solid var(--primary);background:var(--gradient-subtle);">
     <h3 style="color:var(--primary-dark);">7. Le rôle d'Exiliance</h3>
@@ -3893,6 +4124,7 @@ function renderStrategie() {
   </div>`;
 
   document.getElementById('tab-strategie').innerHTML = html;
+  setTimeout(initStrategieBudgetChart, 50);
 }
 
 // =============================================
