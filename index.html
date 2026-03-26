@@ -423,7 +423,22 @@ Ratio coût total / net avant impôt : 4 775 / 2 766 = 1,73
 
 Note : le prélèvement à la source (PAS) de l'impôt sur le revenu est collecté par l'employeur mais c'est un impôt personnel du salarié, pas une charge sociale. Son taux dépend de la situation personnelle (célibataire, marié, enfants, etc.).`,
         stats: [{"label": "Âge légal", "value": "64 ans", "detail": "Réforme 2023"}, {"label": "Taux remplacement", "value": "~74%", "detail": "Brut, carrière complète"}, {"label": "Cotis. retraite totale", "value": "~28%", "detail": "Base + AGIRC-ARRCO"}, {"label": "SMIC 2025", "value": "1 802 €", "detail": "Brut mensuel"}],
-        sources: ["https://www.service-public.fr/particuliers/vosdroits/N381", "https://www.agirc-arrco.fr/", "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047446370"]
+        sources: ["https://www.service-public.fr/particuliers/vosdroits/N381", "https://www.agirc-arrco.fr/", "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047446370"],
+        benchmark: {
+          convention: "CCN Métallurgie — IDCC 3248",
+          conventionDetail: "Convention unique depuis le 1er janvier 2024. Classification en 18 classes (A1 à I18), 9 groupes. Grille SMH de 21 700 € à 68 000 €. Négociations 2025 échouées (revalorisation de 0,9% refusée), grille 2024 applicable.",
+          roles: [
+            { role: "Opérateur de production", junior: "22 000 - 25 000 €", confirmed: "25 000 - 30 000 €", senior: "30 000 - 35 000 €" },
+            { role: "Ingénieur qualité", junior: "35 000 - 40 000 €", confirmed: "40 000 - 50 000 €", senior: "50 000 - 60 000 €" },
+            { role: "Ingénieur commercial", junior: "35 000 - 42 000 €", confirmed: "42 000 - 55 000 €", senior: "55 000 - 70 000 €+" },
+            { role: "Ingénieur R&D / mécanique", junior: "35 000 - 42 000 €", confirmed: "42 000 - 55 000 €", senior: "55 000 - 65 000 €" },
+            { role: "Magasinier / logistique", junior: "22 000 - 25 000 €", confirmed: "25 000 - 30 000 €", senior: "30 000 - 35 000 €" },
+            { role: "Administratif (compta, RH)", junior: "24 000 - 30 000 €", confirmed: "30 000 - 38 000 €", senior: "38 000 - 45 000 €" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "70 000 - 90 000 €", senior: "90 000 - 130 000 €" }
+          ],
+          sectorAvg: "Salaire médian ingénieur : 64 000 € brut/an (enquête IESF 2025). Opérateur : 25 000 - 30 000 €. Prime IdF : +15 à 25%.",
+          notes: "Secteur en tension : forte demande d'ingénieurs automatisation. Périmètres complémentaires : intéressement + participation (+15 à 25% du net)."
+        }
       }
     },
     "DE": {
@@ -649,7 +664,22 @@ Net versé au salarié      | ≈ 2 573 €             | ≈ 2 416 €
 
 Constat : la France a des charges patronales beaucoup plus élevées mais un impôt sur le revenu plus faible. L'Allemagne a des charges patronales modérées mais un impôt sur le revenu nettement plus élevé pour les célibataires. Le coût total employeur est comparable, mais la répartition est très différente.`,
         stats: [{"label": "Âge légal", "value": "67 ans", "detail": "Depuis 2029 (né après 1963)"}, {"label": "Taux remplacement", "value": "~48%", "detail": "Brut, 45 ans de cotis."}, {"label": "Cotis. retraite", "value": "18,6%", "detail": "9,3% empl. + 9,3% sal."}, {"label": "Salaire minimum", "value": "12,82 €/h", "detail": "2025"}],
-        sources: ["https://www.deutsche-rentenversicherung.de/", "https://www.bundesfinanzministerium.de/"]
+        sources: ["https://www.deutsche-rentenversicherung.de/", "https://www.bundesfinanzministerium.de/"],
+        benchmark: {
+          convention: "IG Metall Tarifvertrag (Metall- und Elektroindustrie)",
+          conventionDetail: "Accord 2025-2026 : augmentation totale de +5,5% (+2% avril 2025, +3,1% avril 2026, +0,4% allocations). Classification en Entgeltgruppen EG1 à EG17. Négociation régionale (Bade-Wurtemberg, Bavière, NRW). Prime de performance collective ~10%.",
+          roles: [
+            { role: "Opérateur de production", junior: "29 000 - 33 000 €", confirmed: "33 000 - 38 000 €", senior: "38 000 - 44 000 €" },
+            { role: "Ingénieur qualité", junior: "45 000 - 55 000 €", confirmed: "55 000 - 65 000 €", senior: "65 000 - 75 000 €" },
+            { role: "Ingénieur commercial", junior: "50 000 - 60 000 €", confirmed: "60 000 - 75 000 €", senior: "75 000 - 95 000 €" },
+            { role: "Ingénieur R&D / mécanique", junior: "45 000 - 55 000 €", confirmed: "55 000 - 70 000 €", senior: "70 000 - 100 000 €" },
+            { role: "Magasinier / logistique", junior: "28 000 - 32 000 €", confirmed: "32 000 - 38 000 €", senior: "38 000 - 42 000 €" },
+            { role: "Administratif", junior: "30 000 - 36 000 €", confirmed: "36 000 - 45 000 €", senior: "45 000 - 55 000 €" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "80 000 - 110 000 €", senior: "110 000 - 160 000 €" }
+          ],
+          sectorAvg: "Salaire moyen tous secteurs : ~51 876 € brut/an. Ingénieurs : médiane à 64 000 €, jusqu'à 80 000 - 100 000 € à Munich/Stuttgart. Opérateurs IG Metall : 34 000 - 40 000 €.",
+          notes: "Munich, Stuttgart et Francfort : +15-20%. Secteur automatisation très bien payé. Bonus performance IG Metall ~10% + 13ème mois selon entreprises."
+        }
       }
     },
     "IT": {
@@ -831,7 +861,22 @@ Provision 13eme mois : 2 916,67 / 12 = 243,06 euros
 4 243,85 x 12 = 50 926,20 euros
 (Pour un brut affiche de 35 000 euros — soit un surcout de 45,5%)`,
         stats: [{"label": "Âge légal", "value": "67 ans", "detail": "Système contributif"}, {"label": "Taux cotis. IVS", "value": "33%", "detail": "23,81% empl. + 9,19% sal."}, {"label": "SMIC", "value": "Aucun", "detail": "Fixé par CCNL"}, {"label": "TFR", "value": "6,91%", "detail": "Indemnité fin de contrat"}],
-        sources: ["https://www.inps.it/", "https://www.covip.it/"]
+        sources: ["https://www.inps.it/", "https://www.covip.it/"],
+        benchmark: {
+          convention: "CCNL Metalmeccanici (Federmeccanica-Assistal)",
+          conventionDetail: "Renouvellement signé le 22 novembre 2025 (approuvé à 93,13%). Couvre 1,5M+ travailleurs. Augmentation moyenne de +205 €/mois sur 4 ans au niveau C3. Classification en 9 niveaux (D1 à A1). 13ème mois + avantages flexibles 250 €/an + MetaSalute.",
+          roles: [
+            { role: "Opérateur de production", junior: "20 000 - 24 000 €", confirmed: "24 000 - 28 000 €", senior: "28 000 - 33 000 €" },
+            { role: "Ingénieur qualité", junior: "28 000 - 35 000 €", confirmed: "35 000 - 42 000 €", senior: "42 000 - 52 000 €" },
+            { role: "Ingénieur commercial", junior: "30 000 - 38 000 €", confirmed: "38 000 - 48 000 €", senior: "48 000 - 60 000 €" },
+            { role: "Ingénieur R&D / mécanique", junior: "28 000 - 35 000 €", confirmed: "35 000 - 45 000 €", senior: "45 000 - 55 000 €" },
+            { role: "Magasinier / logistique", junior: "19 000 - 23 000 €", confirmed: "23 000 - 27 000 €", senior: "27 000 - 32 000 €" },
+            { role: "Administratif", junior: "22 000 - 28 000 €", confirmed: "28 000 - 34 000 €", senior: "34 000 - 40 000 €" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "60 000 - 80 000 €", senior: "80 000 - 120 000 €" }
+          ],
+          sectorAvg: "Operaio moyen : ~22 200 € brut/an. Coût employeur = brut + 40-45%. Nord (Lombardie, Vénétie, Émilie-Romagne) : +10-15% vs Sud.",
+          notes: "13ème mois (Tredicesima) obligatoire. TFR provisionné (6,91%). Avantages flexibles et MetaSalute (complémentaire santé)."
+        }
       }
     },
     "ES": {
@@ -1015,7 +1060,22 @@ Cout sur 14 mensualites : 3 314,25 x 14 = 46 399,50 euros
 
 Surcout par rapport au brut affiche : (46 399,50 - 35 000) / 35 000 = 32,6%`,
         stats: [{"label": "Âge légal", "value": "65-67 ans", "detail": "Selon durée cotisation"}, {"label": "Taux cotis.", "value": "28,3%", "detail": "23,6% empl. + 4,7% sal."}, {"label": "SMI 2025", "value": "1 184 €", "detail": "14 paies/an"}, {"label": "Pension max", "value": "3 267 €/mois", "detail": "Plafond 2025"}],
-        sources: ["https://www.seg-social.es/", "https://www.boe.es/"]
+        sources: ["https://www.seg-social.es/", "https://www.boe.es/"],
+        benchmark: {
+          convention: "Convenio Colectivo del Metal (négocié par province)",
+          conventionDetail: "Pas de convention nationale unique : chaque province négocie son propre convenio. Madrid 2025 : +3% puis +2% (2026). Valencia : +3%. Sevilla : +3% (2025/2026). Classification en 5 groupes professionnels avec sous-niveaux.",
+          roles: [
+            { role: "Opérateur de production", junior: "18 000 - 22 000 €", confirmed: "22 000 - 26 000 €", senior: "26 000 - 32 000 €" },
+            { role: "Ingénieur qualité", junior: "26 000 - 32 000 €", confirmed: "32 000 - 40 000 €", senior: "40 000 - 50 000 €" },
+            { role: "Ingénieur commercial", junior: "29 000 - 38 000 €", confirmed: "38 000 - 50 000 €", senior: "50 000 - 65 000 €" },
+            { role: "Ingénieur R&D / mécanique", junior: "28 000 - 35 000 €", confirmed: "35 000 - 42 000 €", senior: "42 000 - 52 000 €" },
+            { role: "Magasinier / logistique", junior: "17 000 - 21 000 €", confirmed: "21 000 - 25 000 €", senior: "25 000 - 30 000 €" },
+            { role: "Administratif", junior: "18 000 - 24 000 €", confirmed: "24 000 - 30 000 €", senior: "30 000 - 36 000 €" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "55 000 - 75 000 €", senior: "75 000 - 110 000 €" }
+          ],
+          sectorAvg: "Ingeniero de Calidad moyen : 32 000 €/an. Ingeniero Comercial : 41 500 €/an. Supplément productivité : 1,5% (Madrid). 14 paies/an obligatoires.",
+          notes: "14 paies/an (12 mois + 2 payes extra été/Noël). Différences régionales importantes entre Madrid, Catalogne et autres provinces."
+        }
       }
     },
     "UK": {
@@ -1186,7 +1246,22 @@ Le salarié reçoit donc environ £31 239 nets sur £40 000 bruts, soit un taux 
 
 ---`,
         stats: [{"label": "State Pension", "value": "£230/sem", "detail": "Forfaitaire, 35 ans NI"}, {"label": "Employer NI", "value": "15%", "detail": "Au-delà de £5 000 (2025)"}, {"label": "Auto-enrolment", "value": "3% empl.", "detail": "+ 5% salarié"}, {"label": "NLW", "value": "£12,21/h", "detail": "21 ans et plus"}],
-        sources: ["https://www.gov.uk/state-pension", "https://www.thepensionsregulator.gov.uk/"]
+        sources: ["https://www.gov.uk/state-pension", "https://www.thepensionsregulator.gov.uk/"],
+        benchmark: {
+          convention: "Pas de convention collective sectorielle obligatoire",
+          conventionDetail: "Le Royaume-Uni n'a pas de système de CC sectorielles contraignantes. Conditions négociées par entreprise ou via syndicats locaux (Unite, GMB). Référence sectorielle : Make UK (ex-EEF). National Living Wage : £12,21/h (21 ans+) depuis avril 2025.",
+          roles: [
+            { role: "Opérateur de production", junior: "£22 000 - £26 000", confirmed: "£26 000 - £30 000", senior: "£30 000 - £35 000" },
+            { role: "Ingénieur qualité", junior: "£28 000 - £36 000", confirmed: "£36 000 - £50 000", senior: "£48 000 - £70 000" },
+            { role: "Ingénieur commercial", junior: "£30 000 - £40 000", confirmed: "£40 000 - £55 000", senior: "£55 000 - £80 000+" },
+            { role: "Ingénieur R&D / mécanique", junior: "£30 000 - £40 000", confirmed: "£40 000 - £55 000", senior: "£55 000 - £70 000" },
+            { role: "Magasinier / logistique", junior: "£22 000 - £26 000", confirmed: "£26 000 - £30 000", senior: "£30 000 - £35 000" },
+            { role: "Administratif", junior: "£22 000 - £28 000", confirmed: "£28 000 - £35 000", senior: "£35 000 - £42 000" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "£65 000 - £90 000", senior: "£90 000 - £130 000" }
+          ],
+          sectorAvg: "Augmentations de 5-7% en glissement annuel pour postes d'ingénierie en 2025. Plus fortes hausses en automatisation, PLC, APQP/PPAP.",
+          notes: "43% des employés déclarent travailler plus que leurs heures payées. Salaires en GBP — conversion indicative : 1 GBP ≈ 1,17 EUR."
+        }
       }
     },
     "NL": {
@@ -1379,7 +1454,22 @@ Voilà le contenu complet pour les deux pays. Quelques points saillants :
 
 Les montants sont tous basés sur les données 2025 que vous avez fournies. Les calculs côté salarié sont des approximations car les crédits d'impôt (heffingskortingen aux NL, personal allowance au UK) et certains mécanismes d'arrondi rendent le calcul exact dépendant de la situation individuelle.`,
         stats: [{"label": "AOW", "value": "1 581 €/mois", "detail": "Célibataire"}, {"label": "Cotis. pension pro", "value": "20-30%", "detail": "Du salaire pensionnable"}, {"label": "Vakantiegeld", "value": "8%", "detail": "Pécule vacances obligatoire"}, {"label": "SMIC", "value": "14,06 €/h", "detail": "→ 14,40 en juil. 2025"}],
-        sources: ["https://www.svb.nl/nl/aow", "https://www.dnb.nl/"]
+        sources: ["https://www.svb.nl/nl/aow", "https://www.dnb.nl/"],
+        benchmark: {
+          convention: "CAO Metalektro (Metal & Electrical Engineering)",
+          conventionDetail: "Accord FME-CWM / FNV, CNV, De Unie. Grille salariale par échelle et échelon, évolution annuelle automatique. Augmentation mars 2025 : +100 €/mois (~3%) ; octobre 2025 : +3%. Plafond d'application 2026 : 131 256 € brut/an. Revendication syndicale 2026 : +7,5%.",
+          roles: [
+            { role: "Opérateur de production", junior: "28 000 - 33 000 €", confirmed: "33 000 - 38 000 €", senior: "38 000 - 44 000 €" },
+            { role: "Ingénieur qualité", junior: "42 000 - 50 000 €", confirmed: "50 000 - 62 000 €", senior: "62 000 - 75 000 €" },
+            { role: "Ingénieur commercial", junior: "45 000 - 55 000 €", confirmed: "55 000 - 70 000 €", senior: "70 000 - 90 000 €" },
+            { role: "Ingénieur R&D / mécanique", junior: "45 000 - 55 000 €", confirmed: "55 000 - 70 000 €", senior: "70 000 - 85 000 €" },
+            { role: "Magasinier / logistique", junior: "26 000 - 30 000 €", confirmed: "30 000 - 36 000 €", senior: "36 000 - 42 000 €" },
+            { role: "Administratif", junior: "28 000 - 34 000 €", confirmed: "34 000 - 42 000 €", senior: "42 000 - 50 000 €" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "80 000 - 110 000 €", senior: "110 000 - 150 000 €" }
+          ],
+          sectorAvg: "SMIC : 14,06 €/h (2025). Ingénieur manufacturing moyen : ~70 648 €/an (Amsterdam : 83 000 €). Secteur semi-conducteurs/high-tech tire les salaires vers le haut (effet ASML).",
+          notes: "Amsterdam +15-20% vs moyenne nationale. Forte demande en Lean Manufacturing, Six Sigma, automatisation. 8% vacances minimum + 13ème mois courant."
+        }
       }
     },
     "PL": {
@@ -1531,7 +1621,22 @@ charges_employeur : ~1 758 PLN (22,0% du brut)
 cout_total_employeur : ~9 758 PLN
 taux_net_sur_cout_total : 57,6%`,
         stats: [{"label": "Âge légal", "value": "60F / 65H", "detail": "Retour 2017"}, {"label": "Cotis. retraite", "value": "19,52%", "detail": "9,76% + 9,76%"}, {"label": "PPK obligatoire", "value": "1,5% empl.", "detail": "+ 2% salarié"}, {"label": "SMIC", "value": "4 666 PLN", "detail": "~1 080 € brut/mois"}],
-        sources: ["https://www.zus.pl/", "https://www.mojeppk.pl/"]
+        sources: ["https://www.zus.pl/", "https://www.mojeppk.pl/"],
+        benchmark: {
+          convention: "Pas de convention collective sectorielle contraignante",
+          conventionDetail: "La Pologne n'a pas de système de CC sectorielles généralisé. Conditions négociées au niveau entreprise ou via le Code du travail. Salaire minimum 2025 : 4 666 PLN brut/mois (~1 085 €). Taux horaire minimum : 30,50 PLN/h.",
+          roles: [
+            { role: "Opérateur de production", junior: "5 000 - 6 500 PLN/mois", confirmed: "6 500 - 8 500 PLN/mois", senior: "8 500 - 10 000 PLN/mois" },
+            { role: "Ingénieur qualité", junior: "7 000 - 9 000 PLN/mois", confirmed: "9 000 - 12 000 PLN/mois", senior: "12 000 - 16 000 PLN/mois" },
+            { role: "Ingénieur commercial", junior: "8 000 - 10 000 PLN/mois", confirmed: "10 000 - 14 000 PLN/mois", senior: "14 000 - 20 000 PLN/mois" },
+            { role: "Ingénieur R&D / mécanique", junior: "7 000 - 10 000 PLN/mois", confirmed: "10 000 - 13 000 PLN/mois", senior: "13 000 - 18 000 PLN/mois" },
+            { role: "Magasinier / logistique", junior: "4 700 - 5 500 PLN/mois", confirmed: "5 500 - 7 000 PLN/mois", senior: "7 000 - 8 500 PLN/mois" },
+            { role: "Administratif", junior: "5 000 - 6 500 PLN/mois", confirmed: "6 500 - 8 500 PLN/mois", senior: "8 500 - 11 000 PLN/mois" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "15 000 - 22 000 PLN/mois", senior: "22 000 - 40 000 PLN/mois" }
+          ],
+          sectorAvg: "Salaire moyen manufacturing : 8 507 PLN/mois (janv. 2025). Ingénieur production médian : 9 750 PLN/mois. Augmentations secteur automobile : +8% en glissement annuel. 1 EUR ≈ 4,3 PLN.",
+          notes: "Écarts régionaux importants : Mazovie (Varsovie) et Silésie les mieux payées. Secteur automobile : +10-20%. Pénurie de techniciens en automatisation et robotique. Forte transformation Industrie 4.0."
+        }
       }
     },
     "DK": {
@@ -1679,7 +1784,22 @@ cout_total_employeur : ~39 573 DKK
 taux_net_sur_cout_total : 52,7%
 note : Le faible ratio net/brut est compensé par des services publics gratuits (santé, éducation) et des allocations généreuses`,
         stats: [{"label": "Folkepension", "value": "~7 500 DKK", "detail": "Base + supplément"}, {"label": "ATP obligatoire", "value": "284 DKK/mois", "detail": "2/3 empl. + 1/3 sal."}, {"label": "Pension pro", "value": "12-17%", "detail": "Convention collective"}, {"label": "SMIC", "value": "Aucun", "detail": "Négociation collective"}],
-        sources: ["https://www.borger.dk/pension-og-efterloen", "https://www.atp.dk/"]
+        sources: ["https://www.borger.dk/pension-og-efterloen", "https://www.atp.dk/"],
+        benchmark: {
+          convention: "Industriens Overenskomst (Accord de l'Industrie) 2025-2028",
+          conventionDetail: "Accord Dansk Industri (DI) / CO-industri. Plus grande CC du secteur privé danois. Système de mindstebetalingsoverenskomst avec négociation locale. Cotisation retraite employeur : 11%. Allocation vacances : 6,5%. Régime fritvalg : 9% (10% en 2026, 11% en 2027). Pas de SMIC légal.",
+          roles: [
+            { role: "Opérateur de production", junior: "28 000 - 32 000 DKK/mois", confirmed: "32 000 - 37 000 DKK/mois", senior: "37 000 - 42 000 DKK/mois" },
+            { role: "Ingénieur qualité", junior: "40 000 - 48 000 DKK/mois", confirmed: "48 000 - 58 000 DKK/mois", senior: "58 000 - 68 000 DKK/mois" },
+            { role: "Ingénieur commercial", junior: "42 000 - 52 000 DKK/mois", confirmed: "52 000 - 62 000 DKK/mois", senior: "62 000 - 75 000 DKK/mois" },
+            { role: "Ingénieur R&D / mécanique", junior: "45 000 - 52 000 DKK/mois", confirmed: "52 000 - 62 000 DKK/mois", senior: "62 000 - 72 000 DKK/mois" },
+            { role: "Magasinier / logistique", junior: "26 000 - 30 000 DKK/mois", confirmed: "30 000 - 35 000 DKK/mois", senior: "35 000 - 40 000 DKK/mois" },
+            { role: "Administratif", junior: "30 000 - 36 000 DKK/mois", confirmed: "36 000 - 44 000 DKK/mois", senior: "44 000 - 52 000 DKK/mois" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "65 000 - 85 000 DKK/mois", senior: "85 000 - 120 000 DKK/mois" }
+          ],
+          sectorAvg: "Salaire moyen ingénieur : 68 500 DKK/mois + bonus moyen 104 000 DKK/an. Minimum recommandé MSc débutant : 47 400 DKK/mois. Salaire moyen national : ~48 572 DKK/mois. 1 EUR ≈ 7,46 DKK.",
+          notes: "Salaires parmi les plus élevés d'Europe. Flexicurité : facilité de licenciement mais filet social fort. Avantages courants : téléphone, PC, assurance santé, déjeuner, fitness. Coût employeur total : 130-140% du brut."
+        }
       }
     },
     "BE": {
@@ -1880,7 +2000,22 @@ Provisions mensuelles :
 
 Note importante : ce calcul n'inclut pas les cheques-repas, les eco-cheques, l'assurance hospitalisation, les frais de transport (tous tres courants en Belgique et souvent imposes par la commission paritaire). Le cout reel total peut facilement atteindre 70 000+ euros/an.`,
         stats: [{"label": "Âge légal", "value": "65 → 67 ans", "detail": "67 ans en 2030"}, {"label": "Cotis. patronales", "value": "~25%", "detail": "Après réductions"}, {"label": "SMIC (RMMMG)", "value": "2 070 €", "detail": "Brut mensuel"}, {"label": "Pension max", "value": "~2 500 €", "detail": "Carrière complète 45 ans"}],
-        sources: ["https://www.sfpd.fgov.be/", "https://www.fsma.be/"]
+        sources: ["https://www.sfpd.fgov.be/", "https://www.fsma.be/"],
+        benchmark: {
+          convention: "CP 111 (ouvriers) / CP 209 (employés) — Constructions métallique, mécanique et électrique",
+          conventionDetail: "CP 111 : ouvriers du secteur métal. CP 209 : employés (cols blancs). Salaire minimum horaire CP 111 : 15,96 €/h (juillet 2025, 38h). Indexation juillet 2025 : +2,72%. Norme salariale 2025-2026 : 0% au-delà de l'indexation. Négociations sectorielles 2025/2026 échouées.",
+          roles: [
+            { role: "Opérateur de production", junior: "28 000 - 33 000 €", confirmed: "33 000 - 38 000 €", senior: "38 000 - 44 000 €" },
+            { role: "Ingénieur qualité", junior: "38 000 - 45 000 €", confirmed: "45 000 - 55 000 €", senior: "55 000 - 68 000 €" },
+            { role: "Ingénieur commercial", junior: "40 000 - 50 000 €", confirmed: "50 000 - 62 000 €", senior: "62 000 - 80 000 €" },
+            { role: "Ingénieur R&D / mécanique", junior: "40 000 - 48 000 €", confirmed: "48 000 - 60 000 €", senior: "60 000 - 75 000 €" },
+            { role: "Magasinier / logistique", junior: "26 000 - 31 000 €", confirmed: "31 000 - 36 000 €", senior: "36 000 - 42 000 €" },
+            { role: "Administratif", junior: "28 000 - 35 000 €", confirmed: "35 000 - 42 000 €", senior: "42 000 - 50 000 €" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "80 000 - 110 000 €", senior: "110 000 - 160 000 €" }
+          ],
+          sectorAvg: "Salaire moyen national : ~4 832 €/mois (parmi les plus élevés d'UE). Coût salarial employeur parmi les plus élevés d'Europe (cotisations patronales ~25-30%). Indexation automatique selon l'indice-santé.",
+          notes: "Système d'indexation automatique unique en Europe. Prime syndicale à partir de novembre 2025. Écarts salariaux Flandre/Wallonie/Bruxelles."
+        }
       }
     },
     "CZ": {
@@ -2039,7 +2174,22 @@ charges_employeur : ~15 210 CZK (33,8% du brut)
 cout_total_employeur : ~60 210 CZK
 taux_net_sur_cout_total : 59,1%`,
         stats: [{"label": "Âge légal", "value": "65 ans", "detail": "Progressif"}, {"label": "Cotis. sociales empl.", "value": "24,8%", "detail": "Retraite: 21,5%"}, {"label": "Pilier 3", "value": "Penzijní spoření", "detail": "Épargne complémentaire"}, {"label": "SMIC", "value": "20 800 CZK", "detail": "~850 €/mois"}],
-        sources: ["https://www.cssz.cz/", "https://www.mfcr.cz/"]
+        sources: ["https://www.cssz.cz/", "https://www.mfcr.cz/"],
+        benchmark: {
+          convention: "Pas de convention collective sectorielle obligatoire généralisée",
+          conventionDetail: "Conventions d'entreprise (podniková kolektivní smlouva) possibles. Le Code du travail (Zákoník práce) fixe les règles minimales. Salaire minimum 2025 : 20 800 CZK/mois (~825 €). Grilles internes dans le secteur automobile/manufacturing.",
+          roles: [
+            { role: "Opérateur de production", junior: "29 000 - 35 000 CZK/mois", confirmed: "35 000 - 45 000 CZK/mois", senior: "45 000 - 55 000 CZK/mois" },
+            { role: "Ingénieur qualité", junior: "40 000 - 52 000 CZK/mois", confirmed: "52 000 - 66 000 CZK/mois", senior: "66 000 - 80 000 CZK/mois" },
+            { role: "Ingénieur commercial", junior: "45 000 - 55 000 CZK/mois", confirmed: "55 000 - 70 000 CZK/mois", senior: "70 000 - 95 000 CZK/mois" },
+            { role: "Ingénieur R&D / mécanique", junior: "38 000 - 50 000 CZK/mois", confirmed: "50 000 - 65 000 CZK/mois", senior: "65 000 - 85 000 CZK/mois" },
+            { role: "Magasinier / logistique", junior: "27 000 - 33 000 CZK/mois", confirmed: "33 000 - 40 000 CZK/mois", senior: "40 000 - 48 000 CZK/mois" },
+            { role: "Administratif", junior: "30 000 - 38 000 CZK/mois", confirmed: "38 000 - 48 000 CZK/mois", senior: "48 000 - 58 000 CZK/mois" },
+            { role: "Country / Branch Manager", junior: "—", confirmed: "80 000 - 120 000 CZK/mois", senior: "120 000 - 180 000 CZK/mois" }
+          ],
+          sectorAvg: "Salaire moyen production : 44 441 CZK/mois. 80% des salariés entre 29 191 et 61 945 CZK/mois. Prague : +15-20% vs régions. 1 EUR ≈ 25,2 CZK.",
+          notes: "Forte présence industrie automobile (Škoda, Hyundai, Toyota) qui tire les salaires. Pénurie de main-d'œuvre technique qualifiée. Secteur automatisation en croissance."
+        }
       }
     },
     "RU": {
@@ -2205,7 +2355,22 @@ cout_total_standard : ~104 160 RUB
 cout_total_pme : ~97 049 RUB
 alerte_sanctions : VÉRIFIER la conformité aux sanctions UE avant toute opération en Russie`,
         stats: [{"label": "Âge légal", "value": "60F / 65H", "detail": "Réforme 2019"}, {"label": "Cotis. patronales", "value": "30%", "detail": "PFR + FSS + FOMS"}, {"label": "SMIC (MROT)", "value": "22 440 RUB", "detail": "~220 €/mois"}, {"label": "Pension moyenne", "value": "~23 400 RUB", "detail": "~230 €/mois"}],
-        sources: ["https://pfr.gov.ru/", "https://mintrud.gov.ru/"]
+        sources: ["https://pfr.gov.ru/", "https://mintrud.gov.ru/"],
+        benchmark: {
+          convention: "Pas de convention collective sectorielle comparable à l'Europe de l'Ouest",
+          conventionDetail: "Accords sectoriels (otraslevoe soglashenie) existants mais peu contraignants. Le Code du travail fixe les règles minimales. Salaire minimum fédéral 2025 : 22 440 RUB/mois (~220 €). Négociation principalement au niveau entreprise. Contexte : forte inflation, pénurie de main-d'œuvre.",
+          roles: [
+            { role: "Opérateur de production", junior: "50 000 - 80 000 RUB/mois", confirmed: "80 000 - 120 000 RUB/mois", senior: "120 000 - 175 000 RUB/mois" },
+            { role: "Ingénieur qualité", junior: "60 000 - 90 000 RUB/mois", confirmed: "90 000 - 130 000 RUB/mois", senior: "130 000 - 180 000 RUB/mois" },
+            { role: "Ingénieur commercial", junior: "70 000 - 100 000 RUB/mois", confirmed: "100 000 - 150 000 RUB/mois", senior: "150 000 - 220 000 RUB/mois" },
+            { role: "Ingénieur R&D / mécanique", junior: "60 000 - 90 000 RUB/mois", confirmed: "90 000 - 130 000 RUB/mois", senior: "130 000 - 180 000 RUB/mois" },
+            { role: "Magasinier / logistique", junior: "40 000 - 60 000 RUB/mois", confirmed: "60 000 - 80 000 RUB/mois", senior: "80 000 - 110 000 RUB/mois" },
+            { role: "Administratif", junior: "45 000 - 70 000 RUB/mois", confirmed: "70 000 - 100 000 RUB/mois", senior: "100 000 - 140 000 RUB/mois" },
+            { role: "Directeur filiale / Country Manager", junior: "—", confirmed: "150 000 - 250 000 RUB/mois", senior: "250 000 - 400 000 RUB/mois" }
+          ],
+          sectorAvg: "Salaire moyen manufacturing : 101 370 RUB/mois (oct. 2025). Ingénieur moyen : 116 357 RUB/mois. Moscou : +50-80% vs moyenne nationale. 1 EUR ≈ 100-105 RUB (très volatile).",
+          notes: "Contexte géopolitique : sanctions, difficultés d'import. Forte pénurie de main-d'œuvre (émigration, conscription). Politique de substitution des importations. Croissance salariale nominale ingénieurs : +15,4% en 2025."
+        }
       }
     }
 };
@@ -2829,6 +2994,39 @@ function renderSalaire() {
     </div>`;
   }
 
+  // Accordion: Convention collective & Benchmarks
+  if (s.benchmark) {
+    const b = s.benchmark;
+    html += `<div class="accordion">
+      <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+        <span>Convention collective & benchmarks salariaux</span>
+        <span class="acc-badge acc-badge-green">Marché</span>
+        <span class="acc-icon">▼</span>
+      </button>
+      <div class="accordion-body open"><div class="accordion-inner">
+        <div style="background:var(--gradient-subtle);border-radius:var(--radius-xs);padding:16px 20px;margin-bottom:16px;border-left:4px solid var(--primary);">
+          <h4 style="font-size:0.95rem;color:var(--primary-dark);margin-bottom:6px;">${b.convention}</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">${b.conventionDetail}</p>
+        </div>
+        
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:12px;">Fourchettes salariales par poste <span style="font-size:0.8rem;font-weight:400;color:var(--text-secondary);">(brut annuel)</span></h4>
+        <div style="overflow-x:auto;"><table class="data-table">
+          <thead><tr><th>Poste</th><th>Junior (0-3 ans)</th><th>Confirmé (3-7 ans)</th><th>Senior (7+ ans)</th></tr></thead>
+          <tbody>${b.roles.map((r, i) => `<tr${i === b.roles.length-1 ? ' style="font-weight:700;background:var(--gradient-subtle);"' : ''}>
+            <td><strong>${r.role}</strong></td><td>${r.junior}</td><td>${r.confirmed}</td><td>${r.senior}</td>
+          </tr>`).join('')}</tbody>
+        </table></div>
+        
+        <div style="margin-top:16px;padding:12px 16px;background:#f0f7f0;border-radius:8px;font-size:0.85rem;">
+          <strong style="color:#15803d;">Moyenne secteur :</strong> ${b.sectorAvg}
+        </div>
+        ${b.notes ? `<div style="margin-top:8px;padding:12px 16px;background:#fff8f0;border-radius:8px;font-size:0.85rem;">
+          <strong style="color:var(--primary-dark);">À noter :</strong> ${b.notes}
+        </div>` : ''}
+      </div></div>
+    </div>`;
+  }
+
   // Sources
   if (s.sources && s.sources.length) {
     html += '<div class="sources"><h4>Sources</h4>';
@@ -2872,6 +3070,27 @@ function renderComparatif() {
     html += `<tr><td>${flag} ${name}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td></tr>`;
   });
   html += '</tbody></table></div></div>';
+  
+  // Benchmark comparison: Ingénieur R&D/mécanique confirmé across all countries
+  html += '<div class="card"><h2>Benchmark salarial — Ingénieur R&D/mécanique confirmé (3-7 ans)</h2>';
+  html += '<p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;">Fourchettes salariales brutes annuelles pour un ingénieur R&D/mécanique avec 3 à 7 ans d\'expérience dans le secteur automatisation/actionneurs. Sources : benchmark DAIRIA mars 2026.</p>';
+  html += '<div style="overflow-x:auto;"><table class="comp-table"><thead><tr>';
+  html += '<th>Pays</th><th>Convention collective</th><th>Ing. R&D confirmé</th><th>Country Manager</th><th>Opérateur confirmé</th><th>Devise</th>';
+  html += '</tr></thead><tbody>';
+  const benchCountries = ["FR","DE","UK","NL","IT","ES","PL","DK","BE","CZ","RU"];
+  benchCountries.forEach(code => {
+    const c = DATA[code];
+    if (c && c.salary && c.salary.benchmark) {
+      const b = c.salary.benchmark;
+      const rnd = b.roles.find(r => r.role.includes("R&D"));
+      const mgr = b.roles.find(r => r.role.includes("Manager"));
+      const op = b.roles.find(r => r.role.includes("Opérateur") || r.role.includes("Operateur"));
+      html += `<tr><td>${c.flag} ${c.name}</td><td style="font-size:0.8rem;max-width:200px;">${b.convention}</td><td><strong>${rnd ? rnd.confirmed : '—'}</strong></td><td>${mgr ? mgr.confirmed : '—'}</td><td>${op ? op.confirmed : '—'}</td><td>${code === 'UK' ? 'GBP' : code === 'PL' ? 'PLN' : code === 'DK' ? 'DKK' : code === 'CZ' ? 'CZK' : code === 'RU' ? 'RUB' : 'EUR'}</td></tr>`;
+    }
+  });
+  html += '</tbody></table></div>';
+  html += '<p style="font-size:0.75rem;color:var(--text-secondary);margin-top:8px;">* PL, DK, CZ, RU : montants en devise locale (mensuel). UK : montants en GBP. Autres pays : montants en EUR (annuel).</p>';
+  html += '</div>';
   
   document.getElementById('tab-comparatif').innerHTML = html;
 }
