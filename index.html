@@ -3548,131 +3548,350 @@ function renderComparatif() {
 // =============================================
 function renderStrategie() {
   let html = '';
-  
+
   // Hero card
   html += `<div class="strategy-card">
-    <h2>Stratégie retraite groupe — Recommandations Exiliance</h2>
-    <p>Analyse complète des options de retraite surcomplémentaire pan-européenne pour TiMOTION (11 pays, ~100 salariés). Rapport mars 2026.</p>
-  </div>`;
-  
-  // PEPP section
-  html += `<div class="strategy-section">
-    <h3>1. PEPP (Pan-European Personal Pension Product)</h3>
-    <div class="stat-grid">
-      <div class="stat-box">
-        <div class="stat-value">2 fournisseurs</div>
-        <div class="stat-label">dans toute l'UE</div>
-        <div class="stat-detail">Finax (SK) + LifeGoals (CY)</div>
+    <h2>Stratégie retraite & prévoyance groupe</h2>
+    <p style="font-size:1.05rem;opacity:1;">Recommandations Exiliance pour TiMOTION</p>
+    <p>Comment mettre en place une politique de protection sociale harmonisée pour 101 salariés répartis dans 11 pays européens ? Ce document analyse toutes les options existantes, évalue leur faisabilité concrète, et propose une feuille de route opérationnelle.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;">101</div><div style="font-size:0.75rem;opacity:0.7;">salariés</div>
       </div>
-      <div class="stat-box" style="background:#fef3f3;border-color:#e74c3c30;">
-        <div class="stat-value" style="color:#e74c3c;">Non viable</div>
-        <div class="stat-label">Verdict court terme</div>
-        <div class="stat-detail">Réforme en cours, horizon 2028+</div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;">11</div><div style="font-size:0.75rem;opacity:0.7;">pays</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-value">Règlement UE</div>
-        <div class="stat-label">2019/1238</div>
-        <div class="stat-detail">Applicable depuis mars 2022</div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;">7</div><div style="font-size:0.75rem;opacity:0.7;">devises</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-value">0 fournisseur</div>
-        <div class="stat-label">dans les pays TiMOTION clés</div>
-        <div class="stat-detail">FR, DE, IT, ES, UK, NL</div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;">11</div><div style="font-size:0.75rem;opacity:0.7;">systèmes juridiques</div>
       </div>
     </div>
-    <p>Le PEPP est un produit d'épargne-retraite individuel volontaire créé par le règlement européen. <strong>En mars 2026, c'est un échec commercial quasi-total</strong> : seuls 2 fournisseurs sont enregistrés (Finax en Slovaquie et LifeGoals à Chypre). Aucun n'est actif dans les pays principaux de TiMOTION.</p>
-    <p>La Commission européenne a publié en novembre 2025 une proposition de révision majeure (suppression du plafond de frais de 1%, auto-inscription possible, ouverture comme produit d'entreprise). Adoption possible fin 2026, transposition 2027-2028. <strong>Le PEPP ne sera pas une solution opérationnelle pour TiMOTION avant 2028-2029.</strong></p>
   </div>`;
-  
-  // Pooling section
+
+  // ========== 1. LE CONSTAT ==========
   html += `<div class="strategy-section">
-    <h3>2. Pooling multinational — Solution recommandée par Exiliance</h3>
-    <div class="stat-grid">
-      <div class="stat-box" style="background:#eafbea;border-color:#27ae6030;">
-        <div class="stat-value" style="color:#27ae60;">Recommandé</div>
-        <div class="stat-label">Solution opérationnelle</div>
-        <div class="stat-detail">Disponible immédiatement</div>
+    <h3>1. Le constat : pourquoi une stratégie groupe est nécessaire</h3>
+    <p>Aujourd'hui, chaque filiale TiMOTION gère ses couvertures retraite et prévoyance de manière indépendante, avec des niveaux de protection très hétérogènes selon les pays. Cette fragmentation pose plusieurs problèmes concrets :</p>
+    <div style="display:grid;gap:12px;margin:16px 0;">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 18px;background:var(--bg);border-radius:10px;border-left:3px solid var(--primary);">
+        <span style="font-size:1.2rem;">⚖️</span>
+        <div><strong>Inéquité entre pays</strong><br><span style="font-size:0.85rem;color:var(--text-secondary);">Un ingénieur TiMOTION en France bénéficie d'une retraite complémentaire AGIRC-ARRCO généreuse (pilier 2 obligatoire), tandis qu'un ingénieur équivalent en Espagne ou en Pologne n'a quasiment rien au-delà du régime de base. À compétence et ancienneté égales, la protection est radicalement différente.</span></div>
       </div>
-      <div class="stat-box">
-        <div class="stat-value">Generali GEB</div>
-        <div class="stat-label">Réseau recommandé</div>
-        <div class="stat-detail">PME-friendly, 100+ pays</div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 18px;background:var(--bg);border-radius:10px;border-left:3px solid var(--primary);">
+        <span style="font-size:1.2rem;">💸</span>
+        <div><strong>Pas de mutualisation des risques</strong><br><span style="font-size:0.85rem;color:var(--text-secondary);">Chaque filiale négocie seule ses contrats d'assurance, sans pouvoir de négociation. Avec 1 salarié au Danemark, il est impossible d'obtenir de bonnes conditions tarifaires. Un pool de 101 salariés pèse beaucoup plus dans la négociation.</span></div>
       </div>
-      <div class="stat-box">
-        <div class="stat-value">10-15%</div>
-        <div class="stat-label">Économies potentielles</div>
-        <div class="stat-detail">Via dividendes de pooling</div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 18px;background:var(--bg);border-radius:10px;border-left:3px solid var(--primary);">
+        <span style="font-size:1.2rem;">🔍</span>
+        <div><strong>Aucune visibilité consolidée</strong><br><span style="font-size:0.85rem;color:var(--text-secondary);">La direction taiwanaise n'a aucun reporting unifié sur les coûts de protection sociale par pays. Il est impossible de comparer, d'optimiser, ou même de savoir précisément ce qui est couvert où.</span></div>
       </div>
-      <div class="stat-box">
-        <div class="stat-value">IGP</div>
-        <div class="stat-label">Alternative</div>
-        <div class="stat-detail">International Group Program</div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 18px;background:var(--bg);border-radius:10px;border-left:3px solid var(--primary);">
+        <span style="font-size:1.2rem;">🎯</span>
+        <div><strong>Attractivité et rétention</strong><br><span style="font-size:0.85rem;color:var(--text-secondary);">Dans un marché de l'emploi tendu (notamment pour les ingénieurs automatisation), une politique retraite/prévoyance groupe est un argument différenciant. Les concurrents comme Linak, EWELLIX ou Thomson proposent souvent des packages supérieurs.</span></div>
       </div>
     </div>
-    <p>Le pooling multinational permet de consolider les contrats d'assurance prévoyance/retraite de toutes les filiales au sein d'un réseau international. <strong>Exiliance recommande le réseau Generali Employee Benefits (GEB)</strong>, particulièrement adapté aux PME multinationales comme TiMOTION.</p>
-    <p><strong>Comment ça marche :</strong> Chaque filiale souscrit un contrat local (prévoyance, retraite, santé) auprès d'un assureur membre du réseau. Les résultats techniques de tous ces contrats sont consolidés. Si l'ensemble est excédentaire, un <strong>dividende de pooling</strong> (10-15% des primes) est reversé à la maison-mère ou réinvesti.</p>
-    <h4 style="margin-top:16px;color:var(--primary-dark);">Réseaux de pooling adaptés à TiMOTION :</h4>
-    <div style="overflow-x:auto;"><table class="data-table" style="margin-top:12px;">
-      <thead><tr><th>Réseau</th><th>Taille cible</th><th>Couverture</th><th>Spécificité</th></tr></thead>
+  </div>`;
+
+  // ========== 2. LES OPTIONS ÉTUDIÉES ==========
+  html += `<div class="strategy-section">
+    <h3>2. Les options étudiées par Exiliance</h3>
+    <p>Nous avons analysé <strong>5 approches</strong> pour créer un dispositif de retraite surcomplémentaire pan-européen. Voici le verdict pour chacune :</p>
+    <div style="overflow-x:auto;margin:16px 0;"><table class="data-table">
+      <thead><tr><th>Option</th><th>Principe</th><th>Faisabilité TiMOTION</th><th>Délai</th><th>Verdict</th></tr></thead>
       <tbody>
-        <tr><td><strong>Generali GEB</strong></td><td>PME-ETI</td><td>100+ pays</td><td>Le plus adapté aux PME, accompagnement dédié</td></tr>
-        <tr><td><strong>IGP (Zurich)</strong></td><td>Toutes tailles</td><td>80+ pays</td><td>Flexible, pas de taille minimum</td></tr>
-        <tr><td><strong>MAXIS GBN (MetLife)</strong></td><td>Grandes</td><td>90+ pays</td><td>Reporting avancé, plutôt grands comptes</td></tr>
+        <tr><td><strong>A. PEPP</strong></td><td>Produit d'épargne retraite pan-européen (Règlement UE 2019/1238)</td><td style="color:#dc2626;font-weight:600;">Non viable</td><td>2028+</td><td>Seulement 2 fournisseurs dans l'UE, aucun dans les pays TiMOTION</td></tr>
+        <tr><td><strong>B. Pooling multinational</strong></td><td>Consolider tous les contrats dans un réseau d'assurance international</td><td style="color:#16a34a;font-weight:600;">Recommandé ✓</td><td>6-12 mois</td><td>Solution éprouvée, adaptée aux ETI, économies 10-15%</td></tr>
+        <tr><td><strong>C. IORP transfrontalier</strong></td><td>Créer un fonds de pension unique au Luxembourg ou en Belgique</td><td style="color:#dc2626;font-weight:600;">Trop lourd</td><td>18-24 mois</td><td>Coût > 100 000 €, réservé aux groupes de 500+ salariés</td></tr>
+        <tr><td><strong>D. Captive de réassurance</strong></td><td>Créer sa propre société d'assurance captive</td><td style="color:#dc2626;font-weight:600;">Prématuré</td><td>18-24 mois</td><td>Volume de primes insuffisant (seuil : 500 000+ €/an)</td></tr>
+        <tr style="font-weight:700;background:var(--gradient-subtle);"><td><strong>E. Pooling + surcomplémentaire locale</strong></td><td>Pooling (mutualisation) + mise en place pays par pays d'un pilier retraite supplémentaire</td><td style="color:#16a34a;font-weight:800;">Solution retenue ✓</td><td>12-18 mois</td><td>Combine mutualisation financière et harmonisation des couvertures</td></tr>
       </tbody>
     </table></div>
   </div>`;
-  
-  // Roadmap
-  html += `<div class="strategy-section">
-    <h3>3. Feuille de route d'implémentation — 4 phases</h3>
-    <div class="action-plan">
-      <div class="action-step">
-        <div class="step-num">1</div>
-        <div class="step-text"><strong>Phase 1 — Audit (Mois 1-3)</strong><br>Exiliance réalise un audit complet des contrats existants dans les 11 pays : prévoyance, santé, retraite complémentaire. Cartographie des obligations locales et des gaps de couverture. Budget : 15 000-25 000 EUR.</div>
-      </div>
-      <div class="action-step">
-        <div class="step-num">2</div>
-        <div class="step-text"><strong>Phase 2 — Conception (Mois 3-6)</strong><br>Définition de la politique groupe : niveaux de couverture cibles par pays, choix du réseau de pooling (Generali GEB recommandé), négociation des conditions. Budget : 10 000-15 000 EUR de conseil + frais réseau.</div>
-      </div>
-      <div class="action-step">
-        <div class="step-num">3</div>
-        <div class="step-text"><strong>Phase 3 — Déploiement prioritaire (Mois 6-12)</strong><br>Mise en place dans les 4 pays principaux (France 70 sal., Allemagne 7, Italie 8, Espagne 5). Souscription des contrats locaux, affiliation au pool. Budget : primes annuelles estimées 80 000-120 000 EUR pour ces 4 pays.</div>
-      </div>
-      <div class="action-step">
-        <div class="step-num">4</div>
-        <div class="step-text"><strong>Phase 4 — Extension (Mois 12-18)</strong><br>Extension aux 7 pays restants (UK, NL, PL, DK, BE, CZ, RU). Attention particulière au UK (hors UE) et à la Russie (sanctions). Budget additionnel : 30 000-50 000 EUR/an de primes.</div>
-      </div>
-    </div>
+
+  // ========== 3. PEPP DÉTAILLÉ ==========
+  html += `<div class="accordion" style="margin-bottom:20px;">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      <span>Analyse détaillée — PEPP (Pan-European Personal Pension Product)</span>
+      <span class="acc-badge acc-badge-red">Non viable à court terme</span>
+      <span class="acc-icon">▼</span>
+    </button>
+    <div class="accordion-body"><div class="accordion-inner">
+      <p>Le PEPP a été créé par le <strong>Règlement (UE) 2019/1238</strong>, applicable depuis le 22 mars 2022. L'ambition était de permettre aux citoyens européens d'épargner pour leur retraite dans un produit unique et portable d'un pays à l'autre.</p>
+      <p><strong>Pourquoi c'est un échec ?</strong></p>
+      <ul style="margin:8px 0 16px 20px;list-style:disc;">
+        <li style="margin-bottom:6px;">Le <strong>plafond de frais de 1%</strong> rend le produit non rentable pour les assureurs classiques (qui facturent habituellement 1,5-2,5%).</li>
+        <li style="margin-bottom:6px;">L'obligation de créer un <strong>sous-compte national</strong> dans chaque pays de résidence du salarié est techniquement lourde et coûteuse.</li>
+        <li style="margin-bottom:6px;"><strong>Aucune harmonisation fiscale</strong> : chaque État décide souverainement du traitement fiscal du PEPP. Résultat : le PEPP n'a aucun avantage fiscal en France, Allemagne, Italie ou Espagne.</li>
+        <li style="margin-bottom:6px;">Les deux seuls fournisseurs (Finax en Slovaquie, LifeGoals à Chypre) ne couvrent que 4 pays sur 27.</li>
+      </ul>
+      <p><strong>La réforme en cours (novembre 2025) :</strong> La Commission européenne propose de supprimer le plafond de 1%, de permettre l'auto-inscription par l'employeur, et d'ouvrir le PEPP comme produit d'entreprise. Si adoptée, cette réforme pourrait relancer le PEPP — mais pas avant <strong>2028-2029</strong> au plus tôt.</p>
+      <p><strong>Verdict Exiliance :</strong> À surveiller pour le moyen terme, mais ce n'est pas une solution pour TiMOTION aujourd'hui.</p>
+    </div></div>
   </div>`;
-  
-  // Budget
+
+  // ========== 4. IORP / CAPTIVE DÉTAILLÉ ==========
+  html += `<div class="accordion" style="margin-bottom:20px;">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      <span>Analyse détaillée — IORP transfrontalier & Captive</span>
+      <span class="acc-badge acc-badge-red">Non adapté à TiMOTION</span>
+      <span class="acc-icon">▼</span>
+    </button>
+    <div class="accordion-body"><div class="accordion-inner">
+      <h4 style="color:var(--primary-dark);margin-bottom:10px;">IORP transfrontalier (Directive IORP II)</h4>
+      <p>La directive IORP II permet théoriquement de créer un fonds de pension unique dans un État membre (Belgique ou Luxembourg) desservant des salariés de plusieurs pays. En pratique :</p>
+      <ul style="margin:8px 0 16px 20px;list-style:disc;">
+        <li style="margin-bottom:6px;">Seulement <strong>73 IORP transfrontaliers</strong> actifs dans toute l'UE (chiffre en baisse).</li>
+        <li style="margin-bottom:6px;">Coût de mise en place : <strong>100 000+ €</strong>, réservé aux groupes de 500+ salariés minimum.</li>
+        <li style="margin-bottom:6px;">Les différences de fiscalité et de droit social entre pays rendent l'exercice extrêmement complexe.</li>
+        <li style="margin-bottom:6px;">Exemple notable : Sanofi a créé un fonds de pension européen en Belgique — mais Sanofi a 100 000 salariés, pas 100.</li>
+      </ul>
+      <h4 style="color:var(--primary-dark);margin:20px 0 10px;">Captive de réassurance</h4>
+      <p>TiMOTION pourrait créer sa propre société d'assurance captive (au Luxembourg par exemple) pour réassurer les risques employee benefits de ses filiales. Économies potentielles : 25%+ par rapport au modèle classique.</p>
+      <p>Mais : capital initial important, volume de primes requis > 500 000 €/an, expertise technique nécessaire. <strong>Solution pertinente uniquement si TiMOTION consolide ses primes mondiales (y compris Taïwan et Asie)</strong> à terme.</p>
+      <p><strong>Verdict Exiliance :</strong> Ces deux options sont prématurées pour TiMOTION à sa taille actuelle. Elles deviendront pertinentes si le groupe atteint 300-500 salariés en Europe.</p>
+    </div></div>
+  </div>`;
+
+  // ========== 5. POOLING DÉTAILLÉ ==========
   html += `<div class="strategy-section">
-    <h3>4. Estimation budgétaire globale</h3>
+    <h3>3. Solution retenue : Pooling multinational + surcomplémentaire locale</h3>
+
+    <div class="explainer-box" style="margin-bottom:20px;">
+      <h3 style="color:var(--primary-dark);">Qu'est-ce que le pooling multinational ?</h3>
+      <p style="line-height:1.8;font-size:0.92rem;">Imaginez que chaque filiale TiMOTION a son propre contrat d'assurance local (prévoyance décès-invalidité, retraite complémentaire, couverture santé). Chacun de ces contrats génère un résultat technique : primes encaissées − sinistres payés − frais = résultat. Le pooling consiste à <strong>consolider tous ces résultats dans un pot commun</strong>. Si le résultat global est positif (moins de sinistres que prévu), l'excédent est reversé à TiMOTION sous forme de <strong>dividende</strong>. C'est comme mutualiser les risques d'assurance de toutes vos filiales : la bonne santé de vos salariés français compense le sinistre éventuel d'un salarié italien, et vice versa. Plus le groupe est grand et diversifié géographiquement, plus le mécanisme est stable.</p>
+    </div>
+
+    <h4 style="color:var(--primary-dark);margin-bottom:14px;">Comparatif des réseaux de pooling</h4>
     <div style="overflow-x:auto;"><table class="data-table">
-      <thead><tr><th>Poste</th><th>Estimation</th><th>Périodicité</th></tr></thead>
+      <thead><tr><th>Critère</th><th>Generali GEB</th><th>IGP (Manulife)</th><th>MAXIS GBN (AXA/MetLife)</th><th>Insurope</th></tr></thead>
       <tbody>
-        <tr><td>Audit initial (Exiliance)</td><td>15 000 — 25 000 EUR</td><td>One-shot</td></tr>
-        <tr><td>Conseil & conception</td><td>10 000 — 15 000 EUR</td><td>One-shot</td></tr>
-        <tr><td>Primes prévoyance/retraite poolées (11 pays)</td><td>110 000 — 170 000 EUR</td><td>Annuel</td></tr>
-        <tr><td>Frais de gestion réseau</td><td>3 000 — 5 000 EUR</td><td>Annuel</td></tr>
-        <tr><td>Dividende de pooling estimé (retour)</td><td>-10 000 — -20 000 EUR</td><td>Annuel</td></tr>
-        <tr><td><strong>Coût net annuel estimé</strong></td><td><strong>100 000 — 155 000 EUR</strong></td><td><strong>Annuel</strong></td></tr>
+        <tr><td><strong>Type</strong></td><td>Réseau d'assureur</td><td>Indépendant</td><td>Réseau d'assureur</td><td>Indépendant</td></tr>
+        <tr><td><strong>Seuil d'entrée</strong></td><td style="color:#16a34a;font-weight:600;">20 000 €/an de primes, 2 pays</td><td>2 pays, pas de seuil strict</td><td>300 000 $/an, 100 vies, 2 pays</td><td>Flexible</td></tr>
+        <tr><td><strong>Couverture</strong></td><td>100+ pays</td><td>80+ pays (400 partenaires)</td><td>90+ pays</td><td>82 pays</td></tr>
+        <tr><td><strong>Adapté PME ?</strong></td><td style="color:#16a34a;font-weight:600;">Oui — Multipool dédié</td><td style="color:#16a34a;font-weight:600;">Oui</td><td>Plutôt grands comptes</td><td style="color:#16a34a;font-weight:600;">Oui</td></tr>
+        <tr><td><strong>Dividende moyen</strong></td><td>8-17% des primes</td><td>8-15%</td><td>10-15%</td><td>8-12%</td></tr>
+        <tr><td><strong>Multipool (mutualisation)</strong></td><td style="color:#16a34a;font-weight:600;">Oui — protège les petits pools</td><td>Non</td><td>Oui (< 750k $)</td><td>Non</td></tr>
+        <tr style="font-weight:700;background:var(--gradient-subtle);"><td><strong>Recommandation Exiliance</strong></td><td style="color:var(--primary);font-weight:800;">1er choix</td><td style="color:var(--primary);">Alternative solide</td><td>Si croissance > 300 salariés</td><td>Si indépendance souhaitée</td></tr>
       </tbody>
     </table></div>
-    <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:8px;">Estimations basées sur ~100 salariés, couvertures prévoyance + retraite complémentaire standard. Le dividende de pooling dépend de la sinistralité.</p>
-  </div>`;
-  
-  // Important notes
-  html += `<div class="card">
-    <h3>Points importants</h3>
-    <div class="risk-grid">
-      <div class="risk-box" style="background:#eafbea;border-color:#27ae60;">Exiliance assure le courtage et le suivi de l'ensemble du dispositif — pas besoin de passer par plusieurs intermédiaires.</div>
-      <div class="risk-box">Russie : en raison des sanctions internationales, la Russie pourrait nécessiter un traitement séparé hors du pool européen.</div>
-      <div class="risk-box">Royaume-Uni : hors UE, mais les réseaux de pooling (GEB, IGP) couvrent le UK sans difficulté.</div>
-      <div class="risk-box" style="background:#fef9f3;border-color:var(--primary);">Le PEPP est à surveiller pour 2028+ : si la réforme aboutit, il pourrait devenir une option complémentaire intéressante.</div>
+
+    <div style="margin-top:20px;padding:16px 20px;background:#eafbea;border-radius:12px;border-left:4px solid #16a34a;">
+      <strong style="color:#15803d;">Pourquoi Generali GEB en premier choix ?</strong>
+      <p style="font-size:0.88rem;margin-top:6px;">Le seuil d'entrée est le plus bas du marché (20 000 €/an, soit ~200 €/salarié/an). Le mode <strong>Multipool</strong> est spécialement conçu pour les ETI : vos résultats sont mutualisés avec d'autres entreprises de taille similaire, ce qui protège TiMOTION de la volatilité d'un petit portefeuille. Generali a des partenaires locaux dans les 11 pays TiMOTION (y compris UK hors UE). Le reporting est consolidé sur une plateforme unique.</p>
     </div>
   </div>`;
-  
+
+  // ========== 6. VÉHICULES PAR PAYS ==========
+  html += `<div class="strategy-section">
+    <h3>4. Véhicule de retraite surcomplémentaire recommandé par pays</h3>
+    <p>Pour chaque pays, Exiliance recommande un véhicule local spécifique pour la mise en place d'une retraite surcomplémentaire (au-delà des obligations légales) :</p>
+    <div style="overflow-x:auto;margin:16px 0;"><table class="data-table">
+      <thead><tr><th>Pays</th><th>Véhicule recommandé</th><th>Cotisation employeur suggérée</th><th>Avantage fiscal</th><th>Spécificité</th></tr></thead>
+      <tbody>
+        <tr><td><strong>🇫🇷 France</strong></td><td>PER Entreprise Obligatoire (PERO)</td><td>1,5-3% du brut</td><td>Exonéré de charges (dans les limites)</td><td>Ex-Article 83. Catégorie cadres ou tous salariés.</td></tr>
+        <tr><td><strong>🇩🇪 Allemagne</strong></td><td>Direktversicherung</td><td>15% du montant de l'Entgeltumwandlung (minimum légal) + abondement volontaire</td><td>Exonéré jusqu'à 302 €/mois</td><td>Simple à mettre en place pour une PME. §1a BetrAVG.</td></tr>
+        <tr><td><strong>🇬🇧 Royaume-Uni</strong></td><td>Workplace Pension (au-delà du minimum)</td><td>5-6% (vs 3% minimum légal)</td><td>Tax relief automatique</td><td>NEST ou Aviva. Matching contributions = levier RH.</td></tr>
+        <tr><td><strong>🇳🇱 Pays-Bas</strong></td><td>Pensioenregeling DC (via Bpf ou assureur)</td><td>Selon fonds sectoriel applicable</td><td>Fiscalement avantageux jusqu'à 137 800 €</td><td>Attention WTP 2028 — régime en transition.</td></tr>
+        <tr><td><strong>🇮🇹 Italie</strong></td><td>Fondo Pensione Complementare</td><td>1-2% + orientation du TFR vers le fonds</td><td>Déductible jusqu'à 5 164,57 €/an</td><td>Le TFR (6,91%) peut être transféré = puissant levier.</td></tr>
+        <tr><td><strong>🇪🇸 Espagne</strong></td><td>Plan de Pensiones de Empleo</td><td>1,5-3% du brut</td><td>Déductible pour l'employeur jusqu'à 8 500 €/an</td><td>En développement (Ley 12/2022). Peu répandu encore.</td></tr>
+        <tr><td><strong>🇵🇱 Pologne</strong></td><td>PPK renforcé (cotisation volontaire)</td><td>2,5-4% (vs 1,5% minimum)</td><td>Exonéré de cotisations sociales</td><td>PPK déjà obligatoire — augmenter la cotisation employeur.</td></tr>
+        <tr><td><strong>🇩🇰 Danemark</strong></td><td>Arbejdsmarkedspension renforcée</td><td>Selon convention collective (min 11%)</td><td>Déductible intégralement</td><td>Déjà très généreux via conventions. Marge de manœuvre limitée.</td></tr>
+        <tr><td><strong>🇧🇪 Belgique</strong></td><td>Assurance groupe (pension complémentaire)</td><td>2-4% du brut</td><td>Règle des 80%. Taxe entrée 4,4% + ONSS 8,86%</td><td>Quasi-indispensable vu le faible taux de remplacement légal.</td></tr>
+        <tr><td><strong>🇨🇿 Tchéquie</strong></td><td>DPS avec abondement employeur</td><td>500-1 000 CZK/mois</td><td>L'État abonde 20% (max 340 CZK/mois)</td><td>Triple avantage : État + employeur + déduction fiscale salarié.</td></tr>
+        <tr style="background:#fef3f3;"><td><strong>🇷🇺 Russie</strong></td><td>NPF (Fonds de pension non-étatique)</td><td>À évaluer</td><td>Limité</td><td>⚠️ Sanctions UE : autorisation individuelle nécessaire pour tout service RH/compta.</td></tr>
+      </tbody>
+    </table></div>
+  </div>`;
+
+  // ========== 7. FEUILLE DE ROUTE ==========
+  html += `<div class="strategy-section">
+    <h3>5. Feuille de route détaillée</h3>
+    <div style="display:grid;gap:16px;">
+      <div style="border-radius:var(--radius-sm);border:2px solid var(--primary);overflow:hidden;">
+        <div style="background:var(--gradient);color:white;padding:14px 20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;font-weight:800;">1</span>
+          <div><strong style="font-size:0.95rem;">Phase 1 — Audit & diagnostic</strong><br><span style="font-size:0.8rem;opacity:0.85;">Mois 1-3 (T2 2026)</span></div>
+        </div>
+        <div style="padding:16px 20px;font-size:0.88rem;line-height:1.7;">
+          <p><strong>Objectif :</strong> Cartographier l'existant dans les 11 pays.</p>
+          <p><strong>Livrables :</strong></p>
+          <ul style="margin:6px 0 12px 20px;list-style:disc;">
+            <li>Inventaire de tous les contrats en cours (prévoyance, santé, retraite complémentaire)</li>
+            <li>Matrice d'obligations légales par pays (ce qui est obligatoire vs ce qui est en place)</li>
+            <li>Identification des gaps de couverture (ex : pas de prévoyance en Espagne, pas de surcomplémentaire en Pologne)</li>
+            <li>Benchmark des primes actuelles vs marché</li>
+            <li>Rapport consolidé avec recommandations</li>
+          </ul>
+          <p><strong>Budget :</strong> 15 000 — 25 000 € (honoraires Exiliance)</p>
+          <p><strong>Interlocuteurs :</strong> DRH de chaque filiale + comptabilité (copie des contrats et factures)</p>
+        </div>
+      </div>
+
+      <div style="border-radius:var(--radius-sm);border:2px solid var(--secondary);overflow:hidden;">
+        <div style="background:var(--secondary);color:white;padding:14px 20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;font-weight:800;">2</span>
+          <div><strong style="font-size:0.95rem;">Phase 2 — Conception de la politique groupe</strong><br><span style="font-size:0.8rem;opacity:0.85;">Mois 3-6 (T3 2026)</span></div>
+        </div>
+        <div style="padding:16px 20px;font-size:0.88rem;line-height:1.7;">
+          <p><strong>Objectif :</strong> Définir la cible et choisir les partenaires.</p>
+          <p><strong>Décisions clés :</strong></p>
+          <ul style="margin:6px 0 12px 20px;list-style:disc;">
+            <li>Niveau de cotisation surcomplémentaire par pays (proposition : 1,5-3% du brut selon les pays)</li>
+            <li>Périmètre : tous les salariés ou seulement cadres/ingénieurs ?</li>
+            <li>Choix du réseau de pooling : mise en concurrence GEB vs IGP (Exiliance pilote l'appel d'offres)</li>
+            <li>Sélection des assureurs locaux dans chaque pays</li>
+            <li>Définition du reporting consolidé (KPI, fréquence, format)</li>
+          </ul>
+          <p><strong>Budget :</strong> 10 000 — 15 000 € (conseil + négociation)</p>
+          <p><strong>Validation :</strong> Comité de direction TiMOTION Taiwan + DG Europe</p>
+        </div>
+      </div>
+
+      <div style="border-radius:var(--radius-sm);border:2px solid #16a34a;overflow:hidden;">
+        <div style="background:#16a34a;color:white;padding:14px 20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;font-weight:800;">3</span>
+          <div><strong style="font-size:0.95rem;">Phase 3 — Déploiement prioritaire (4 pays)</strong><br><span style="font-size:0.8rem;opacity:0.85;">Mois 6-12 (T4 2026 — T1 2027)</span></div>
+        </div>
+        <div style="padding:16px 20px;font-size:0.88rem;line-height:1.7;">
+          <p><strong>Pays cibles :</strong> France (70 sal.), Italie (8), Allemagne (7), Espagne (5) = 90 salariés = 89% de l'effectif européen.</p>
+          <p><strong>Actions :</strong></p>
+          <ul style="margin:6px 0 12px 20px;list-style:disc;">
+            <li><strong>France :</strong> Mise en place d'un PERO (Plan d'Épargne Retraite Obligatoire) via accord collectif ou DUE. Affiliation de l'ensemble des salariés. Négociation avec un assureur du réseau GEB.</li>
+            <li><strong>Allemagne :</strong> Renforcement du Zuschuss employeur au-delà du minimum 15%. Mise en place d'une Direktversicherung pour tous les salariés souhaitant de l'Entgeltumwandlung.</li>
+            <li><strong>Italie :</strong> Orientation du TFR vers un Fondo Pensione Complementare + cotisation employeur additionnelle.</li>
+            <li><strong>Espagne :</strong> Création d'un Plan de Pensiones de Empleo — levier différenciant car encore rare dans les PME espagnoles.</li>
+          </ul>
+          <p><strong>Budget primes annuel :</strong> 80 000 — 130 000 € (selon niveaux de cotisation retenus)</p>
+        </div>
+      </div>
+
+      <div style="border-radius:var(--radius-sm);border:2px solid var(--text-secondary);overflow:hidden;">
+        <div style="background:var(--text-secondary);color:white;padding:14px 20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;font-weight:800;">4</span>
+          <div><strong style="font-size:0.95rem;">Phase 4 — Extension & optimisation</strong><br><span style="font-size:0.8rem;opacity:0.85;">Mois 12-18 (T2-T3 2027)</span></div>
+        </div>
+        <div style="padding:16px 20px;font-size:0.88rem;line-height:1.7;">
+          <p><strong>Pays restants :</strong> UK (3), Pays-Bas (2), Pologne (2), Danemark (1), Belgique (1), Tchéquie (1), Russie (1).</p>
+          <p><strong>Points d'attention spécifiques :</strong></p>
+          <ul style="margin:6px 0 12px 20px;list-style:disc;">
+            <li><strong>UK :</strong> Hors UE mais les réseaux GEB/IGP couvrent le UK sans difficulté. Augmenter le matching au-delà du 3% minimum auto-enrolment.</li>
+            <li><strong>Pays-Bas :</strong> Vérifier l'affiliation au fonds sectoriel obligatoire (Bpf). Anticiper la transition WTP 2028.</li>
+            <li><strong>Danemark :</strong> Le système est déjà très généreux via les conventions collectives (13% pension pro). Marge de manœuvre limitée — focus sur les avantages non-retraite.</li>
+            <li><strong>Russie :</strong> ⚠️ Traitement séparé hors pool européen en raison des sanctions UE. Autorisation individuelle nécessaire auprès de l'autorité compétente française pour continuer les services RH.</li>
+          </ul>
+          <p><strong>Budget primes additionnel :</strong> 20 000 — 40 000 €/an</p>
+          <p><strong>Optimisation continue :</strong> Suivi annuel du pool, renégociation triennale des contrats, ajustement des cotisations selon l'évolution de la masse salariale.</p>
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  // ========== 8. BUDGET CONSOLIDÉ ==========
+  html += `<div class="strategy-section">
+    <h3>6. Budget consolidé</h3>
+    <div style="overflow-x:auto;"><table class="data-table">
+      <thead><tr><th>Poste</th><th>Montant</th><th>Fréquence</th><th>Commentaire</th></tr></thead>
+      <tbody>
+        <tr><td>Audit initial Exiliance</td><td>15 000 — 25 000 €</td><td>One-shot</td><td>Diagnostic 11 pays</td></tr>
+        <tr><td>Conseil & conception politique groupe</td><td>10 000 — 15 000 €</td><td>One-shot</td><td>Inclut appel d'offres réseaux pooling</td></tr>
+        <tr><td>Accompagnement déploiement (4 pays prioritaires)</td><td>8 000 — 12 000 €</td><td>One-shot</td><td>Rédaction accords, négociation assureurs</td></tr>
+        <tr><td>Primes annuelles surcomplémentaire (11 pays)</td><td>100 000 — 170 000 €</td><td>Annuel</td><td>~1 000-1 700 €/salarié/an en moyenne</td></tr>
+        <tr><td>Frais de gestion réseau pooling</td><td>3 000 — 5 000 €</td><td>Annuel</td><td>Inclus dans le courtage si via Exiliance</td></tr>
+        <tr><td style="color:#16a34a;font-weight:600;">Dividende de pooling (retour)</td><td style="color:#16a34a;font-weight:600;">−10 000 — −25 000 €</td><td>Annuel</td><td>Reversé si résultats techniques excédentaires</td></tr>
+        <tr style="font-weight:800;background:var(--gradient-subtle);">
+          <td>INVESTISSEMENT INITIAL</td><td>33 000 — 52 000 €</td><td>One-shot</td><td>Amorti dès la 1ère année via les économies de pooling</td></tr>
+        <tr style="font-weight:800;background:var(--gradient-subtle);">
+          <td>COÛT NET ANNUEL RÉCURRENT</td><td>93 000 — 150 000 €</td><td>Annuel</td><td>Soit 920 — 1 500 €/salarié/an</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:10px;">Pour référence : ces montants représentent environ <strong>1,5 à 2,5% de la masse salariale brute européenne totale</strong> de TiMOTION. C'est un investissement modéré qui place TiMOTION au niveau des standards du marché en matière de protection sociale groupe.</p>
+  </div>`;
+
+  // ========== 9. RÔLE D'EXILIANCE ==========
+  html += `<div class="strategy-section" style="border:2px solid var(--primary);background:var(--gradient-subtle);">
+    <h3 style="color:var(--primary-dark);">7. Le rôle d'Exiliance</h3>
+    <p>Exiliance assure l'ensemble de la chaîne de valeur — de l'audit initial au suivi annuel — en tant que courtier-conseil unique pour TiMOTION :</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:16px;">
+      <div style="background:white;border-radius:12px;padding:16px;border:1px solid var(--border);">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🔍</div>
+        <strong style="font-size:0.9rem;">Audit & diagnostic</strong>
+        <p style="font-size:0.82rem;color:var(--text-secondary);margin-top:4px;">Cartographie complète des couvertures existantes, identification des obligations légales, analyse des gaps.</p>
+      </div>
+      <div style="background:white;border-radius:12px;padding:16px;border:1px solid var(--border);">
+        <div style="font-size:1.5rem;margin-bottom:8px;">📋</div>
+        <strong style="font-size:0.9rem;">Conception & négociation</strong>
+        <p style="font-size:0.82rem;color:var(--text-secondary);margin-top:4px;">Définition de la politique groupe, appel d'offres assureurs, négociation des conditions, sélection du réseau de pooling.</p>
+      </div>
+      <div style="background:white;border-radius:12px;padding:16px;border:1px solid var(--border);">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🚀</div>
+        <strong style="font-size:0.9rem;">Déploiement</strong>
+        <p style="font-size:0.82rem;color:var(--text-secondary);margin-top:4px;">Mise en place des contrats locaux dans chaque pays, affiliation au pool, communication aux salariés.</p>
+      </div>
+      <div style="background:white;border-radius:12px;padding:16px;border:1px solid var(--border);">
+        <div style="font-size:1.5rem;margin-bottom:8px;">📊</div>
+        <strong style="font-size:0.9rem;">Pilotage & reporting</strong>
+        <p style="font-size:0.82rem;color:var(--text-secondary);margin-top:4px;">Suivi annuel du pool, reporting consolidé pour Taiwan, renégociation des contrats, veille réglementaire.</p>
+      </div>
+    </div>
+    <p style="margin-top:16px;font-size:0.88rem;"><strong>Un interlocuteur unique</strong> pour 11 pays, 11 systèmes juridiques, et autant de langues. Exiliance coordonne les assureurs locaux, gère le pool, et produit un reporting unifié pour la direction de TiMOTION.</p>
+  </div>`;
+
+  // ========== 10. FAQ ==========
+  html += `<div class="strategy-section">
+    <h3>8. Questions fréquentes</h3>
+    <div style="display:grid;gap:10px;">
+      <div class="accordion">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>Est-ce que le pooling change quelque chose pour les salariés ?</span>
+          <span class="acc-icon">▼</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-inner">
+          <p>Non. Les salariés ne voient aucune différence. Leurs contrats locaux, leurs couvertures, et leurs interlocuteurs restent exactement les mêmes. Le pooling est un mécanisme de réassurance "en coulisses" qui ne concerne que l'entreprise. En revanche, la mise en place d'une surcomplémentaire est un vrai avantage supplémentaire pour les salariés, qui doit être communiqué positivement.</p>
+        </div></div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>Que se passe-t-il si la sinistralité est mauvaise une année ?</span>
+          <span class="acc-icon">▼</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-inner">
+          <p>Le déficit est absorbé par le pool et reporté sur les exercices suivants. En mode Multipool (Generali GEB), le risque est mutualisé avec d'autres entreprises similaires, ce qui protège TiMOTION de la volatilité. Il n'y a jamais d'appel de fonds supplémentaire — le risque est plafonné aux primes versées.</p>
+        </div></div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>Peut-on mettre la Russie dans le pool ?</span>
+          <span class="acc-icon">▼</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-inner">
+          <p>Techniquement oui (les réseaux GEB et IGP couvrent la Russie), mais les sanctions UE (Art. 5n du Règlement 833/2014) compliquent la situation. Depuis le 20 juin 2024, l'exemption intra-groupe pour les services comptables/RH a expiré. TiMOTION doit obtenir une autorisation individuelle de l'autorité compétente (en France : Direction Générale du Trésor) pour continuer à fournir des services RH à sa filiale russe. Exiliance recommande de traiter la Russie séparément du pool européen, avec un accompagnement juridique dédié.</p>
+        </div></div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>Le UK post-Brexit peut-il être intégré ?</span>
+          <span class="acc-icon">▼</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-inner">
+          <p>Oui, sans difficulté. Les réseaux de pooling multinationaux (GEB, IGP, MAXIS) sont des réseaux privés d'assurance, pas des dispositifs réglementaires européens. Ils couvrent le UK comme n'importe quel autre pays. L'auto-enrolment britannique peut être intégré au pool et, si souhaité, renforcé au-delà du minimum légal de 3% employeur.</p>
+        </div></div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>Quel est le retour sur investissement ?</span>
+          <span class="acc-icon">▼</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-inner">
+          <p><strong>Court terme (année 1) :</strong> L'investissement initial de 33-52k€ est partiellement compensé par les économies de renégociation des contrats existants (Exiliance identifie systématiquement 10-20% d'économies sur les primes en vigueur lors de l'audit).</p>
+          <p><strong>Moyen terme (année 2-3) :</strong> Le dividende de pooling (10-25k€/an) commence à s'accumuler. L'amortissement de l'investissement initial est atteint en 2-3 ans.</p>
+          <p><strong>Long terme :</strong> La retraite surcomplémentaire groupe devient un avantage concurrentiel pour l'attraction et la rétention des talents, réduisant les coûts de turnover (un recrutement d'ingénieur coûte 15-25k€ en France). Si le programme évite un seul départ non souhaité par an, il est rentabilisé.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>`;
+
   document.getElementById('tab-strategie').innerHTML = html;
 }
 
