@@ -295,6 +295,7 @@ a:hover { text-decoration: underline; }
     <div class="tab" data-tab="retraite">Retraite</div>
     <div class="tab" data-tab="salaire">Grilles de salaire</div>
     <div class="tab" data-tab="prevoyance">Prévoyance & Santé</div>
+    <div class="tab" data-tab="benefits">Avantages & Benefits</div>
     <div class="tab" data-tab="comparatif">Comparatif</div>
     <div class="tab" data-tab="strategie">Stratégie groupe</div>
   </div>
@@ -313,6 +314,9 @@ a:hover { text-decoration: underline; }
 
   <!-- TAB: PRÉVOYANCE & SANTÉ -->
   <div class="content-area" id="tab-prevoyance"></div>
+
+  <!-- TAB: AVANTAGES & BENEFITS -->
+  <div class="content-area" id="tab-benefits"></div>
 
   <!-- TAB: COMPARATIF -->
   <div class="content-area" id="tab-comparatif"></div>
@@ -630,6 +634,18 @@ Note : le prélèvement à la source (PAS) de l'impôt sur le revenu est collect
 • Portabilité : 12 mois après fin du contrat
 • Avantage fiscal : cotisations employeur exonérées de charges (dans les limites)
 • Contrat responsable obligatoire (sinon perte des avantages sociaux et fiscaux)`
+,
+      benefits: {
+        voiture: `Avantage en nature calculé sur la base du coût réel ou d'un forfait (9-12% du prix d'achat + carburant, ou barème kilométrique). Soumis à cotisations et impôt. Usage privé = avantage en nature obligatoire. L'employeur peut demander une participation du salarié.`,
+        ticketsRestaurant: `Oui — très répandu. Valeur faciale courante : 8-11 €/jour. Part employeur exonérée de charges si entre 50% et 60% de la valeur, dans la limite de 7,18 € en 2025. Part salarié déduite du net. Utilisables uniquement les jours travaillés.`,
+        beneficesDefiscalises: `Chèques-cadeaux : exonérés jusqu'à 193 € par événement (5% du PMSS). Chèques vacances : participation employeur exonérée sous conditions. Intéressement/participation : exonérés de charges (forfait social 20% ou 8%). Abondement PEE/PERCO.`,
+        conges: `25 jours ouvrés de congés payés légaux + RTT selon accord d'entreprise (souvent 10-12 jours pour les cadres au forfait). CCN Métallurgie : congés ancienneté possibles.`,
+        treizieme: `Pas d'obligation légale de 13ème mois en France (contrairement à la Belgique ou l'Italie). Dépend de la convention collective ou de l'accord d'entreprise. La CCN Métallurgie ne l'impose pas systématiquement.`,
+        heuresSup: `Cadres au forfait jours : pas d'heures sup (218 jours/an max). Non-cadres : majoration 25% (8 premières heures/semaine), puis 50%. Contingent annuel : 220h. Défiscalisation partielle des heures sup (exonération de cotisations salariales, plafond 7 500 €/an).`,
+        arretMaladie: `Carence 3 jours Sécurité sociale (souvent supprimée par la CCN). Indemnités SS : 50% du salaire plafonné au PASS. CCN Métallurgie : maintien de salaire à 90% puis 66,66% selon ancienneté. Subrogation courante.`,
+        formation: `CPF (Compte Personnel de Formation) : jusqu'à 500 €/an crédités (800 € pour les non-qualifiés). OPCO : financement des formations par la branche. Plan de développement des compétences : à la charge de l'employeur.`,
+        autresBenefits: `Mutuelle obligatoire (déjà couverte). Prévoyance CCN. Frais de transport : prise en charge 50% du pass Navigo obligatoire. Prime de partage de la valeur (PPV) : exonérée jusqu'à 3 000 € (6 000 € avec intéressement) pour les salaires < 3 SMIC. Forfait mobilités durables : jusqu'à 800 €/an exonéré.`
+      }
     },
     "DE": {
       name: `Allemagne`,
@@ -954,6 +970,18 @@ Constat : la France a des charges patronales beaucoup plus élevées mais un imp
   - Prime individuelle (non liée au salaire)
 • Aucune obligation de complémentaire santé employeur
 • Zuschuss employeur : obligatoire si salarié en PKV (max 50% de la prime)`
+,
+      benefits: {
+        voiture: `Règle du 1% : l'avantage en nature = 1% de la valeur catalogue neuve TTC par mois. Ex: voiture à 40 000 € = 400 €/mois d'avantage imposable. Trajet domicile-travail : +0,03% par km. Alternative : carnet de bord (Fahrtenbuch) pour ne taxer que l'usage privé réel. Les véhicules électriques bénéficient d'un taux réduit (0,25% ou 0,5%).`,
+        ticketsRestaurant: `NON — pas de système de tickets restaurant en Allemagne. Alternative : l'employeur peut subventionner les repas en cantine ou via des prestataires digitaux (Lunchit, Hrmony) avec exonération partielle.`,
+        beneficesDefiscalises: `Sachbezug : 50 €/mois de benefits en nature exonérés (cartes cadeaux, vouchers carburant, etc.) — seuil relevé de 44 € à 50 € en 2022. Crèche (Kindergarten) : prise en charge illimitée et exonérée. Santé : 600 €/an exonérés pour programmes de prévention santé. Internet/téléphone : exonéré si usage professionnel. Cadeaux personnels (mariage, naissance) : 60 € exonérés par événement.`,
+        conges: `Minimum légal : 20 jours ouvrés (sur base 5j/semaine). En pratique chez TiMOTION DE : 28,9 jours. Les conventions collectives IG Metall prévoient généralement 30 jours.`,
+        treizieme: `Pas d'obligation légale. Weihnachtsgeld (prime de Noël) courant dans l'industrie mais négocié par accord d'entreprise ou convention collective. IG Metall : souvent 55% d'un mois de salaire en prime de Noël.`,
+        heuresSup: `Maximum 8h/jour, extensible à 10h si compensation en 6 mois. Pas de majoration légale obligatoire — les majorations sont fixées par convention collective ou contrat. IG Metall : +25% en semaine, +50% samedi, +100% dimanche/fériés. Cadres (Leitende Angestellte) : exclus des règles sur le temps de travail.`,
+        arretMaladie: `Entgeltfortzahlung : l'employeur maintient 100% du salaire pendant 6 semaines. Au-delà : Krankengeld de la caisse maladie (GKV) = 70% du brut (max 90% du net) pendant 72 semaines. L'employeur peut se faire rembourser une partie via les Umlagen U1 (cotisation ~1% pour les PME < 30 salariés).`,
+        formation: `Pas de droit individuel à la formation comparable au CPF français. Bildungsurlaub (congé formation) : 5 jours/an dans la plupart des Länder (pas en Bavière ni en Saxe). Financement par l'employeur ou la Bundesagentur für Arbeit.`,
+        autresBenefits: `Vermögenswirksame Leistungen (VL) : épargne salariale, l'employeur peut verser jusqu'à 40 €/mois. Jobticket : titre de transport pris en charge exonéré d'impôt. Jobrad : vélo de fonction, avantage fiscal (0,25% de la valeur neuve/mois pour les vélos électriques). Betriebliche Altersvorsorge : voir onglet Retraite.`
+      }
     },
     "IT": {
       name: `Italie`,
@@ -1235,6 +1263,18 @@ Provision 13eme mois : 2 916,67 / 12 = 243,06 euros
 • Couverture : hospitalisation, spécialistes, dentaire, optique
 • Pas d'obligation générale de complémentaire au-delà du CCNL
 • Fiscalement avantageux : cotisations déductibles jusqu'à 3 615,20 €/an`
+,
+      benefits: {
+        voiture: `Fringe benefit calculé par l'ACI (Automobile Club Italia) : 30% du coût total pour 15 000 km × prix/km ACI. Ex chez TiMOTION IT : Range Rover Sport 3.0 = 0,897 €/km × 15 000 × 30% = 4 036,50 €/an imposable. Avantage pour l'entreprise : 70% du coût du véhicule déductible (vs 20% normalement). Carburant et péages privés (week-ends, vacances) à la charge du salarié.`,
+        ticketsRestaurant: `Oui — très courant. Tickets papier : exonérés jusqu'à 4 €/jour. Tickets électroniques : exonérés jusqu'à 8 €/jour. Au-delà : l'excédent est soumis à cotisations et impôt. Chez TiMOTION IT : indemnité de remplacement repas de 4,80 €/jour (exonérée). Le prestataire recommande les tickets électroniques à 8 € pour maximiser l'avantage.`,
+        beneficesDefiscalises: `Fringe benefits (cadeaux, cartes Amazon, Edenred) : exonérés jusqu'à 1 000 €/an par salarié (2 000 € si enfants à charge). ATTENTION : les salariés avec voiture de fonction peuvent facilement dépasser ce seuil (le fringe benefit voiture compte !). Au-delà du seuil, la TOTALITÉ devient imposable (pas seulement l'excédent). Welfare aziendale CCNL Metalmeccanici : 200 €/an en 2025 (250 € à partir de 2026) en flexible benefits.`,
+        conges: `Minimum légal : 4 semaines (20 jours ouvrés). Le CCNL Metalmeccanici prévoit généralement 22-26 jours selon l'ancienneté. Plus : ROL (Riduzione Orario di Lavoro) = 72-104 heures/an de réduction du temps de travail. Festivités : ~12 jours fériés/an. Festività non goduta : si un jour férié tombe un dimanche, il est payé en supplément.`,
+        treizieme: `Tredicesima OBLIGATOIRE : 13ème mois versé en décembre (DPR 1070/1960). Certains CCNL prévoient aussi une 14ème mois (quattordicesima) — commerce, tourisme, alimentaire. Le CCNL Metalmeccanici ne prévoit que la tredicesima.`,
+        heuresSup: `Cadres (Quadro) : exclus du temps de travail, pas d'heures sup sauf dimanches/fériés. Non-cadres : majoration +15% en semaine, +30% samedi, +30% dimanche/fériés. Maximum 48h/semaine en moyenne sur 4 mois. Le repos compensatoire est possible mais la majoration reste due.`,
+        arretMaladie: `3 premiers jours (carenza) : 100% à charge de l'employeur. J4-J20 : INPS 50% + employeur complète à 75% (selon CCNL). J21-J180 : INPS 66,66% + employeur complète à 100% (selon CCNL). Chez TiMOTION IT : question sur le maintien à 100% pour le cadre Baioni — possible mais coût supplémentaire.`,
+        formation: `Fonds interprofessionnels (FondImpresa, FormaTemp) financent la formation. Cotisation patronale de 0,30% de la masse salariale versée à l'INPS, récupérable via le fonds interprofessionnel choisi.`,
+        autresBenefits: `TFR 6,91% (voir onglet Retraite). Fondo EST (santé, commerce) : 10 €/mois employeur + 2 €/mois salarié. QUAS (cadres commerce) : cotisation annuelle. Fondo Metasalute (santé, métallurgie) : 13 €/mois employeur. Congé décès : 3 jours pour parent jusqu'au 2ème degré (CCNL).`
+      }
     },
     "ES": {
       name: `Espagne`,
@@ -1520,6 +1560,18 @@ Surcout par rapport au brut affiche : (46 399,50 - 35 000) / 35 000 = 32,6%`,
   - Déductible pour l'employeur comme charge salariale
 • Couverture type : médecine générale, spécialistes, hospitalisation, dentaire basique
 • Délais d'attente très réduits vs SNS (argument principal)`
+,
+      benefits: {
+        voiture: `Retribución en especie : si véhicule propriété de l'entreprise, 20% de la valeur marché × pourcentage d'usage privé. Chez TiMOTION ES : calcul basé sur le ratio temps libre/temps de travail. Ex: 29 990 € × 20% × 57% usage privé / 12 = 284,91 €/mois imposable. Si leasing : le coût du leasing au prorata de l'usage privé est déduit du salaire (pas de retribución en especie). Carburant et péages privés (vacances) ne sont PAS payés par l'employeur.`,
+        ticketsRestaurant: `Oui — tickets restaurant exonérés jusqu'à 11 €/jour. Mais chez TiMOTION ES : pas de tickets restaurant en place. Le prestataire avertit : il faut des justificatifs de dépenses sinon ce n'est pas exonéré. Et attention : si un montant est versé régulièrement au-delà du salaire, il peut devenir un droit acquis impossible à supprimer.`,
+        beneficesDefiscalises: `Très limité en Espagne. Seguro médico : exonéré IRPF jusqu'à 500 €/an par bénéficiaire (1 500 € si handicap). Garde d'enfants : exonérée jusqu'à 1 000 €/an. Tickets restaurant : jusqu'à 11 €/jour. Tickets transport : jusqu'à 136,36 €/mois (1 500 €/an). Formación : si liée au poste, entièrement exonérée. Retribución flexible : le salarié peut allouer jusqu'à 30% de son brut à ces avantages exonérés.`,
+        conges: `Minimum légal : 30 jours calendaires (≈ 22 jours ouvrés). Pas d'accumulation : les jours doivent être pris avant le 31 décembre (en pratique, tolérance jusqu'à février). Les jours non pris sont perdus (la loi espagnole est stricte).`,
+        treizieme: `14 PAGAS obligatoires (art. 31 Estatuto de los Trabajadores) : 2 pagas extraordinarias par an (Noël + été). Le SMI de 1 184 €/mois est exprimé en 14 mensualités. Possibilité de proratiser en 12 mois par accord. Certaines conventions prévoient des pagas supplémentaires (3ème, 4ème).`,
+        heuresSup: `Maximum 80h/an d'heures supplémentaires. Majoration : minimum 75% du salaire horaire normal (sauf si convention prévoit repos compensatoire). Les heures supplémentaires sont volontaires sauf si prévues au contrat ou en cas de force majeure.`,
+        arretMaladie: `J1-J3 : rien (carence). J4-J15 : 60% de la base de cotisation (à charge de l'employeur). J16-J20 : 60% (Sécurité sociale, remboursé via cotisations). À partir de J21 : 75% (Sécurité sociale). La convention collective TiMOTION ES améliore : complément employeur à 100% sur toute la durée.`,
+        formation: `FUNDAE : crédit formation annuel déduit des cotisations sociales. Pour TiMOTION ES (5 salariés) : 884,11 €/an en 2025. Les cours doivent être subventionnés par FUNDAE pour être déductibles. L'entreprise paie le prestataire de formation, puis déduit le montant des cotisations.`,
+        autresBenefits: `Nouvel impôt de solidarité 2025 (MEI) : cotisation additionnelle sur les hauts salaires. Dietas : indemnités de déplacement exonérées (26,67 €/jour en Espagne, 48,08 €/jour à l'étranger si pas de nuitée ; 53,34 € / 91,35 € avec nuitée). Visite médicale annuelle : proposée par l'employeur (obligatoire à offrir, facultative pour le salarié).`
+      }
     },
     "UK": {
       name: `Royaume-Uni`,
@@ -1787,6 +1839,18 @@ Le salarié reçoit donc environ £31 239 (~36 550 €) nets sur £40 000 (~46 8
   - P11D déclaration obligatoire
 • Couverture type : consultations spécialistes, hospitalisation privée, IRM/scans rapides
 • Argument principal : éviter les listes d'attente NHS (18+ semaines pour certaines spécialités)`
+,
+      benefits: {
+        voiture: `Company Car Benefit : taxé sur la base de la valeur catalogue × taux CO2 (1% pour les électriques purs, jusqu'à 37% pour les plus polluants). Ex chez TiMOTION UK : Alex Parry = £8 489/an de benefit taxé à 40% = ~£283/mois d'impôt. Le carburant privé doit être remboursé sinon Fuel Benefit Charge supplémentaire. Alternative : Car Allowance (en cash, plus simple mais 100% taxé).`,
+        ticketsRestaurant: `NON — le prestataire local TiMOTION UK confirme : 'Meal vouchers and allowances cannot be implemented and would not be beneficial to staff in the UK.' Les repas ne sont déductibles que lors de déplacements professionnels.`,
+        beneficesDefiscalises: `Cycle to Work scheme : vélo exonéré via salary sacrifice. Pension salary sacrifice : très avantageux (économie NI pour l'employeur ET le salarié). Trivial benefits : cadeaux < £50 exonérés (illimité pour les non-directeurs). Annual parties : 2 événements/an jusqu'à £150/personne exonérés.`,
+        conges: `Minimum légal : 28 jours (incluant les 8 bank holidays). En pratique : 25 jours + 8 bank holidays = 33 jours est courant dans l'industrie.`,
+        treizieme: `Pas de 13ème mois au UK. Les bonus sont discrétionnaires et entièrement taxés (income tax + NI). Certaines entreprises versent un Christmas bonus mais c'est facultatif.`,
+        heuresSup: `Working Time Regulations : maximum 48h/semaine en moyenne sur 17 semaines, sauf opt-out volontaire du salarié (très courant au UK). Pas de majoration légale pour les heures supplémentaires — tout dépend du contrat.`,
+        arretMaladie: `Statutory Sick Pay (SSP) : £116,75/semaine (~136 €) pendant max 28 semaines. Carence : 3 jours (waiting days). C'est un des montants les plus bas d'Europe. Beaucoup d'employeurs offrent un 'company sick pay' plus généreux (souvent full pay pendant X semaines puis half pay).`,
+        formation: `Pas d'équivalent du CPF. Apprenticeship Levy (0,5% de la masse salariale si > £3M) peut financer des formations d'apprentissage. Sinon à la charge de l'employeur ou du salarié.`,
+        autresBenefits: `PMI (Private Medical Insurance) : taxable benefit mais très valorisé (voir onglet Prévoyance). Death in Service : 2-4x salaire, non taxable (voir onglet Prévoyance). EAP (Employee Assistance Programme) : soutien psychologique, souvent gratuit pour l'employeur. Share schemes (EMI/SIP) : plans d'actionnariat avec avantages fiscaux.`
+      }
     },
     "NL": {
       name: `Pays-Bas`,
@@ -2081,6 +2145,18 @@ Les montants sont tous basés sur les données 2025 que vous avez fournies. Les 
   - Volontaire, 10-50 €/mois
   - Dentaire, physiothérapie, lunettes
 • Système très complet — peu de besoin de surcomplémentaire`
+,
+      benefits: {
+        voiture: `Addition privégebruik : si le salarié conduit > 500 km/an à titre privé, 22% de la valeur catalogue est ajouté au revenu imposable (bijtelling). Véhicules électriques : 16% en 2025. Le salarié paie l'impôt sur cette addition. Tous les frais de la voiture sont à la charge de l'employeur. Possibilité de contribution du salarié déduite du net. Chez TiMOTION NL : voiture de fonction en place.`,
+        ticketsRestaurant: `NON — pas de système de tickets restaurant aux Pays-Bas. Les frais de représentation sont gérés via le WKR.`,
+        beneficesDefiscalises: `WKR (Werkkostenregeling) : l'employeur dispose d'un 'espace libre' de 1,92% de la masse salariale jusqu'à 400 000 € + 1,18% au-delà. Tout ce qui rentre dans cet espace est exonéré d'impôt pour le salarié. Au-delà : taxe de 80% pour l'employeur ! Chez TiMOTION NL : frais de représentation versés (109,19 € et 85,94 €/mois). Cadeaux < 25 € : zéro-valuation (hors WKR). Maximum 'usuel' : 2 400 €/salarié/an dans le WKR.`,
+        conges: `Minimum légal : 20 jours (base 40h/semaine). Souvent 25 jours dans la pratique. Les jours non pris expirent 6 mois après la fin de l'année (jours légaux) ou 5 ans (jours supplémentaires).`,
+        treizieme: `Pas de 13ème mois obligatoire mais le vakantiegeld (8% du brut, versé en mai) fait office de '13ème mois'. Certains employeurs versent un 13ème mois EN PLUS du vakantiegeld.`,
+        heuresSup: `Pas de majoration légale obligatoire pour les heures sup — dépend de la CAO ou du contrat individuel. Attention : si un CDI dépasse 30% d'heures sup sur l'année, l'employeur doit payer rétroactivement le taux AWf élevé (7,74% au lieu de 2,74%).`,
+        arretMaladie: `UNIQUE EN EUROPE : l'employeur doit maintenir au moins 70% du salaire pendant 104 semaines (2 ans !). 1ère année : souvent 100% puis 70%. 2ème année : 70%. Si l'employeur ne fait pas assez d'efforts de réintégration, l'UWV peut imposer une 3ème année. Assurance verzuim fortement recommandée. Chez TiMOTION NL : Assist Verzuim en place (255 €).`,
+        formation: `STAP-budget supprimé en 2024. Formation généralement à la charge de l'employeur. Studiekosten : l'employeur peut récupérer les frais de formation si le salarié part dans les X années (clause de remboursement).`,
+        autresBenefits: `Vakantiegeld 8% obligatoire (voir onglet Salaires). Reiskostenvergoeding : indemnité de déplacement domicile-travail max 0,23 €/km exonérée. Thuiswerkvergoeding : indemnité télétravail max 2,40 €/jour exonérée (2025). Fiets van de zaak : vélo de fonction, bijtelling 7% de la valeur neuve.`
+      }
     },
     "PL": {
       name: `Pologne`,
@@ -2336,6 +2412,18 @@ taux_net_sur_cout_total : 57,6%`,
   - Package étendu : dentaire, hospitalisation, examens
 • Fiscalité : déductible pour l'employeur, avantage en nature pour le salarié
 • 70% des entreprises de plus de 50 salariés proposent un abonnement médical`
+,
+      benefits: {
+        voiture: `Avantage en nature forfaitaire : 250 PLN/mois (~58 €) si moteur ≤ 1600 cm³, 400 PLN/mois (~92 €) si moteur > 1600 cm³. Soumis à cotisations et impôt. Chez TiMOTION PL : 400 PLN/mois pour le salarié (Łukasz). Carburant privé : selon accord — soit l'employeur couvre tout, soit GPS pour séparer pro/privé, soit le salarié note les km.`,
+        ticketsRestaurant: `NON — pas de système de tickets restaurant en Pologne. Repas en nature (abonnement cantine) : exonérés au-delà de 190 PLN/mois (~44 €). Chez TiMOTION PL : pas de prime panier.`,
+        beneficesDefiscalises: `Très limité. Remboursement vêtements de travail et outils personnels : exonéré. Indemnité voiture personnelle : exonérée. 'Christmas vouchers' et coupons : imposables et soumis à cotisations. Le prestataire TiMOTION PL confirme : quasiment tout est taxé en Pologne.`,
+        conges: `20 jours si < 10 ans d'ancienneté totale, 26 jours si ≥ 10 ans. Les études comptent dans l'ancienneté (lycée = 4 ans, licence = 8 ans). Chez TiMOTION PL : 20 jours.`,
+        treizieme: `Pas de 13ème mois obligatoire en Pologne. Les primes sont à la discrétion de l'employeur. Toutes les primes sont soumises à cotisations et impôt.`,
+        heuresSup: `Maximum : 150h/an par défaut (extensible à 416h par accord). Majoration : +50% en semaine, +100% nuit/dimanche/fériés. Alternative : repos compensatoire (1:1 si initiative salarié, 1:1,5 si initiative employeur).`,
+        arretMaladie: `33 premiers jours/an (14 jours pour les 50 ans+) : 80% du salaire moyen des 12 derniers mois, à charge de l'employeur. Pas de cotisations sociales sur ce montant (seulement santé et impôt). Au-delà : ZUS prend le relais (80%, ou 100% en cas d'accident du travail/grossesse) pendant 182 jours.`,
+        formation: `Pas d'équivalent du CPF ou de FUNDAE. La formation est à la charge de l'employeur. Possibilité de clauses de remboursement si le salarié part dans les X années.`,
+        autresBenefits: `PPK (retraite, voir onglet Retraite). Medicover/LuxMed (santé, voir onglet Prévoyance). ZFŚS (Fonds social d'entreprise) : obligatoire pour les entreprises de 50+ salariés (pas applicable à TiMOTION PL). Visite médicale du travail : obligatoire à l'embauche et périodiquement.`
+      }
     },
     "DK": {
       name: `Danemark`,
@@ -2581,6 +2669,18 @@ note : Le faible ratio net/brut est compensé par des services publics gratuits 
   - Couverture : physiothérapie, psychologue, chiropracteur, accès rapide spécialistes
 • Principaux assureurs : PFA, Danica, Tryg
 • Fiscalité : déductible pour l'employeur, non imposable pour le salarié (sous conditions)`
+,
+      benefits: {
+        voiture: `Beskatning af fri bil : l'avantage est calculé sur la valeur du véhicule. Jusqu'à 300 000 DKK (~40 200 €) : 22,5% de la valeur par an est ajouté au revenu. Au-delà : 22,5% sur les premiers 300 000 DKK + 19% sur le reste. Minimum d'imposition : 160 000 DKK (~21 440 €). Taux écologiquement différenciés pour les véhicules électriques.`,
+        ticketsRestaurant: `NON — pas de système de tickets restaurant au Danemark.`,
+        beneficesDefiscalises: `Très limité depuis la suppression de la plupart des exonérations. Cadeaux de Noël : exonérés jusqu'à 900 DKK (~121 €). Frokostordning (déjeuner d'entreprise) : taxé comme avantage en nature. Téléphone/internet : taxé forfaitairement.`,
+        conges: `5 semaines (25 jours) par an (Ferieloven). Accumulation : 2,08 jours/mois. Le feriepenge (12,5% du brut) est versé via FerieKonto pour les salariés horaires, ou ferietillæg de 1% pour les salariés mensualisés.`,
+        treizieme: `Pas de 13ème mois obligatoire. Mais le feriepenge (12,5% du brut) fait office de quasi-13ème mois, versé avant les vacances d'été.`,
+        heuresSup: `Régulé par convention collective (overenskomst), pas par la loi. Industrien Overenskomst : +50% en semaine, +100% dimanche/fériés. Le Danemark a une culture du travail avec des horaires stricts (37h/semaine standard).`,
+        arretMaladie: `Employeur paie les 30 premiers jours (sygedagpenge). Puis la commune prend le relais : max 4 695 DKK/semaine (~629 €) en 2025. La plupart des conventions collectives prévoient un complément employeur.`,
+        formation: `Kompetencefonden (fonds de compétences) via les conventions collectives finance la formation continue. Droit à 2 semaines de formation/an dans l'industrie.`,
+        autresBenefits: `ATP + pension pro (voir onglet Retraite). Sundhedsforsikring (voir onglet Prévoyance). Flexicurité : licenciement facile mais allocations chômage généreuses (90% du salaire, plafond ~19 800 DKK/mois, jusqu'à 2 ans). Barselsfond : fonds maternité partagé entre employeurs.`
+      }
     },
     "BE": {
       name: `Belgique`,
@@ -2881,6 +2981,18 @@ Note importante : ce calcul n'inclut pas les cheques-repas, les eco-cheques, l'a
   - Suppléments d'honoraires couverts
   - Soins dentaires, optique selon formule
 • Fiscalité : pas de déductibilité spécifique pour les primes santé`
+,
+      benefits: {
+        voiture: `Avantage de toute nature (ATN) : calculé sur la valeur catalogue × coefficient CO2 × 6/7 × ancienneté (min 4%). Très complexe. Cotisation de solidarité CO2 à charge de l'employeur (242-2 722 €/an selon le véhicule). Depuis 2026 : seuls les véhicules zéro-émission sont déductibles à 100%. Chez TiMOTION BE : véhicule, ordinateur, internet, téléphone en avantages en nature.`,
+        ticketsRestaurant: `NON pour les tickets restaurant classiques chez TiMOTION BE, mais prime panier de 4,80 €/jour en place. Les chèques-repas sont possibles : exonérés si valeur max 8 €/jour (part employeur max 6,91 €, part salarié min 1,09 €).`,
+        beneficesDefiscalises: `Éco-chèques : OBLIGATOIRES (CCT) — 250 €/an max, exonérés de tout. Chez TiMOTION BE : 310 €. Prime pouvoir d'achat : 310 € chez TiMOTION BE. Chèques-cadeaux : exonérés jusqu'à 40 €/an (+ 40 €/enfant). Budget mobilité : alternative à la voiture de fonction, partiellement exonéré.`,
+        conges: `20 jours ouvrés (régime 5 jours/semaine). Double pécule de vacances : 92% du salaire mensuel brut (employés), versé en mai/juin. Jours fériés : 10 jours légaux. Chez TiMOTION BE : paiement congés + RTT + jours fériés au 31/12.`,
+        treizieme: `13ème MOIS OBLIGATOIRE en Belgique (selon la CP/CCT applicable). Chez TiMOTION BE : 13ème mois en place. S'ajoute au double pécule de vacances — soit effectivement 13,92 mois de salaire/an.`,
+        heuresSup: `Maximum 38h/semaine (base légale). Heures sup : sursalaire de +50% en semaine, +100% dimanche/fériés. Maximum 143h/an sans autorisation spéciale (extensible à 360h). Les 120 premières heures volontaires ne sont pas récupérées en repos.`,
+        arretMaladie: `Salaire garanti : 30 jours pour les employés (14 jours pour les ouvriers), 100% à charge de l'employeur. Au-delà : mutuelle verse 60% du brut plafonné (1ère année), puis 40-65% (invalidité). 3 jours d'absence sans certificat médical par an (depuis 2023). Chez TiMOTION BE : en place.`,
+        formation: `Droit individuel à la formation : 5 jours/an pour les entreprises de 20+ salariés (2024). Pour les entreprises < 20 salariés : 1 jour/an (via fonds sectoriel). Congé-éducation payé : droit du salarié à suivre des formations reconnues avec maintien de salaire.`,
+        autresBenefits: `Assurance hospitalisation AXA : 28,77 €/mois (en place chez TiMOTION BE). Assurance accident du travail Van Dessel : 274 €/an. Fonds sécurité sociale Xerius : 350 €/an. Médecine du travail Mensura : 160,16 €/an + 79,58 € provision/salarié. Chèques sport & culture : possibles, exonérés jusqu'à certains plafonds.`
+      }
     },
     "CZ": {
       name: `Tchéquie`,
@@ -3136,6 +3248,18 @@ taux_net_sur_cout_total : 59,1%`,
   - Peu développées (système public suffisant)
   - Réservées aux expatriés ou dirigeants
 • Fiscalité : benefit cards déductibles jusqu'à 20 000 CZK (~820 €)/an`
+,
+      benefits: {
+        voiture: `Si usage privé autorisé : 1% de la valeur d'achat TTC par mois est ajouté au revenu imposable (minimum 1 000 CZK/mois ~41 €). Réduction de 20% pour les véhicules zéro-émission.`,
+        ticketsRestaurant: `Stravenkový paušál (indemnité repas forfaitaire) : exonérée jusqu'à 70% du montant de l'indemnité journalière pour les déplacements professionnels (environ 116 CZK/jour ~4,76 € en 2025). Alternative : stravenky (tickets restaurant) ou carte repas.`,
+        beneficesDefiscalises: `Příspěvek na penzijní pojištění : abondement employeur au DPS exonéré jusqu'à 50 000 CZK/an (~2 050 €). Příspěvek na životní pojištění : cotisation assurance-vie exonérée jusqu'à 50 000 CZK/an. Total combiné exonéré : 50 000 CZK/an. Benefit cards (Sodexo, Edenred) : très populaires, permettent sport, culture, santé.`,
+        conges: `Minimum légal : 4 semaines (20 jours). Depuis 2025 : 5 semaines pour les entreprises qui le décident. La plupart offrent 25 jours. Congé maladie : voir arretMaladie.`,
+        treizieme: `Pas de 13ème mois obligatoire. Primes de fin d'année courantes mais discrétionnaires.`,
+        heuresSup: `Maximum 8h/semaine en moyenne sur 26 semaines. Majoration : +25% minimum. Maximum 150h/an par principe (extensible à 416h par accord).`,
+        arretMaladie: `14 premiers jours : à charge de l'employeur, 60% de la base de calcul réduite à partir du 4ème jour (les 3 premiers jours = carence). Au-delà : nemocenské (CSSZ) verse 66% puis 72% puis 100% du salaire réduit selon la durée.`,
+        formation: `Pas de droit individuel comparable au CPF. L'employeur peut déduire les frais de formation comme charge d'exploitation.`,
+        autresBenefits: `DPS avec abondement État (voir onglet Retraite). Benefit cards très populaires (Sodexo Cafeteria, Edenred Benefits) — budget flexible pour sport, culture, santé, voyages. Příspěvek na dopravu : indemnité transport possible.`
+      }
     },
     "RU": {
       name: `Russie`,
@@ -3403,6 +3527,18 @@ alerte_sanctions : VÉRIFIER la conformité aux sanctions UE avant toute opérat
   - Hospitalisation, examens, dentaire selon formule
 • Principaux assureurs : SOGAZ, RESO-Garantia, Ingosstrakh
 • ⚠️ Contexte sanctions : vérifier faisabilité opérationnelle`
+,
+      benefits: {
+        voiture: `Pas de règle spécifique de fringe benefit pour les voitures de fonction. Si usage privé autorisé, un avantage en nature peut être calculé mais la pratique est peu réglementée. La voiture de fonction est courante pour les cadres mais sans le cadre fiscal strict des pays occidentaux.`,
+        ticketsRestaurant: `Pas de système comparable. Les repas d'entreprise (stolovaya/cantine) sont courants dans les grandes entreprises mais pas fiscalement avantagés.`,
+        beneficesDefiscalises: `Très limité. DMS (assurance santé volontaire) : déductible jusqu'à 120 000 RUB/an (~1 140 €). Aide matérielle (materialnaya pomoshch) : exonérée jusqu'à 4 000 RUB/an (~38 €) par salarié. Indemnités de déplacement : exonérées dans des limites fixées (700 RUB/jour en Russie, 2 500 RUB/jour à l'étranger).`,
+        conges: `Minimum légal : 28 jours calendaires. Les régions du Grand Nord et zones équivalentes : jusqu'à 52 jours. Congés fractionnables mais une période d'au moins 14 jours consécutifs obligatoire.`,
+        treizieme: `Pas de 13ème mois obligatoire. Prime annuelle (godovaya premiya) très courante dans la pratique, mais imposable et soumise aux cotisations (30%).`,
+        heuresSup: `Maximum 4h sur 2 jours consécutifs, 120h/an. Majoration : +50% les 2 premières heures, +100% au-delà. Consentement écrit du salarié requis (sauf urgences).`,
+        arretMaladie: `3 premiers jours : à charge de l'employeur. Au-delà : SFR (fonds social) verse 60-100% du salaire moyen selon l'ancienneté (< 5 ans : 60%, 5-8 ans : 80%, > 8 ans : 100%). Plafond journalier en 2025.`,
+        formation: `Pas de droit individuel à la formation. L'employeur peut financer la formation et la déduire des charges. Aucun mécanisme comparable au CPF ou à FUNDAE.`,
+        autresBenefits: `DMS = benefit n°1 (voir onglet Prévoyance). ⚠️ SANCTIONS UE : depuis le 20/06/2024, l'exemption intra-groupe pour les services RH/comptabilité a expiré. TiMOTION doit obtenir une autorisation de la DGT pour continuer. Dobrovol'noye pensionnoye strakhovanie (pension volontaire) : possible via NPF.`
+      }
     }
 };
 
@@ -5207,6 +5343,135 @@ function renderDiagnostic() {
   el.innerHTML = html;
 }
 
+
+// =============================================
+// RENDER: Benefits tab
+// =============================================
+function renderBenefits() {
+  const d = DATA[currentCountry];
+  if (!d || !d.benefits) {
+    document.getElementById('tab-benefits').innerHTML = '<div class="card"><p>Données non disponibles pour ce pays.</p></div>';
+    return;
+  }
+  const b = d.benefits;
+
+  const categories = [
+    { key: 'voiture', icon: '🚗', label: 'Voiture de fonction', short: 'Régime fiscal du véhicule de fonction' },
+    { key: 'ticketsRestaurant', icon: '🍽️', label: 'Tickets restaurant', short: 'Système de titres-restaurant' },
+    { key: 'beneficesDefiscalises', icon: '🎁', label: 'Avantages défiscalisés', short: 'Avantages en nature exonérés' },
+    { key: 'conges', icon: '📅', label: 'Congés', short: 'Congés payés et jours de repos' },
+    { key: 'treizieme', icon: '🎄', label: '13ème mois / Primes', short: 'Primes obligatoires et bonus' },
+    { key: 'heuresSup', icon: '⏰', label: 'Heures supplémentaires', short: 'Régime des heures supplémentaires' },
+    { key: 'arretMaladie', icon: '🏥', label: 'Arrêts maladie', short: 'Indemnisation des arrêts maladie' },
+    { key: 'formation', icon: '📚', label: 'Formation', short: 'Droits et financement de la formation' },
+    { key: 'autresBenefits', icon: '✨', label: 'Autres avantages', short: 'Avantages complémentaires' }
+  ];
+
+  let cardsHtml = categories.map((cat, idx) => {
+    const text = b[cat.key] || 'Non renseigné';
+    const preview = text.length > 120 ? text.substring(0, 120) + '…' : text;
+    return `<div class="card" style="cursor:pointer; transition: all 0.2s;" onclick="toggleBenefitCard(${idx})">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+        <span style="font-size:1.6rem;">${cat.icon}</span>
+        <div style="flex:1;">
+          <h3 style="margin:0; font-size:1rem;">${cat.label}</h3>
+          <p style="margin:0; font-size:0.8rem; color:var(--text-secondary);">${cat.short}</p>
+        </div>
+        <span id="benefit-chevron-${idx}" style="font-size:1.2rem; transition:transform 0.2s; transform:rotate(0deg);">▼</span>
+      </div>
+      <div id="benefit-preview-${idx}" style="font-size:0.88rem; color:var(--text-secondary); line-height:1.5;">${preview}</div>
+      <div id="benefit-detail-${idx}" style="display:none; font-size:0.9rem; line-height:1.7; margin-top:8px; padding-top:12px; border-top:1px solid var(--border); white-space:pre-wrap;">${text}</div>
+    </div>`;
+  }).join('');
+
+  // Comparison table
+  const allCodes = Object.keys(DATA);
+  const ticketsRow = allCodes.map(code => {
+    const bd = DATA[code].benefits;
+    if (!bd) return `<td style="text-align:center;">—</td>`;
+    const has = bd.ticketsRestaurant && !bd.ticketsRestaurant.startsWith('NON') && !bd.ticketsRestaurant.startsWith('Pas de');
+    return `<td style="text-align:center;">${has ? '✅' : '❌'}</td>`;
+  }).join('');
+
+  const treiziemeRow = allCodes.map(code => {
+    const bd = DATA[code].benefits;
+    if (!bd) return `<td style="text-align:center;">—</td>`;
+    const t = bd.treizieme || '';
+    const obligatoire = t.includes('OBLIGATOIRE') || t.includes('obligatoires') || t.includes('14 PAGAS');
+    return `<td style="text-align:center;">${obligatoire ? '✅' : '❌'}</td>`;
+  }).join('');
+
+  const congesData = {
+    FR: '25 + RTT', DE: '20-30', IT: '20-26 + ROL', ES: '22', UK: '25 + 8 BH',
+    NL: '20-25', PL: '20-26', DK: '25', BE: '20', CZ: '20-25', RU: '28'
+  };
+  const congesRow = allCodes.map(code => {
+    return `<td style="text-align:center; font-size:0.8rem;">${congesData[code] || '—'}</td>`;
+  }).join('');
+
+  const maladieData = {
+    FR: 'SS + CCN<br><small>Carence 3j</small>',
+    DE: 'Employeur 6 sem.<br><small>100% puis GKV 70%</small>',
+    IT: 'Empl. 3j + INPS<br><small>100→75→100%</small>',
+    ES: 'Empl. + SS<br><small>Carence 3j, 60→75%</small>',
+    UK: 'SSP £117/sem.<br><small>Carence 3j, 28 sem.</small>',
+    NL: 'Employeur 2 ans !<br><small>70-100%</small>',
+    PL: 'Empl. 33j + ZUS<br><small>80%</small>',
+    DK: 'Empl. 30j<br><small>puis commune</small>',
+    BE: 'Empl. 30j 100%<br><small>puis mutuelle 60%</small>',
+    CZ: 'Empl. 14j<br><small>Carence 3j, 60%</small>',
+    RU: 'Empl. 3j + SFR<br><small>60-100% selon anc.</small>'
+  };
+  const maladieRow = allCodes.map(code => {
+    return `<td style="text-align:center; font-size:0.75rem;">${maladieData[code] || '—'}</td>`;
+  }).join('');
+
+  const flagHeaders = allCodes.map(code => `<th style="text-align:center; font-size:1.2rem; padding:8px 6px;" title="${DATA[code].name}">${DATA[code].flag}</th>`).join('');
+
+  const compTable = `
+  <div class="card" style="overflow-x:auto;">
+    <h2>📊 Comparatif rapide — Avantages clés par pays</h2>
+    <table class="data-table" style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+      <thead>
+        <tr style="background:var(--gradient-subtle);">
+          <th style="text-align:left; padding:10px; min-width:160px;">Avantage</th>
+          ${flagHeaders}
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:8px; font-weight:600;">🍽️ Tickets restaurant</td>${ticketsRow}</tr>
+        <tr style="background:rgba(0,0,0,0.02);"><td style="padding:8px; font-weight:600;">🎄 13ème mois obligatoire</td>${treiziemeRow}</tr>
+        <tr><td style="padding:8px; font-weight:600;">📅 Congés (jours ouvrés)</td>${congesRow}</tr>
+        <tr style="background:rgba(0,0,0,0.02);"><td style="padding:8px; font-weight:600;">🏥 Arrêt maladie</td>${maladieRow}</tr>
+      </tbody>
+    </table>
+  </div>`;
+
+  document.getElementById('tab-benefits').innerHTML = `
+    <div class="card" style="background:var(--gradient-subtle); border:1px solid rgba(232,132,44,0.2);">
+      <h2>${d.flag} Avantages & Benefits — ${d.name}</h2>
+      <p style="color:var(--text-secondary); font-size:0.9rem;">Voiture de fonction, tickets restaurant, congés, 13ème mois, heures supplémentaires, arrêts maladie, formation et avantages défiscalisés. Données 2025.</p>
+    </div>
+    ${cardsHtml}
+    ${compTable}
+  `;
+}
+
+function toggleBenefitCard(idx) {
+  const detail = document.getElementById('benefit-detail-' + idx);
+  const preview = document.getElementById('benefit-preview-' + idx);
+  const chevron = document.getElementById('benefit-chevron-' + idx);
+  if (detail.style.display === 'none') {
+    detail.style.display = 'block';
+    preview.style.display = 'none';
+    chevron.style.transform = 'rotate(180deg)';
+  } else {
+    detail.style.display = 'none';
+    preview.style.display = 'block';
+    chevron.style.transform = 'rotate(0deg)';
+  }
+}
+
 // =============================================
 // TAB SWITCHING
 // =============================================
@@ -5225,6 +5490,7 @@ function renderCurrentTab() {
     case 'retraite': renderRetraite(); break;
     case 'salaire': renderSalaire(); break;
     case 'prevoyance': renderPrevoyance(); break;
+    case 'benefits': renderBenefits(); break;
     case 'comparatif': renderComparatif(); break;
     case 'strategie': renderStrategie(); break;
   }
@@ -5234,7 +5500,7 @@ function selectCountry(code) {
   currentCountry = code;
   renderNavPills();
   renderCountrySelector();
-  if (currentTab === 'retraite' || currentTab === 'salaire' || currentTab === 'prevoyance') {
+  if (currentTab === 'retraite' || currentTab === 'salaire' || currentTab === 'prevoyance' || currentTab === 'benefits') {
     renderCurrentTab();
   }
 }
