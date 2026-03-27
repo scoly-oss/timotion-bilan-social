@@ -4737,8 +4737,8 @@ function renderComparatif() {
   // Benchmark comparison: Ingénieur R&D/mécanique confirmé across all countries
   html += '<div class="card"><h2>Benchmark salarial — Ingénieur R&D/mécanique confirmé (3-7 ans)</h2>';
   html += '<p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;">Fourchettes salariales brutes annuelles pour un ingénieur R&D/mécanique avec 3 à 7 ans d\'expérience dans le secteur automatisation/actionneurs. Sources : benchmark DAIRIA mars 2026.</p>';
-  html += '<div style="overflow-x:auto;"><table class="comp-table"><thead><tr>';
-  html += '<th>Pays</th><th>Convention collective</th><th>Ing. R&D confirmé</th><th>Country Manager</th><th>Opérateur confirmé</th><th>Devise</th>';
+  html += '<div style="overflow-x:auto;"><table class="comp-table" style="table-layout:fixed;min-width:900px;"><thead><tr>';
+  html += '<th style="width:100px;">Pays</th><th style="width:200px;">Convention collective</th><th style="width:180px;">Ing. R&D confirmé</th><th style="width:200px;">Country Manager</th><th style="width:180px;">Opérateur confirmé</th><th style="width:60px;">Devise</th>';
   html += '</tr></thead><tbody>';
   const benchCountries = ["FR","DE","UK","NL","IT","ES","PL","DK","BE","CZ","RU"];
   benchCountries.forEach(code => {
@@ -4748,7 +4748,7 @@ function renderComparatif() {
       const rnd = b.roles.find(r => r.role.includes("R&D"));
       const mgr = b.roles.find(r => r.role.includes("Manager"));
       const op = b.roles.find(r => r.role.includes("Opérateur") || r.role.includes("Operateur"));
-      html += `<tr><td>${c.flag} ${c.name}</td><td style="font-size:0.8rem;max-width:200px;">${b.convention}</td><td><strong>${rnd ? rnd.confirmed : '—'}</strong></td><td>${mgr ? mgr.confirmed : '—'}</td><td>${op ? op.confirmed : '—'}</td><td>${code === 'UK' ? 'GBP' : code === 'PL' ? 'PLN' : code === 'DK' ? 'DKK' : code === 'CZ' ? 'CZK' : code === 'RU' ? 'RUB' : 'EUR'}</td></tr>`;
+      html += `<tr><td style="white-space:nowrap;">${c.flag} ${c.name}</td><td style="font-size:0.75rem;max-width:180px;white-space:normal;word-wrap:break-word;line-height:1.3;">${b.convention}</td><td style="white-space:nowrap;"><strong>${rnd ? rnd.confirmed : '—'}</strong></td><td style="white-space:nowrap;">${mgr ? mgr.confirmed : '—'}</td><td style="white-space:nowrap;">${op ? op.confirmed : '—'}</td><td>${code === 'UK' ? 'GBP' : code === 'PL' ? 'PLN' : code === 'DK' ? 'DKK' : code === 'CZ' ? 'CZK' : code === 'RU' ? 'RUB' : 'EUR'}</td></tr>`;
     }
   });
   html += '</tbody></table></div>';
