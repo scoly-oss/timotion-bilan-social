@@ -223,6 +223,51 @@ a:hover { text-decoration: underline; }
 .chart-card .chart-wrap-sm { position: relative; width: 100%; max-width: 320px; margin: 0 auto; }
 .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 20px; }
 @media (max-width: 768px) { .chart-grid { grid-template-columns: 1fr; } }
+/* DIAGNOSTIC TAB */
+.diag-hero { background: linear-gradient(135deg, #1e2d3d 0%, #3E5C8A 100%); color: white; border-radius: var(--radius); padding: 40px 32px; margin-bottom: 28px; text-align: center; }
+.diag-hero h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+.diag-hero .diag-subtitle { font-size: 0.95rem; opacity: 0.85; margin-bottom: 6px; }
+.diag-hero .diag-desc { font-size: 0.88rem; opacity: 0.7; max-width: 700px; margin: 0 auto; }
+.diag-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
+.diag-stat { border-radius: var(--radius-sm); padding: 20px; text-align: center; border: 1px solid var(--border); background: white; }
+.diag-stat .ds-value { font-size: 1.8rem; font-weight: 800; }
+.diag-stat .ds-label { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-top: 4px; }
+.diag-stat.red .ds-value { color: #dc3545; }
+.diag-stat.orange .ds-value { color: #e8842c; }
+.diag-stat.green .ds-value { color: #28a745; }
+.diag-stat.blue .ds-value { color: #3E5C8A; }
+.diag-card { background: white; border-radius: var(--radius-sm); padding: 24px 24px 20px; margin-bottom: 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); border-left: 5px solid #ccc; }
+.diag-card.status-red { border-left-color: #dc3545; }
+.diag-card.status-orange { border-left-color: #e8842c; }
+.diag-card.status-green { border-left-color: #28a745; }
+.diag-card .diag-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.diag-card .diag-card-header .dcf { font-size: 2rem; }
+.diag-card .diag-card-header h3 { font-size: 1.15rem; font-weight: 800; margin: 0; flex: 1; }
+.diag-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
+.diag-badge.badge-red { background: #fde8ea; color: #dc3545; }
+.diag-badge.badge-orange { background: #fff3e0; color: #c06a1e; }
+.diag-badge.badge-green { background: #e8f5e9; color: #28a745; }
+.diag-section { margin-bottom: 14px; }
+.diag-section h4 { font-size: 0.88rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 6px; }
+.diag-section p, .diag-section ul { font-size: 0.86rem; line-height: 1.7; color: var(--text); }
+.diag-section ul { padding-left: 18px; }
+.diag-section li { margin-bottom: 4px; }
+.diag-tme { display: inline-block; margin-top: 6px; padding: 3px 10px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; background: var(--gradient-subtle); color: var(--primary-dark); }
+.priority-matrix { background: white; border-radius: var(--radius); padding: 28px; margin-bottom: 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+.priority-matrix h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 16px; color: var(--secondary); }
+.priority-matrix .prio-group { margin-bottom: 20px; }
+.priority-matrix .prio-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; padding: 6px 12px; border-radius: 6px; }
+.priority-matrix .prio-title.prio-1 { background: #fde8ea; color: #dc3545; }
+.priority-matrix .prio-title.prio-2 { background: #fff3e0; color: #c06a1e; }
+.priority-matrix .prio-title.prio-3 { background: #e8f5e9; color: #28a745; }
+.priority-matrix ol { padding-left: 20px; font-size: 0.88rem; line-height: 1.8; }
+.priority-matrix li { margin-bottom: 4px; }
+.diag-cost-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 16px; }
+.diag-cost-table th { background: var(--secondary); color: white; padding: 12px 14px; text-align: left; font-weight: 600; }
+.diag-cost-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.diag-cost-table tr:nth-child(even) { background: #fafaf8; }
+.diag-cost-table tr:hover { background: rgba(232,132,44,0.05); }
+.diag-cost-table tr.total-row td { font-weight: 700; background: var(--gradient-subtle); }
 </style>
 </head>
 <body>
@@ -246,7 +291,8 @@ a:hover { text-decoration: underline; }
 
   <!-- TABS -->
   <div class="tabs" id="mainTabs">
-    <div class="tab active" data-tab="retraite">Retraite</div>
+    <div class="tab active" data-tab="diagnostic">🔍 Diagnostic TiMOTION</div>
+    <div class="tab" data-tab="retraite">Retraite</div>
     <div class="tab" data-tab="salaire">Grilles de salaire</div>
     <div class="tab" data-tab="prevoyance">Prévoyance & Santé</div>
     <div class="tab" data-tab="comparatif">Comparatif</div>
@@ -256,8 +302,11 @@ a:hover { text-decoration: underline; }
   <!-- COUNTRY SELECTOR (for retraite + salaire tabs) -->
   <div id="countrySelector" class="country-grid"></div>
 
+  <!-- TAB: DIAGNOSTIC -->
+  <div class="content-area visible" id="tab-diagnostic"></div>
+
   <!-- TAB: RETRAITE -->
-  <div class="content-area visible" id="tab-retraite"></div>
+  <div class="content-area" id="tab-retraite"></div>
 
   <!-- TAB: SALAIRE -->
   <div class="content-area" id="tab-salaire"></div>
@@ -3693,7 +3742,7 @@ La [Commission europeenne a propose en novembre 2025](https://commission.europa.
 // =============================================
 // STATE
 // =============================================
-let currentTab = 'retraite';
+let currentTab = 'diagnostic';
 let currentCountry = 'FR';
 
 // =============================================
@@ -3795,7 +3844,7 @@ function renderNavPills() {
 // =============================================
 function renderCountrySelector() {
   const container = document.getElementById('countrySelector');
-  if (currentTab === 'comparatif' || currentTab === 'strategie') {
+  if (currentTab === 'comparatif' || currentTab === 'strategie' || currentTab === 'diagnostic') {
     container.style.display = 'none';
     return;
   }
@@ -4984,6 +5033,181 @@ function renderStrategie() {
 }
 
 // =============================================
+// RENDER: Diagnostic tab
+// =============================================
+function renderDiagnostic() {
+  const el = document.getElementById('tab-diagnostic');
+  const countries = [
+    {
+      flag: '🇫🇷', name: 'France', headcount: '70 salariés', status: 'green', badge: '🟢 Conforme',
+      tme: 'Non indiqué (géré en interne)',
+      situation: 'Mutuelle obligatoire en place (ANI 2013), prévoyance CCN Métallurgie IDCC 3248 en place, AGIRC-ARRCO automatique.',
+      gaps: 'RAS sur les obligations légales. Possibilité d\'optimiser le PERO (retraite surcomplémentaire).',
+      reco: 'Mettre en place un PER Entreprise Obligatoire (PERO) pour renforcer l\'attractivité. Vérifier les niveaux de garantie prévoyance vs le socle CCN Métallurgie.'
+    },
+    {
+      flag: '🇩🇪', name: 'Allemagne', headcount: '7 salariés', status: 'orange', badge: '🟠 À améliorer',
+      tme: '19%',
+      situation: 'GKV standard (certains en PKV — Troullier, Ruschmeier). Pas de supplementary health insurance. Pas de cotisations au-delà de l\'obligatoire. 6 semaines maintien de salaire maladie. Pas de visite médicale obligatoire.',
+      gaps: 'Benefits défiscalisés non exploités (44 €/mois en vouchers, crèche 60 €/mois). Pas de Direktversicherung (retraite entreprise). Pas de Berufsunfähigkeitsversicherung groupe.',
+      reco: 'Mettre en place une Direktversicherung avec Entgeltumwandlung + 15% Zuschuss employeur. Exploiter le plafond de 44 €/mois de benefits défiscalisés (vouchers carburant, etc.). Proposer une BU groupe.'
+    },
+    {
+      flag: '🇬🇧', name: 'Royaume-Uni', headcount: '3 salariés', status: 'orange', badge: '🟠 À améliorer',
+      tme: '14%',
+      situation: 'Auto-enrolment pension au minimum légal (3% employeur + 5% salarié). Pas de PMI (Private Medical Insurance). Pas de Death in Service.',
+      gaps: 'PMI très demandé (délais NHS de plus en plus longs). Death in service (2-4x salaire, coût faible 0,3-1%). Le minimum pension de 3% est en dessous du marché (moyenne UK : 5-6% employeur).',
+      reco: 'Souscrire un PMI groupe (Vitality, Aviva ou Bupa). Ajouter Death in Service (4x salaire). Augmenter la pension employeur à 5%.'
+    },
+    {
+      flag: '🇳🇱', name: 'Pays-Bas', headcount: '2 salariés', status: 'red', badge: '🔴 Gap critique',
+      tme: '12%',
+      situation: 'PAS DE PENSION COMPLÉMENTAIRE. L\'assurance accidents du travail n\'est PAS payée par la sécurité sociale. Assurance maladie via Turien&Co mais aucune visibilité sur les conditions. Médecine du travail via Assist Verzuim (255 €). Frais de représentation WKR versés.',
+      gaps: '<strong>PENSION = RISQUE MAJEUR.</strong> Si le secteur d\'activité de TiMOTION NL relève d\'un fonds de pension sectoriel obligatoire (Bpf), le fonds peut réclamer RÉTROACTIVEMENT toutes les cotisations non versées depuis le début de l\'activité. Assurance verzuim (maladie longue durée 104 semaines) non confirmée.',
+      reco: '<strong>URGENT</strong> — Vérifier immédiatement si TiMOTION NL relève d\'un Bpf obligatoire (probablement PMT ou PME pour le secteur metalektro). Si oui, s\'affilier immédiatement et négocier un plan de rattrapage. Auditer le contrat Turien&Co. Vérifier la couverture verzuim (obligation de maintien de salaire 2 ans).'
+    },
+    {
+      flag: '🇮🇹', name: 'Italie', headcount: '8 salariés', status: 'red', badge: '🔴 Gap critique',
+      tme: '34%',
+      situation: 'Fondo EST inscrit pour les non-cadres. QUAS pour les cadres (Borghi, Baioni). Mais PROBLÈME MAJEUR : l\'ancien cabinet comptable a PRÉLEVÉ les cotisations Fondo EST et QUAS sur les salaires des employés mais NE LES A JAMAIS VERSÉES aux fonds.',
+      gaps: 'Régularisation impossible car changement de prestataire (deux entités juridiques différentes). Options : soit l\'ancien cabinet rembourse via un bulletin correctif, soit TiMOTION rembourse via une indemnité imposable. Pour 2023, plus rien à faire. Fondo Metasalute (10 €/mois employeur + 2 €/mois salarié) pour la métallurgie en plus du Fondo EST.',
+      reco: 'Régulariser en urgence les cotisations Fondo EST/QUAS non versées. Vérifier si les salariés de la métallurgie (vs commerce) doivent être sur Fondo Metasalute plutôt que Fondo EST. Envisager orientation du TFR vers un fonds de pension complémentaire.'
+    },
+    {
+      flag: '🇪🇸', name: 'Espagne', headcount: '5 salariés', status: 'orange', badge: '🟠 À améliorer',
+      tme: '27%',
+      situation: 'Cotisations sociales obligatoires uniquement. PAS de complémentaire santé. PAS de retraite complémentaire. Visite médicale annuelle proposée (facultative). Formation financeable via FUNDAE (884,11 €/an en 2025).',
+      gaps: 'Le seguro médico (assurance santé privée) est le benefit n°1 en Espagne. Son absence est un handicap d\'attractivité. Avantage fiscal : exonéré d\'IRPF jusqu\'à 500 €/an par salarié.',
+      reco: 'Souscrire un seguro médico groupe (50-80 €/mois/salarié). C\'est LE levier différenciant car encore rare dans les PME espagnoles. Envisager un Plan de Pensiones de Empleo (déductible jusqu\'à 8 500 €/an employeur).'
+    },
+    {
+      flag: '🇵🇱', name: 'Pologne', headcount: '2 salariés', status: 'orange', badge: '🟠 À améliorer',
+      tme: '20%',
+      situation: 'Cotisations ZUS obligatoires uniquement. Paie gérée manuellement sur Excel (pas de logiciel de paie). Pas d\'assurance santé complémentaire. PPK a priori en place (obligatoire depuis 2019). Véhicule de fonction.',
+      gaps: 'Medicover/LuxMed absent = pas compétitif sur le marché polonais où c\'est quasi-standard. Gestion paie artisanale = risque d\'erreur.',
+      reco: 'Souscrire un abonnement Medicover ou LuxMed (50-200 PLN/mois ~12-46 €). Augmenter le PPK au-delà du minimum (1,5% → 2,5-4%). Envisager migration vers un logiciel de paie.'
+    },
+    {
+      flag: '🇩🇰', name: 'Danemark', headcount: '1 salarié', status: 'green', badge: '🟢 Conforme',
+      tme: '7%',
+      situation: 'Charges sociales très faibles (système financé par l\'impôt). ATP en place. Pension professionnelle via convention collective probable.',
+      gaps: 'Peu de marge d\'amélioration — le système danois est déjà très généreux via les conventions collectives.',
+      reco: 'Vérifier que la sundhedsforsikring (assurance santé complémentaire) est en place (90% des entreprises danoises en proposent une). Coût faible : 1 000-3 000 DKK/an (~134-402 €).'
+    },
+    {
+      flag: '🇧🇪', name: 'Belgique', headcount: '1 salarié', status: 'green', badge: '🟢 Conforme',
+      tme: '4% (réduction 1ère embauche)',
+      situation: '13ème mois, éco-chèques (310 €), prime pouvoir d\'achat (310 €), double pécule de vacances, assurance hospitalisation AXA (28,77 €/mois), assurance accident du travail Van Dessel (274 €/an), fonds sécurité sociale Xerius (350 €/an), médecine du travail Mensura.',
+      gaps: 'RAS — la couverture est complète. Vérifier si une assurance groupe (pension complémentaire) est en place.',
+      reco: 'Vérifier l\'existence d\'une assurance groupe (2ème pilier pension). Si absente, en mettre une en place (2-4% du brut). La règle des 80% laisse probablement de la marge.'
+    },
+    {
+      flag: '🇨🇿', name: 'Tchéquie', headcount: '1 salarié', status: 'green', badge: '🟢 Conforme',
+      tme: '33,8%',
+      situation: 'Cotisations CSSZ + VZP obligatoires. Système de santé public très complet.',
+      gaps: 'Pas de DPS (épargne retraite complémentaire) avec abondement employeur identifié.',
+      reco: 'Proposer un abondement employeur au DPS du salarié (500-1 000 CZK/mois ~21-41 €). L\'État abonde 20% en plus (max 340 CZK/mois ~14 €). Triple avantage : État + employeur + déduction fiscale salarié.'
+    },
+    {
+      flag: '🇷🇺', name: 'Russie', headcount: '1 salarié', status: 'red', badge: '🔴 Gap critique (sanctions)',
+      tme: '30%',
+      situation: 'Tarif unifié 30% employeur. OMS en place.',
+      gaps: '<strong>PROBLÈME JURIDIQUE MAJEUR.</strong> Depuis le 20 juin 2024, l\'exemption intra-groupe pour les services comptables/RH aux filiales russes a expiré (Art. 5n Règlement UE 833/2014). TiMOTION doit obtenir une autorisation individuelle de la Direction Générale du Trésor pour continuer à fournir des services RH à sa filiale russe.',
+      reco: 'Vérifier en urgence la conformité sanctions UE. Consulter un avocat spécialisé sanctions. Si DMS (assurance santé volontaire) absent, envisager sa mise en place (30-50 000 RUB/an ~285-475 €) — c\'est le benefit n°1 en Russie.'
+    }
+  ];
+
+  let html = '';
+
+  // Hero
+  html += `<div class="diag-hero">
+    <h2>Diagnostic protection sociale — Situation réelle TiMOTION</h2>
+    <div class="diag-subtitle">Analyse réalisée par Exiliance & DAIRIA — Mars 2026</div>
+    <div class="diag-desc">Basé sur l'audit des documents de paie, des contrats en cours et des échanges avec les prestataires locaux dans les 11 pays.</div>
+  </div>`;
+
+  // Stats
+  html += `<div class="diag-stats">
+    <div class="diag-stat red"><div class="ds-value">3</div><div class="ds-label">Gaps critiques identifiés</div></div>
+    <div class="diag-stat orange"><div class="ds-value">4</div><div class="ds-label">Améliorations recommandées</div></div>
+    <div class="diag-stat green"><div class="ds-value">4</div><div class="ds-label">Pays conformes</div></div>
+    <div class="diag-stat blue"><div class="ds-value">101</div><div class="ds-label">Salariés audités</div></div>
+  </div>`;
+
+  // Country cards
+  countries.forEach(c => {
+    const badgeClass = c.status === 'red' ? 'badge-red' : c.status === 'orange' ? 'badge-orange' : 'badge-green';
+    html += `<div class="diag-card status-${c.status}">
+      <div class="diag-card-header">
+        <span class="dcf">${c.flag}</span>
+        <h3>${c.name} <span style="font-weight:400;font-size:0.9rem;color:var(--text-secondary);">(${c.headcount})</span></h3>
+        <span class="diag-badge ${badgeClass}">${c.badge}</span>
+      </div>
+      <div class="diag-tme">TME moyen : ${c.tme}</div>
+      <div class="diag-section"><h4>📋 Situation actuelle</h4><p>${c.situation}</p></div>
+      <div class="diag-section"><h4>⚠️ Ce qui manque</h4><p>${c.gaps}</p></div>
+      <div class="diag-section"><h4>💡 Recommandation Exiliance & DAIRIA</h4><p>${c.reco}</p></div>
+    </div>`;
+  });
+
+  // Priority matrix
+  html += `<div class="priority-matrix">
+    <h3>🎯 Matrice de priorités</h3>
+    <div class="prio-group">
+      <div class="prio-title prio-1">Priorité 1 — Actions urgentes (risque juridique/financier)</div>
+      <ol>
+        <li>🇳🇱 <strong>Pays-Bas :</strong> Vérifier Bpf obligatoire + affiliation pension</li>
+        <li>🇮🇹 <strong>Italie :</strong> Régulariser cotisations Fondo EST/QUAS non versées</li>
+        <li>🇷🇺 <strong>Russie :</strong> Vérifier conformité sanctions UE (autorisation DGT)</li>
+      </ol>
+    </div>
+    <div class="prio-group">
+      <div class="prio-title prio-2">Priorité 2 — Améliorations rapides (quick wins)</div>
+      <ol start="4">
+        <li>🇪🇸 <strong>Espagne :</strong> Souscrire seguro médico groupe</li>
+        <li>🇬🇧 <strong>UK :</strong> Ajouter PMI + Death in Service</li>
+        <li>🇵🇱 <strong>Pologne :</strong> Souscrire Medicover/LuxMed</li>
+        <li>🇩🇪 <strong>Allemagne :</strong> Activer benefits défiscalisés 44 €/mois + Direktversicherung</li>
+      </ol>
+    </div>
+    <div class="prio-group">
+      <div class="prio-title prio-3">Priorité 3 — Optimisation (moyen terme)</div>
+      <ol start="8">
+        <li>🇫🇷 <strong>France :</strong> PERO retraite surcomplémentaire</li>
+        <li>🇧🇪 <strong>Belgique :</strong> Assurance groupe pension si absente</li>
+        <li>🇨🇿 <strong>Tchéquie :</strong> Abondement DPS employeur</li>
+        <li>🇩🇰 <strong>Danemark :</strong> Sundhedsforsikring si absente</li>
+      </ol>
+    </div>
+  </div>`;
+
+  // Cost estimation table
+  html += `<div class="card">
+    <h2>💰 Estimation budgétaire — Coût de comblement des gaps</h2>
+    <div style="overflow-x:auto;"><table class="diag-cost-table">
+      <thead><tr><th>Action</th><th>Pays</th><th>Coût estimé/an</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td>Affiliation Bpf pension</td><td>🇳🇱 Pays-Bas</td><td>8 000-12 000 € (2 sal.)</td><td>Élimine risque rappel rétroactif</td></tr>
+        <tr><td>Régularisation Fondo EST</td><td>🇮🇹 Italie</td><td>2 000-3 000 € (one-shot)</td><td>Rétablit prestations salariés</td></tr>
+        <tr><td>Seguro médico groupe</td><td>🇪🇸 Espagne</td><td>3 600-4 800 € (5 sal.)</td><td>Attractivité + avantage fiscal</td></tr>
+        <tr><td>PMI + Death in Service</td><td>🇬🇧 Royaume-Uni</td><td>3 000-4 500 € (3 sal.)</td><td>Standard marché UK</td></tr>
+        <tr><td>Medicover/LuxMed</td><td>🇵🇱 Pologne</td><td>600-1 100 € (2 sal.)</td><td>Standard marché polonais</td></tr>
+        <tr><td>Benefits 44 € + Direktversicherung</td><td>🇩🇪 Allemagne</td><td>4 000-6 000 € (7 sal.)</td><td>Avantage fiscal + rétention</td></tr>
+        <tr><td>PERO France</td><td>🇫🇷 France</td><td>30 000-60 000 € (70 sal.)</td><td>Différenciation groupe</td></tr>
+        <tr><td>Sundhedsforsikring</td><td>🇩🇰 Danemark</td><td>134-402 € (1 sal.)</td><td>Standard danois</td></tr>
+        <tr><td>Assurance groupe</td><td>🇧🇪 Belgique</td><td>1 500-3 000 € (1 sal.)</td><td>2ème pilier pension</td></tr>
+        <tr><td>Abondement DPS</td><td>🇨🇿 Tchéquie</td><td>250-500 € (1 sal.)</td><td>Triple avantage fiscal</td></tr>
+        <tr><td>Conformité sanctions</td><td>🇷🇺 Russie</td><td>Honoraires avocat</td><td>Sécurité juridique</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>TOTAL quick wins (hors France)</strong></td><td><strong>~23 000-35 000 €/an</strong></td><td></td></tr>
+        <tr class="total-row"><td colspan="2"><strong>TOTAL avec PERO France</strong></td><td><strong>~53 000-95 000 €/an</strong></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>`;
+
+  el.innerHTML = html;
+}
+
+// =============================================
 // TAB SWITCHING
 // =============================================
 function switchTab(tab) {
@@ -4997,6 +5221,7 @@ function switchTab(tab) {
 
 function renderCurrentTab() {
   switch(currentTab) {
+    case 'diagnostic': renderDiagnostic(); break;
     case 'retraite': renderRetraite(); break;
     case 'salaire': renderSalaire(); break;
     case 'prevoyance': renderPrevoyance(); break;
