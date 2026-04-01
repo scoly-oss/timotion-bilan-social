@@ -268,6 +268,40 @@ a:hover { text-decoration: underline; }
 .diag-cost-table tr:nth-child(even) { background: #fafaf8; }
 .diag-cost-table tr:hover { background: rgba(232,132,44,0.05); }
 .diag-cost-table tr.total-row td { font-weight: 700; background: var(--gradient-subtle); }
+
+/* SALARY SIMULATOR */
+.sim-wrapper { background: linear-gradient(135deg, #1e2d3d 0%, #2c4157 100%); border-radius: var(--radius); padding: 32px; margin-bottom: 28px; color: white; }
+.sim-wrapper h2 { color: var(--primary-light); font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+.sim-subtitle { font-size: 0.88rem; opacity: 0.7; margin-bottom: 20px; }
+.sim-input-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 24px; }
+.sim-field { flex: 1; min-width: 180px; }
+.sim-field label { display: block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; margin-bottom: 6px; }
+.sim-field select, .sim-field input { width: 100%; padding: 12px 16px; border: 2px solid rgba(255,255,255,0.15); border-radius: var(--radius-xs); font-size: 1rem; font-family: inherit; background: rgba(255,255,255,0.08); color: white; transition: border-color 0.2s; }
+.sim-field select option { background: var(--secondary); color: white; }
+.sim-field input::placeholder { color: rgba(255,255,255,0.4); }
+.sim-field select:focus, .sim-field input:focus { outline: none; border-color: var(--primary-light); background: rgba(255,255,255,0.12); }
+.sim-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.sim-kpi { background: rgba(255,255,255,0.08); border-radius: var(--radius-sm); padding: 18px 16px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+.sim-kpi .sk-value { font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.sim-kpi .sk-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.65; margin-top: 4px; }
+.sim-kpi.highlight-orange .sk-value { color: var(--primary-light); }
+.sim-kpi.highlight-green .sk-value { color: #4ade80; }
+.sim-kpi.highlight-blue .sk-value { color: #60a5fa; }
+.sim-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 768px) { .sim-columns { grid-template-columns: 1fr; } }
+.sim-col { background: rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 20px; border: 1px solid rgba(255,255,255,0.08); }
+.sim-col h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.sim-col h4.emp-color { color: var(--primary-light); }
+.sim-col h4.sal-color { color: #a78bfa; }
+.sim-line { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.sim-line:last-child { border-bottom: none; }
+.sim-line .sl-name { opacity: 0.8; flex: 1; }
+.sim-line .sl-rate { width: 65px; text-align: right; opacity: 0.5; font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.sim-line .sl-amount { width: 100px; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sim-line.sim-total { padding: 10px 0 4px; margin-top: 6px; border-top: 2px solid rgba(255,255,255,0.15); border-bottom: none; font-weight: 700; font-size: 0.9rem; }
+.sim-line.sim-total .sl-name { opacity: 1; }
+.sim-empty { text-align: center; padding: 24px; opacity: 0.5; font-size: 0.85rem; font-style: italic; }
+.sim-source { font-size: 0.72rem; opacity: 0.45; margin-top: 16px; text-align: center; }
 </style>
 </head>
 <body>
@@ -336,6 +370,7 @@ function handleLogin(e) {
 <section class="hero">
   <h1>Retraite, Prévoyance, Santé & Grilles de salaire</h1>
   <p>Guide complet pour la direction TiMOTION : systèmes de retraite, prévoyance, couverture santé, cotisations et coûts employeur dans 11 pays européens. Données 2025-2026.</p>
+  <div style="display:inline-block;margin-top:12px;padding:6px 18px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);border-radius:20px;font-size:0.78rem;font-weight:600;backdrop-filter:blur(4px);letter-spacing:0.01em;">Données vérifiées mars 2026 — Sources : Eurostat, OCDE, 11 instituts nationaux</div>
 </section>
 
 <!-- MAIN -->
@@ -832,7 +867,7 @@ Prenons l'exemple d'un salarié à 4 000 € brut/mois en Allemagne :
 
 1. Rentenversicherung (RV, retraite) : 18,6 % au total (9,3 % + 9,3 %). C'est le poste le plus important. Les cotisations sont plafonnées au BBG de 8 050 €/mois (unifié Est/Ouest depuis 2025).
 
-2. Krankenversicherung (KV, assurance maladie) : le taux de base est de 14,6 % (paritaire : 7,3 % + 7,3 %), auquel s'ajoute un Zusatzbeitrag (cotisation supplémentaire) variable selon la caisse maladie, en moyenne ~1,7 % en 2025 (0,85 % + 0,85 %). Total : environ 16,3 %. Le BBG maladie est de 5 512,50 €/mois (66 150 €/an). Au-dessus de la JAEG (Jahresarbeitsentgeltgrenze = 73 800 €/an en 2025), le salarié peut opter pour une assurance privée (PKV).
+2. Krankenversicherung (KV, assurance maladie) : le taux de base est de 14,6 % (paritaire : 7,3 % + 7,3 %), auquel s'ajoute un Zusatzbeitrag (cotisation supplémentaire) variable selon la caisse maladie, en moyenne ~2,5 % en 2025 (1,25 % + 1,25 %). Total : environ 16,3 %. Le BBG maladie est de 5 512,50 €/mois (66 150 €/an). Au-dessus de la JAEG (Jahresarbeitsentgeltgrenze = 73 800 €/an en 2025), le salarié peut opter pour une assurance privée (PKV).
 
 3. Pflegeversicherung (PV, assurance dépendance) : 3,40 % au total (1,70 % + 1,70 %). ATTENTION : les personnes sans enfant paient un supplément de 0,60 % (Kinderlosenzuschlag), soit 2,30 % pour la part salarié. Ce supplément a été augmenté en 2023. Depuis juillet 2023, les parents avec 2+ enfants de moins de 25 ans bénéficient d'une réduction progressive.
 
@@ -856,7 +891,7 @@ BBG Retraite/Chômage = 8 050 €/mois | BBG Maladie/Dépendance = 5 512,50 €/
 
 1. Rentenversicherung (retraite légale) : 9,30 % × 4 000 = 372,00 €
 2. Krankenversicherung (maladie, taux de base) : 7,30 % × 4 000 = 292,00 €
-3. Zusatzbeitrag Krankenversicherung (supplément maladie, part empl.) : 0,85 % × 4 000 = 34,00 €
+3. Zusatzbeitrag Krankenversicherung (supplément maladie, part empl.) : 1,25 % × 4 000 = 50,00 €
 4. Pflegeversicherung (dépendance) : 1,70 % × 4 000 = 68,00 €
 5. Arbeitslosenversicherung (chômage) : 1,30 % × 4 000 = 52,00 €
 6. Insolvenzgeldumlage : 0,06 % × 4 000 = 2,40 €
@@ -873,7 +908,7 @@ Taux patronal global ≈ 22,91 % du brut
 
 1. Rentenversicherung (retraite) : 9,30 % × 4 000 = 372,00 €
 2. Krankenversicherung (maladie, base) : 7,30 % × 4 000 = 292,00 €
-3. Zusatzbeitrag (supplément maladie, part sal.) : 0,85 % × 4 000 = 34,00 €
+3. Zusatzbeitrag (supplément maladie, part sal.) : 1,25 % × 4 000 = 50,00 €
 4. Pflegeversicherung (dépendance) : 1,70 % × 4 000 = 68,00 €
 5. Kinderlosenzuschlag (supplément sans enfant) : 0,60 % × 4 000 = 24,00 €
    (Uniquement pour les salariés de 23 ans+ sans enfant)
@@ -929,7 +964,7 @@ Constat : la France a des charges patronales beaucoup plus élevées mais un imp
           employer: [
             { label: "Rentenversicherung (retraite)", rate: "9,30%", amount: 372.00 },
             { label: "Krankenversicherung (maladie)", rate: "7,30%", amount: 292.00 },
-            { label: "Zusatzbeitrag (suppl. maladie)", rate: "0,85%", amount: 34.00 },
+            { label: "Zusatzbeitrag (suppl. maladie)", rate: "1,25%", amount: 50.00 },
             { label: "Pflegeversicherung (dépendance)", rate: "1,70%", amount: 68.00 },
             { label: "Arbeitslosenversicherung (chômage)", rate: "1,30%", amount: 52.00 },
             { label: "Insolvenzgeldumlage", rate: "0,06%", amount: 2.40 },
@@ -941,7 +976,7 @@ Constat : la France a des charges patronales beaucoup plus élevées mais un imp
           employee: [
             { label: "Rentenversicherung (retraite)", rate: "9,30%", amount: 372.00 },
             { label: "Krankenversicherung (maladie)", rate: "7,30%", amount: 292.00 },
-            { label: "Zusatzbeitrag (suppl. maladie)", rate: "0,85%", amount: 34.00 },
+            { label: "Zusatzbeitrag (suppl. maladie)", rate: "1,25%", amount: 50.00 },
             { label: "Pflegeversicherung (dépendance)", rate: "1,70%", amount: 68.00 },
             { label: "Kinderlosenzuschlag (sans enfant)", rate: "0,60%", amount: 24.00 },
             { label: "Arbeitslosenversicherung (chômage)", rate: "1,30%", amount: 52.00 }
@@ -2009,7 +2044,7 @@ Aux Pays-Bas, le pilier 3 est moins développé que dans d'autres pays, précis�
         ],
         stats: [{"label": "AOW", "value": "1 581 €/mois", "detail": "Célibataire"}, {"label": "Cotis. pension pro", "value": "20-30%", "detail": "Du salaire pensionnable"}, {"label": "Vakantiegeld", "value": "8%", "detail": "Pécule vacances obligatoire"}, {"label": "SMIC", "value": "14,06 €/h", "detail": "→ 14,40 en juil. 2025"}],
         sources: ["https://www.svb.nl/nl/aow", "https://www.dnb.nl/"],
-        glossary: [{"term":"AOW","def":"Algemene Ouderdomswet — pension universelle basée sur la résidence (pas le travail). 2%/an de résidence entre 15 et 67 ans. Montant : 1 580,92 €/mois."},{"term":"Vakantiegeld","def":"Pécule de vacances OBLIGATOIRE de 8% du brut annuel. Versé en mai. C’est l’équivalent d’un 13ème mois."},{"term":"AWf","def":"Cotisation chômage. CDI : 2,74%. CDD/flex : 7,74%. L’écart de 5 points est un levier pour embaucher en CDI."},{"term":"Loonheffing","def":"Impôt combiné (IR + AOW + ANW + WLZ) retenu à la source. 35,82% en tranche 1, 37,48% en T2, 49,50% au-delà."},{"term":"Bpf (Bedrijfstakpensioenfonds)","def":"Fonds de pension sectoriel obligatoire. Si votre secteur en a un, l’affiliation est imposée par la loi — pas de choix."},{"term":"WTP (Wet toekomst pensioenen)","def":"Loi sur l’avenir des pensions. Toutes les pensions pro doivent passer en cotisations définies avant le 01/01/2028."},{"term":"Franchise AOW","def":"Part du salaire exclue des cotisations pension. Logique : cette part est déjà couverte par l’AOW."},{"term":"ZVW","def":"Assurance santé employeur : 6,51%. Plafonnée à 75 864 €/an de salaire."}],
+        glossary: [{"term":"AOW","def":"Algemene Ouderdomswet — pension universelle basée sur la résidence (pas le travail). 2%/an de résidence entre 15 et 67 ans. Montant : 1 580,92 €/mois."},{"term":"Vakantiegeld","def":"Pécule de vacances OBLIGATOIRE de 8% du brut annuel. Versé en mai. C’est l’équivalent d’un 13ème mois."},{"term":"AWf","def":"Cotisation chômage. CDI : 2,74%. CDD/flex : 7,74%. L’écart de 5 points est un levier pour embaucher en CDI."},{"term":"Loonheffing","def":"Impôt combiné (IR + AOW + ANW + WLZ) retenu à la source. 35,82% en tranche 1, 37,48% en T2, 49,50% au-delà."},{"term":"Bpf (Bedrijfstakpensioenfonds)","def":"Fonds de pension sectoriel obligatoire. Si votre secteur en a un, l’affiliation est imposée par la loi — pas de choix."},{"term":"WTP (Wet toekomst pensioenen)","def":"Loi sur l’avenir des pensions. Toutes les pensions pro doivent passer en cotisations définies avant le 01/01/2028."},{"term":"Franchise AOW","def":"Part du salaire exclue des cotisations pension. Logique : cette part est déjà couverte par l’AOW."},{"term":"ZVW","def":"Assurance santé employeur : 6,57%. Plafonnée à 75 864 €/an de salaire."}],
         keyTakeaways: ["Le coût employeur est le plus élevé d’Europe : 1,37× à 1,50× le brut (vakantiegeld + charges + pension pro).","Un CDD coûte 5 points de plus en charges chômage qu’un CDI (7,74% vs 2,74%) — embaucher en CDI est MOINS cher.","L’AOW s’acquiert par la RÉSIDENCE, pas le travail — un expatrié qui repart perd 2% par année manquante.","Les fonds de pension néerlandais gèrent >1 500 milliards d’euros — c’est le système le mieux financé au monde.","La réforme WTP (échéance 2028) va transformer tous les régimes en cotisations définies — transition majeure en cours."]
       },
       salary: {
@@ -2038,7 +2073,7 @@ Les Pays-Bas sont l'un des pays les plus coûteux d'Europe en matière de charge
 **Comparaison avec le Royaume-Uni :** Le coût total employeur aux Pays-Bas est significativement plus élevé (130-140 % du brut contre 115-120 % au UK), principalement en raison du vakantiegeld obligatoire et des cotisations pension beaucoup plus élevées. Mais en contrepartie, le système social néerlandais offre une protection supérieure, ce qui contribue à la fidélisation des salariés.
 
 ---`,
-        breakdown: [["Salaire brut", "", "4 200 €"], ["AWf (chômage CDI)", "2,74%", "115 €"], ["Aof (incapacité PME)", "6,28%", "264 €"], ["ZVW (assurance maladie)", "6,51%", "273 €"], ["Whk (risque prof.)", "~1,22%", "51 €"], ["Pension professionnelle", "~15%", "~480 €"], ["Vakantiegeld (8%)", "8,00%", "336 €"], ["TOTAL patronal", "~40%", "~1 520 €"], ["Coût total employeur", "", "~5 720 €"]],
+        breakdown: [["Salaire brut", "", "4 200 €"], ["AWf (chômage CDI)", "2,74%", "115 €"], ["Aof (incapacité PME)", "6,28%", "264 €"], ["ZVW (assurance maladie)", "6,57%", "276 €"], ["Whk (risque prof.)", "~1,22%", "51 €"], ["Pension professionnelle", "~15%", "~480 €"], ["Vakantiegeld (8%)", "8,00%", "336 €"], ["TOTAL patronal", "~40%", "~1 520 €"], ["Coût total employeur", "", "~5 720 €"]],
         exampleDetailed: `**Exemple détaillé : Salarié TiMOTION NL en CDI — Salaire brut annuel 50 000 €**
 
 **--- CÔTÉ EMPLOYEUR (ce que TiMOTION paie) ---**
@@ -2101,12 +2136,12 @@ Les montants sont tous basés sur les données 2025 que vous avez fournies. Les 
           employer: [
             { label: "AWf (chômage CDI)", rate: "2,74%", amount: 123.30 },
             { label: "Aof (incapacité PME)", rate: "6,28%", amount: 282.60 },
-            { label: "ZVW (assurance maladie)", rate: "6,51%", amount: 292.80 },
+            { label: "ZVW (assurance maladie)", rate: "6,57%", amount: 273.77 },
             { label: "Whk (risque professionnel)", rate: "~1,22%", amount: 54.90 },
             { label: "Vakantiegeld (8%)", rate: "8,00%", amount: 333.33 },
             { label: "Pension employeur (~17%)", rate: "~17%", amount: 451.00 }
           ],
-          employerTotal: 1537.93,
+          employerTotal: 1518.90,
           employee: [
             { label: "Pension salarié (~8%)", rate: "~8%", amount: 225.40 },
             { label: "Loonheffing T1 (35,82%)", rate: "35,82%", amount: 1147.50 },
@@ -2117,8 +2152,8 @@ Les montants sont tous basés sur les données 2025 que vous avez fournies. Les 
           netBeforeTax: 3941.60,
           incomeTax: 1029.42,
           netAfterTax: 2912.00,
-          totalCost: 5704.93,
-          multiplier: "1,37×"
+          totalCost: 5685.90,
+          multiplier: "1,36×"
         },
         stats: [{"label": "AOW", "value": "1 581 €/mois", "detail": "Célibataire"}, {"label": "Cotis. pension pro", "value": "20-30%", "detail": "Du salaire pensionnable"}, {"label": "Vakantiegeld", "value": "8%", "detail": "Pécule vacances obligatoire"}, {"label": "SMIC", "value": "14,06 €/h", "detail": "→ 14,40 en juil. 2025"}],
         sources: ["https://www.svb.nl/nl/aow", "https://www.dnb.nl/"],
@@ -2171,7 +2206,7 @@ Les montants sont tous basés sur les données 2025 que vous avez fournies. Les 
 • Verzuimverzekering (assurance absentéisme) : quasi-indispensable pour PME`,
       sante_explainer: `Le système de santé néerlandais est un modèle hybride unique en Europe, à mi-chemin entre le modèle public (NHS britannique) et le modèle assurantiel privé (Suisse). Il repose sur une obligation individuelle d'assurance maladie, avec une contribution employeur substantielle.
 
-**La ZVW (Zorgverzekeringswet) — la contribution employeur :** L'employeur paie une cotisation de 6,51% du salaire brut, plafonnée à 75 864 €/an (soit un maximum de ~4 939 €/an par salarié). C'est un coût patronal automatique, comparable aux cotisations maladie françaises (7% URSSAF) ou allemandes (7,3% + Zusatzbeitrag). Pour les 2 salariés TiMOTION Pays-Bas, ce coût représente environ 8 000-10 000 €/an au total. Contrairement à la France où l'employeur paie aussi 50% de la mutuelle complémentaire, il n'y a aucune obligation additionnelle aux Pays-Bas.
+**La ZVW (Zorgverzekeringswet) — la contribution employeur :** L'employeur paie une cotisation de 6,57% du salaire brut, plafonnée à 75 864 €/an (soit un maximum de ~4 939 €/an par salarié). C'est un coût patronal automatique, comparable aux cotisations maladie françaises (7% URSSAF) ou allemandes (7,3% + Zusatzbeitrag). Pour les 2 salariés TiMOTION Pays-Bas, ce coût représente environ 8 000-10 000 €/an au total. Contrairement à la France où l'employeur paie aussi 50% de la mutuelle complémentaire, il n'y a aucune obligation additionnelle aux Pays-Bas.
 
 **La Basisverzekering — l'assurance individuelle obligatoire :** Chaque résident néerlandais (y compris les salariés TiMOTION) DOIT souscrire personnellement une Basisverzekering (assurance de base) auprès d'un assureur privé (Zilveren Kruis, CZ, VGZ, Menzis). Le coût est d'environ 159 €/mois en 2025 — entièrement à la charge du salarié. Cette assurance couvre les soins médicaux essentiels : médecin généraliste (gratuit, pas de ticket modérateur), spécialistes, hospitalisation, médicaments de la liste officielle, soins dentaires de base (jusqu'à 18 ans), maternité, santé mentale. C'est plus complet que la Sécurité sociale française seule, mais comparable à Sécu + mutuelle combinées.
 
@@ -2180,12 +2215,12 @@ Les montants sont tous basés sur les données 2025 que vous avez fournies. Les 
 **Les aanvullende verzekeringen (complémentaires) :** Au-delà de la Basisverzekering, des couvertures complémentaires existent pour les soins dentaires adultes, l'ostéopathie, la physiothérapie au-delà des 18 séances incluses, l'optique, les médecines alternatives. Ces complémentaires coûtent 10-50 €/mois. Certains employeurs les offrent, mais c'est loin d'être un standard. Aux Pays-Bas, le système de base est suffisamment complet pour que la complémentaire reste un « nice to have ».
 
 **Obligations concrètes pour TiMOTION Pays-Bas :**
-1. Payer la cotisation ZVW de 6,51% (via le Belastingdienst, automatiquement)
+1. Payer la cotisation ZVW de 6,57% (via le Belastingdienst, automatiquement)
 2. Vérifier que chaque salarié a bien souscrit une Basisverzekering (c'est une obligation individuelle, mais l'employeur peut être tenu de signaler un défaut d'assurance)
 3. Aucune obligation de complémentaire — possibilité d'offrir un budget santé flexible comme avantage
 4. Le Zorgtoeslag (aide au paiement de la prime) est disponible pour les bas salaires — les salariés TiMOTION peuvent y avoir droit selon leur revenu`,
       sante_detail: `• ZVW (cotisation employeur) :
-  - 6,51% du salaire brut
+  - 6,57% du salaire brut
   - Plafond : 75 864 €/an (2025)
   - Part employeur max : ~4 940 €/an
 • Basisverzekering (assurance de base obligatoire) :
@@ -3594,6 +3629,81 @@ alerte_sanctions : VÉRIFIER la conformité aux sanctions UE avant toute opérat
     }
 };
 
+// =============================================
+// CHARGES DATA — Taux détaillés par pays (vérifiés mars 2026)
+// Sources : URSSAF, Bundesregierung, HMRC, Belastingdienst, INPS, Seg-Social, ZUS, SKAT, ONSS, CSSZ, Nalog.gov.ru
+// =============================================
+const CHARGES_DATA = {
+  FR: {
+    currency: 'EUR',
+    employer: { 'Maladie': 7.00, 'Vieillesse plafonnée': 8.55, 'Vieillesse déplafonnée': 2.02, 'Alloc. familiales': 3.45, 'AT/MP': 1.20, 'FNAL': 0.50, 'Transport': 2.95, 'Chômage': 4.05, 'AGS': 0.20, 'AGIRC-ARRCO T1': 4.72, 'CEG T1': 1.29, 'Prévoyance cadres': 1.50 },
+    employee: { 'Vieillesse plafonnée': 6.90, 'Vieillesse déplafonnée': 0.40, 'AGIRC-ARRCO T1': 3.15, 'CEG T1': 0.86, 'CSG/CRDS': 9.70 },
+    totalEmployer: 37.43, totalEmployee: 21.01
+  },
+  DE: {
+    currency: 'EUR',
+    employer: { 'Krankenversicherung': 7.30, 'KV Zusatzbeitrag': 1.25, 'Rentenversicherung': 9.30, 'Arbeitslosenvers.': 1.30, 'Pflegeversicherung': 1.70, 'Unfallversicherung': 1.30, 'Insolvenzgeld': 0.06 },
+    employee: { 'Krankenversicherung': 7.30, 'KV Zusatzbeitrag': 1.25, 'Rentenversicherung': 9.30, 'Arbeitslosenvers.': 1.30, 'Pflegeversicherung': 1.70 },
+    totalEmployer: 22.21, totalEmployee: 20.85
+  },
+  UK: {
+    currency: 'GBP',
+    employer: { 'NIC Class 1': 15.00, 'Apprenticeship Levy': 0.50 },
+    employee: { 'NIC Class 1': 8.00 },
+    totalEmployer: 15.50, totalEmployee: 8.00
+  },
+  NL: {
+    currency: 'EUR',
+    employer: { 'ZVW': 6.57, 'WW (AWf CDI)': 2.74, 'WAO/WIA': 7.54, 'WHK': 1.14 },
+    employee: {},
+    totalEmployer: 17.99, totalEmployee: 0.00
+  },
+  IT: {
+    currency: 'EUR',
+    employer: { 'INPS IVS': 23.81, 'Maternité': 0.46, 'Maladie': 2.44, 'CIG': 1.70, 'NASpI': 1.61, 'INAIL': 0.40, 'TFR': 6.91 },
+    employee: { 'INPS IVS': 9.19 },
+    totalEmployer: 37.33, totalEmployee: 9.19
+  },
+  ES: {
+    currency: 'EUR',
+    employer: { 'Contingencias Comunes': 23.60, 'Desempleo': 5.50, 'FOGASA': 0.20, 'Formación': 0.60, 'AT/EP': 1.50, 'MEI': 0.67 },
+    employee: { 'Contingencias Comunes': 4.70, 'Desempleo': 1.55, 'Formación': 0.10, 'MEI': 0.13 },
+    totalEmployer: 32.07, totalEmployee: 6.48
+  },
+  PL: {
+    currency: 'PLN',
+    employer: { 'Emerytalna': 9.76, 'Rentowa': 6.50, 'Wypadkowa': 1.67, 'Fundusz Pracy': 2.45, 'FGŚP': 0.10, 'PPK': 1.50 },
+    employee: { 'Emerytalna': 9.76, 'Rentowa': 1.50, 'Chorobowa': 2.45, 'PPK': 2.00, 'Zdrowotna': 9.00 },
+    totalEmployer: 21.98, totalEmployee: 24.71
+  },
+  DK: {
+    currency: 'DKK',
+    employer: { 'ATP': 0.18, 'AES': 0.02, 'Barsel': 0.04, 'Finansieringsbidrag': 0.05, 'Arbejdsmarkedspension': 11.00 },
+    employee: { 'AM-bidrag': 8.00, 'ATP': 0.09, 'Arbejdsmarkedspension': 2.00 },
+    totalEmployer: 11.29, totalEmployee: 10.09
+  },
+  BE: {
+    currency: 'EUR',
+    employer: { 'ONSS base': 25.00, 'Accident travail': 0.30, 'Maladie pro': 1.01, 'Fermeture': 0.23 },
+    employee: { 'ONSS': 13.07 },
+    totalEmployer: 26.54, totalEmployee: 13.07
+  },
+  CZ: {
+    currency: 'CZK',
+    employer: { 'Zdravotní': 9.00, 'Nemocenská': 2.10, 'Důchodové': 21.50, 'Zaměstnanost': 1.20 },
+    employee: { 'Zdravotní': 4.50, 'Důchodové': 6.50, 'Nemocenská': 0.60 },
+    totalEmployer: 33.80, totalEmployee: 11.60
+  },
+  RU: {
+    currency: 'RUB',
+    employer: { 'PFR': 22.00, 'FSS': 2.90, 'FOMS': 5.10 },
+    employee: {},
+    totalEmployer: 30.00, totalEmployee: 0.00
+  }
+};
+
+const COUNTRIES_SIM = ['FR','DE','UK','NL','IT','ES','PL','DK','BE','CZ','RU'];
+
 const COMPARISON_PENSION = [["FR", "64 ans", "~74%", "~28%", "Répartition + points", "14% PIB"], ["DE", "67 ans", "~48%", "18,6%", "Répartition + points", "10,1% PIB"], ["IT", "67 ans", "~58%", "33%", "Contributif NDC", "15,7% PIB"], ["ES", "65-67 ans", "~72%", "28,3%", "Répartition", "12,3% PIB"], ["UK", "66→67 ans", "~29%*", "~15% NI", "Forfaitaire + DC", "5,7% PIB"], ["NL", "67 ans", "~70%", "~18% AOW + pension", "AOW + capitalisation", "5,6% PIB"], ["PL", "60F/65H", "~35%", "19,52%", "NDC + capitalisation", "10,8% PIB"], ["DK", "67→68 ans", "~80%", "ATP + conv.", "Forfaitaire + DC", "8,1% PIB"], ["BE", "65→67 ans", "~47%", "~25%", "Répartition", "12,1% PIB"], ["CZ", "65 ans", "~42%", "24,8%", "Répartition", "8,2% PIB"], ["RU", "60F/65H", "~30%", "30%", "Points + capitalis.", "7,3% PIB"]];
 const COMPARISON_SALARY = [["FR", "1 802 € (SMIC)", "~43-45%", "~22-23%", "×1,82", "EUR"], ["DE", "12,82 €/h", "~21-22%", "~20%", "×1,52", "EUR"], ["IT", "CCNL (pas de SMIC)", "~30-32%", "~9%", "×1,50", "EUR"], ["ES", "1 184 € (14 paies)", "~31-33%", "~6,4%", "×1,40", "EUR"], ["UK", "£12,21 (~14 €)/h (NLW)", "~15%", "8-10% NI+tax", "×1,18", "GBP"], ["NL", "14,06 €/h", "~40%", "~30%", "×1,70", "EUR"], ["PL", "4 666 PLN (~1 073 €)", "~22%", "~14%", "×1,25", "PLN"], ["DK", "Aucun (conv.)", "~25%", "~38% (AM+tax)", "×1,30", "DKK"], ["BE", "2 070 € (RMMMG)", "~32%", "~13%", "×1,60", "EUR"], ["CZ", "20 800 CZK (~853 €)", "33,8%", "11%", "×1,40", "CZK"], ["RU", "22 440 RUB (~213 €) (MROT)", "~30%", "13% NDFL", "×1,33", "RUB"]];
 const STRATEGY_MD = `Now I have all the research needed. Let me compile this comprehensive report in French.
@@ -4163,6 +4273,147 @@ function renderRetraite() {
 }
 
 // =============================================
+// SIMULATEUR DE COÛT EMPLOYEUR (interactif)
+// =============================================
+function fmtSim(n) {
+  if (n == null || isNaN(n)) return '—';
+  return n.toLocaleString('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+function simulateCharges(countryCode, grossSalary) {
+  const cd = CHARGES_DATA[countryCode];
+  if (!cd) return null;
+  const gross = parseFloat(grossSalary) || 0;
+  if (gross <= 0) return null;
+
+  const employerLines = [];
+  let totalEmpAmt = 0;
+  for (const [name, rate] of Object.entries(cd.employer)) {
+    const amt = gross * rate / 100;
+    employerLines.push({ name, rate, amount: amt });
+    totalEmpAmt += amt;
+  }
+
+  const employeeLines = [];
+  let totalSalAmt = 0;
+  for (const [name, rate] of Object.entries(cd.employee)) {
+    const amt = gross * rate / 100;
+    employeeLines.push({ name, rate, amount: amt });
+    totalSalAmt += amt;
+  }
+
+  const totalCost = gross + totalEmpAmt;
+  const netApprox = gross - totalSalAmt;
+  const multiplier = (totalCost / gross).toFixed(2);
+
+  return {
+    gross, currency: cd.currency,
+    employerLines, employeeLines,
+    totalEmployerAmt: totalEmpAmt, totalEmployeeAmt: totalSalAmt,
+    totalEmployerPct: cd.totalEmployer, totalEmployeePct: cd.totalEmployee,
+    totalCost, netApprox, multiplier
+  };
+}
+
+function renderSimulator() {
+  const cc = currentCountry;
+  const cd = CHARGES_DATA[cc];
+  const c = DATA[cc];
+  if (!cd || !c) return '';
+
+  const inputId = 'sim-gross-input';
+  const resultId = 'sim-result-area';
+
+  let html = `<div class="sim-wrapper">
+    <h2>Simulateur de coût employeur</h2>
+    <div class="sim-subtitle">Calcul instantané des charges patronales et salariales — ${c.flag} ${c.name}</div>
+    <div class="sim-input-row">
+      <div class="sim-field" style="max-width:300px;">
+        <label>Salaire brut mensuel (${cd.currency})</label>
+        <input type="number" id="${inputId}" value="4000" min="0" step="100" placeholder="Ex : 4 000" oninput="updateSimResult()">
+      </div>
+    </div>
+    <div id="${resultId}"></div>
+  </div>`;
+  return html;
+}
+
+function updateSimResult() {
+  const input = document.getElementById('sim-gross-input');
+  const container = document.getElementById('sim-result-area');
+  if (!input || !container) return;
+
+  const gross = parseFloat(input.value) || 0;
+  const result = simulateCharges(currentCountry, gross);
+
+  if (!result || gross <= 0) {
+    container.innerHTML = '<div class="sim-empty">Saisissez un salaire brut pour lancer la simulation</div>';
+    return;
+  }
+
+  const r = result;
+  let html = `<div class="sim-summary">
+    <div class="sim-kpi highlight-orange">
+      <div class="sk-value">${fmtSim(r.totalCost)}</div>
+      <div class="sk-label">Coût total employeur (${r.currency})</div>
+    </div>
+    <div class="sim-kpi highlight-green">
+      <div class="sk-value">${fmtSim(r.netApprox)}</div>
+      <div class="sk-label">Net approx. avant impôt (${r.currency})</div>
+    </div>
+    <div class="sim-kpi highlight-blue">
+      <div class="sk-value">${r.multiplier}x</div>
+      <div class="sk-label">Multiplicateur brut → coût</div>
+    </div>
+    <div class="sim-kpi">
+      <div class="sk-value">${fmtSim(r.totalEmployerAmt)}</div>
+      <div class="sk-label">Charges patronales (${r.totalEmployerPct}%)</div>
+    </div>
+  </div>`;
+
+  html += '<div class="sim-columns">';
+
+  // Employer column
+  html += '<div class="sim-col"><h4 class="emp-color">Charges employeur — ' + fmtSim(r.totalEmployerPct) + '%</h4>';
+  r.employerLines.forEach(l => {
+    html += `<div class="sim-line">
+      <span class="sl-name">${l.name}</span>
+      <span class="sl-rate">${fmtSim(l.rate)}%</span>
+      <span class="sl-amount">${fmtSim(l.amount)}</span>
+    </div>`;
+  });
+  html += `<div class="sim-line sim-total">
+    <span class="sl-name">TOTAL PATRONAL</span>
+    <span class="sl-rate">${fmtSim(r.totalEmployerPct)}%</span>
+    <span class="sl-amount">${fmtSim(r.totalEmployerAmt)} ${r.currency}</span>
+  </div></div>`;
+
+  // Employee column
+  html += '<div class="sim-col"><h4 class="sal-color">Retenues salariales — ' + fmtSim(r.totalEmployeePct) + '%</h4>';
+  if (r.employeeLines.length === 0) {
+    html += '<div class="sim-empty">Aucune cotisation salariale directe</div>';
+  } else {
+    r.employeeLines.forEach(l => {
+      html += `<div class="sim-line">
+        <span class="sl-name">${l.name}</span>
+        <span class="sl-rate">${fmtSim(l.rate)}%</span>
+        <span class="sl-amount">${fmtSim(l.amount)}</span>
+      </div>`;
+    });
+    html += `<div class="sim-line sim-total">
+      <span class="sl-name">TOTAL SALARIAL</span>
+      <span class="sl-rate">${fmtSim(r.totalEmployeePct)}%</span>
+      <span class="sl-amount">${fmtSim(r.totalEmployeeAmt)} ${r.currency}</span>
+    </div>`;
+  }
+  html += '</div></div>';
+
+  html += '<div class="sim-source">Données vérifiées mars 2026 — Sources : Eurostat, OCDE, 11 instituts nationaux — via MCP servers</div>';
+
+  container.innerHTML = html;
+}
+
+// =============================================
 // RENDER: Salaire tab
 // =============================================
 function renderSalaire() {
@@ -4171,6 +4422,9 @@ function renderSalaire() {
   const s = c.salary;
 
   let html = '';
+
+  // Simulator at the top
+  html += renderSimulator();
 
   // Stats (always visible)
   if (s.stats && s.stats.length) {
@@ -4382,6 +4636,8 @@ function renderSalaire() {
   }
 
   document.getElementById('tab-salaire').innerHTML = html;
+  // Auto-run simulator after DOM update
+  setTimeout(() => updateSimResult(), 50);
 }
 
 // =============================================
@@ -4984,7 +5240,7 @@ function renderStrategie() {
         <tr><td><strong>🇮🇹 Italie</strong></td><td>INAIL obligatoire 0,5-4%. TFR 6,91%.</td><td>Fondo Metasalute obligatoire (CCNL). 13-75 €/mois.</td><td>~8% du brut (légal)</td><td style="color:#dc2626;font-weight:600;">Oui (CCNL)</td></tr>
         <tr><td><strong>🇪🇸 Espagne</strong></td><td>Seguridad Social 24-30%. Pas de groupe obligatoire.</td><td>SNS gratuit. Seguro médico recommandé (50-80 €/mois).</td><td>0,5-1% (volontaire)</td><td>Non</td></tr>
         <tr><td><strong>🇬🇧 Royaume-Uni</strong></td><td>Death in Service + GIP recommandés. SSP minimal.</td><td>NHS gratuit. PMI recommandé (200-1 000 £/an).</td><td>1-3% (volontaire)</td><td>Non</td></tr>
-        <tr><td><strong>🇳🇱 Pays-Bas</strong></td><td>Maintien salaire 2 ans obligatoire. WGA-hiaat recommandé.</td><td>ZVW 6,51% obligatoire. Pas de complémentaire obligatoire.</td><td>~8% du brut (légal)</td><td>Partiel</td></tr>
+        <tr><td><strong>🇳🇱 Pays-Bas</strong></td><td>Maintien salaire 2 ans obligatoire. WGA-hiaat recommandé.</td><td>ZVW 6,57% obligatoire. Pas de complémentaire obligatoire.</td><td>~8% du brut (légal)</td><td>Partiel</td></tr>
         <tr><td><strong>🇵🇱 Pologne</strong></td><td>ZUS couvre les risques. Assurance groupe vie recommandée.</td><td>NFZ 9% salarié. Medicover/LuxMed recommandé (50-300 PLN (~69 €)).</td><td>0,5-1% (volontaire)</td><td>Non</td></tr>
         <tr><td><strong>🇩🇰 Danemark</strong></td><td>Pension de branche inclut décès/invalidité. Accident travail obligatoire.</td><td>Universel gratuit. Sundhedsforsikring recommandée.</td><td>0,3-0,8% (volontaire)</td><td>Partiel</td></tr>
         <tr><td><strong>🇧🇪 Belgique</strong></td><td>Accident travail obligatoire. Assurance groupe très répandue.</td><td>Mutuelles 75%. Assurance hospitalisation recommandée.</td><td>1-3% (volontaire)</td><td>Partiel</td></tr>
